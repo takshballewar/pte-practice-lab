@@ -690,7 +690,10 @@ const BACKUP_QUESTIONS = {
 const PROCEDURAL_SUBJECTS = [
   "marine biology", "quantum computing", "behavioral economics", "medieval archaeology", "environmental engineering",
   "cognitive psychology", "renewable energy design", "urban sociology", "astrophysics", "bioinformatics",
-  "macroeconomic policy", "organic chemistry", "paleontology", "geological seismology", "robotics automation"
+  "macroeconomic policy", "organic chemistry", "paleontology", "geological seismology", "robotics automation",
+  "artificial intelligence", "space exploration", "nanotechnology", "climate modeling", "linguistic anthropology",
+  "molecular genetics", "agricultural science", "architectural history", "behavioral neurology", "astronomy and astrophysics",
+  "developmental pediatrics", "digital journalism", "cryptography and cybersecurity", "renewable resource management", "cultural anthropology"
 ];
 
 const PROCEDURAL_CHALLENGES = [
@@ -698,7 +701,12 @@ const PROCEDURAL_CHALLENGES = [
   "preservation of carbonized parchment documents", "mitigation of microplastic pollution in rivers", "cognitive load experienced during multitasking",
   "efficiency limits of thin-film solar panels", "social stratification in hyper-dense urban centers", "detection of low-frequency gravitational waves",
   "alignment of gene sequences in complex organisms", "integration of automated systems in factories", "depletion of underground water tables",
-  "erratic behavior of magnetic fields near magma", "ethical implications of automated facial recognition", "carbon footprint of global data centers"
+  "erratic behavior of magnetic fields near magma", "ethical implications of automated facial recognition", "carbon footprint of global data centers",
+  "escalating threat of cybersecurity breaches in smart cities", "rapid melting of polar ice caps due to temperature spikes", "neural synchronization errors during deep sleep cycles",
+  "deterioration of high-performance polymer coatings", "inefficient energy consumption in blockchain proof-of-work", "decreased voter turnout in municipal elections",
+  "lack of generalizability in clinical trial datasets", "soil acidification caused by prolonged chemical pesticide use", "decline of native pollinator species in urban gardens",
+  "high latency issues in satellite internet networks", "structural integrity failure of offshore wind turbine platforms", "preservation of digitized cultural heritage archives",
+  "imbalance in distribution of global healthcare resources", "rapid mutation rates of antibiotic-resistant bacteria", "deforestation and habitat fragmentation in tropical rainforests"
 ];
 
 const PROCEDURAL_METHODOLOGIES = [
@@ -706,7 +714,12 @@ const PROCEDURAL_METHODOLOGIES = [
   "advanced multispectral imaging technology", "automated gas chromatography", "functional magnetic resonance imaging",
   "quantum-mechanical modeling algorithms", "longitudinal survey data analysis", "cryogenic interferometric sensors",
   "parallelized sequencing pipelines", "multi-spectral lidar scanning", "statistical time-series forecasting",
-  "isotope analysis of sediment cores", "machine learning pattern recognition", "high-speed thermodynamic cameras"
+  "isotope analysis of sediment cores", "machine learning pattern recognition", "high-speed thermodynamic cameras",
+  "machine learning anomaly detection models", "thermal imaging and infrared thermography", "meta-analysis of peer-reviewed clinical studies",
+  "x-ray powder diffraction analysis", "dynamic electrochemical impedance spectroscopy", "demographic statistical modeling and census tracking",
+  "high-throughput gene expression profiling", "spectrophotometric assessment of soil chemistry", "acoustic telemetry and wildlife tracking",
+  "laser-induced breakdown spectroscopy", "finite element structural analysis", "optical character recognition and digital indexing",
+  "epidemiological statistical forecasting", "whole-genome sequence database comparisons", "dendrochronological dating of tree-ring samples"
 ];
 
 const PROCEDURAL_OBSERVATIONS = [
@@ -717,7 +730,15 @@ const PROCEDURAL_OBSERVATIONS = [
   "binary neutron star mergers produce distinctive electromagnetic counterparts", "non-coding DNA segments exhibit highly conserved regulatory patterns",
   "predictive algorithms often amplify historical dataset biases", "soil depletion rates are decelerated by crop rotation practices",
   "tectonic stress buildup is highly correlated with micro-seismic swarms", "extreme temperature fluctuations trigger cellular membrane degradation",
-  "geothermal heat output remains remarkably constant despite atmospheric shifts"
+  "geothermal heat output remains remarkably constant despite atmospheric shifts",
+  "cyber threats can be mitigated effectively through zero-trust architectures", "ice sheet melt rates are accelerating much faster than 2010 predictions",
+  "brain wave coherence peaks during early slow-wave sleep cycles", "polymer lifespan can be extended significantly by adding graphene particles",
+  "shifting to proof-of-stake reduces computing energy consumption by ninety-nine percent", "voter engagement is strongly influenced by community-based social initiatives",
+  "diversity in clinical datasets drastically improves diagnosis accuracy", "organic farming methods restore key nitrogen levels in depleted soils",
+  "urban green roofs sustain critical insect populations during migrations", "low earth orbit satellites reduce communications latency to under thirty milliseconds",
+  "reinforced concrete composite foundations prevent wind turbine failure", "digital archives remain accessible despite file format obsolescence",
+  "telehealth services bridge the medical accessibility gap in remote regions", "phage therapy exhibits high efficacy in targeting resistant pathogens",
+  "corridor reforestation successfully halts species extinction in fragments"
 ];
 
 const PROCEDURAL_APPLICATIONS = [
@@ -725,7 +746,12 @@ const PROCEDURAL_APPLICATIONS = [
   "preservation methodologies for ancient texts", "freshwater conservation guidelines", "classroom curriculum development",
   "photovoltaic cell manufacturing", "inclusive urban planning strategies", "cosmological expansion modeling",
   "precision medicine and gene therapy research", "unbiased algorithmic decision systems", "regenerative agricultural policies",
-  "early-warning seismic mitigation systems", "robust biological crop protection", "geothermal heating systems"
+  "early-warning seismic mitigation systems", "robust biological crop protection", "geothermal heating systems",
+  "secure smart city infrastructure guidelines", "global climate change mitigation frameworks", "therapeutic deep sleep restoration systems",
+  "corrosion-resistant industrial manufacturing standards", "energy-efficient digital transaction networks", "grassroots voter mobilization strategies",
+  "inclusive medical diagnostics and healthcare policies", "sustainable regenerative farming systems", "urban biodiversity conservation plans",
+  "high-speed global communication networks", "safe offshore renewable energy platforms", "preservation strategies for digital library systems",
+  "remote community telehealth systems", "alternative bacterial infection therapies", "biodiversity corridor forestry initiatives"
 ];
 
 const PROCEDURAL_NOUNS = [
@@ -821,20 +847,20 @@ export const Database = {
       localStorage.setItem("fluentai_user", JSON.stringify(defaultUser));
     }
 
-    // Auto-seed to 2000 questions per category if needed
+    // Auto-seed to 2500 questions per category if needed
     try {
       const questions = this.getQuestions();
       const skills = ['speaking', 'writing', 'reading', 'listening'];
       let needsSeed = false;
       for (const skill of skills) {
-        if (!questions[skill] || questions[skill].length < 2000) {
+        if (!questions[skill] || questions[skill].length < 2500) {
           needsSeed = true;
           break;
         }
       }
       if (needsSeed) {
-        console.log("Auto-seeding database to 2,000 questions per category...");
-        this.bulkSeedQuestions(2000);
+        console.log("Auto-seeding database to 2,500 questions per category...");
+        this.bulkSeedQuestions(2500);
       }
     } catch (e) {
       console.error("Failed to auto-seed database", e);
@@ -2797,7 +2823,7 @@ Return ONLY the plain text title, nothing else. No markdown, no quotes, no extra
 
   resetQuestions() {
     this.safeSaveQuestions(DEFAULT_QUESTIONS);
-    this.bulkSeedQuestions(2000);
+    this.bulkSeedQuestions(2500);
     document.dispatchEvent(new CustomEvent('questions-updated'));
   },
 
