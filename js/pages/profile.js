@@ -2,12 +2,27 @@
 
 import { Database } from '../db.js?v=8';
 
+function generateInitialsSvg(name) {
+  const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+    <defs>
+      <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:%238B5CF6;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:%231396e2;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <circle cx="75" cy="75" r="75" fill="url(%23avatarGrad)" />
+    <text x="50%" y="54%" font-family="system-ui, -apple-system, sans-serif" font-size="54" font-weight="bold" fill="white" dominant-baseline="middle" text-anchor="middle">${initialsText}</text>
+  </svg>`;
+  return `data:image/svg+xml;utf8,${svg}`;
+}
+
 export function renderProfile(container) {
   const user = Database.getUser();
   const progress = Database.getProgress();
 
   const renderView = () => {
-    const avatarUrl = user && user.avatar ? user.avatar : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';
+    const avatarUrl = user && user.avatar ? user.avatar : generateInitialsSvg(user ? user.name : 'Taksh Sharma');
     container.innerHTML = `
       <div class="profile-grid">
         <!-- LEFT COLUMN: AVATAR CARD & TARGET STATS -->
