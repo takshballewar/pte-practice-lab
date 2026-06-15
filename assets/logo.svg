@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" width="100%" height="100%">
+  <style>
+    .logo-text-primary {
+      font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+      font-weight: 800;
+      fill: var(--text-logo-primary, #1b1c67);
+      font-size: 92px;
+      letter-spacing: -1px;
+    }
+    .logo-text-secondary {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 700;
+      fill: #008ce3;
+      font-size: 21px;
+      letter-spacing: 0.2px;
+    }
+    .logo-slogan {
+      font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+      font-weight: 400;
+      fill: var(--text-logo-secondary, #111);
+      font-size: 27px;
+      letter-spacing: 4px;
+    }
+    .logo-iso {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-weight: 500;
+      fill: var(--text-logo-secondary, #333);
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+    .logo-tm {
+      font-family: sans-serif;
+      font-weight: bold;
+      fill: var(--text-logo-primary, #1b1c67);
+      font-size: 20px;
+    }
+  </style>
+
+  <g transform="translate(10, 10)">
+    <!-- Stylized "K" Graphics Symbol -->
+    <g transform="translate(0, 5)">
+      <!-- Left dark blue wing/pillar -->
+      <path d="M 10 135 L 75 14 C 77 10 84 10 86 14 L 105 45 C 107 50 105 55 100 57 L 55 76 L 30 135 Z" fill="#141f72"/>
+      
+      <!-- Bright blue bottom swoop -->
+      <path d="M 36 135 C 60 110 90 90 142 66 C 122 84 110 105 108 135 Z" fill="#008ce3"/>
+      
+      <!-- Bright blue top swooshing stream -->
+      <path d="M 50 115 C 95 95 145 75 195 62 L 210 57 C 180 62 135 72 90 90 Z" fill="#008ce3"/>
+      
+      <!-- Airplane Silhouette -->
+      <!-- Pointing up-right, carrying the jet stream -->
+      <path d="M 188 56 L 194 48 L 198 49 L 197 56 L 206 55 L 213 43 L 217 44 L 212 55 L 228 52 C 232 51 236 53 237 56 C 237 57 235 59 231 60 L 212 61 L 205 70 L 201 69 L 203 60 L 194 61 L 188 56 Z" fill="#008ce3"/>
+    </g>
+
+    <!-- Logo Typography (ASPIRE) -->
+    <!-- Positioned to the right of the symbol -->
+    <g transform="translate(235, 10)">
+      <text x="0" y="80" class="logo-text-primary">ASPIRE</text>
+      <text x="352" y="16" class="logo-tm">®</text>
+      
+      <!-- Slogan (EDUCATION & IMMIGRATION CONSULTANCY) -->
+      <text x="0" y="112" class="logo-text-secondary">EDUCATION &amp; IMMIGRATION CONSULTANCY</text>
+      
+      <!-- Slogan (THE NEW FACE OF WORLD) -->
+      <text x="0" y="156" class="logo-slogan">THE NEW FACE OF WORLD</text>
+      
+      <!-- ISO Standard code -->
+      <text x="312" y="186" class="logo-iso">ISO 9001 - 2015</text>
+    </g>
+  </g>
+</svg>
