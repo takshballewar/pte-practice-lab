@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=7">
+  <link rel="stylesheet" href="css/styles-premium.css?v=10">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -183,7 +183,7 @@
           <!-- Streak widget (Dashboard only) -->
           <div class="streak-widget pulse-hover" title="Daily Practice Streak">
             <span class="streak-icon">⚡</span>
-            <span id="streak-count" class="streak-number">5</span>
+            <span id="streak-count" class="streak-number">0</span>
             <span class="streak-label">days</span>
           </div>
 
@@ -376,9 +376,34 @@
       </button>
       <p class="modal-footer">Already practicing? <a href="#" id="to-login-btn">Log in instead</a></p>
     </div>
+
+    <!-- Onboarding / Target Setup Modal -->
+    <div id="onboarding-modal" class="modal-card hidden">
+      <div class="modal-header">
+        <h2>Set Your Exam Target</h2>
+        <p>Customize Aspire PTE for your specific test timeline</p>
+      </div>
+      <form id="onboarding-form" class="modal-form">
+        <div class="input-group">
+          <label for="onboarding-target">Target PTE Score</label>
+          <select id="onboarding-target" required>
+            <option value="65">PTE 65 (Competent English)</option>
+            <option value="79" selected>PTE 79 (Superior English)</option>
+            <option value="90">PTE 90 (Perfect Score)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="onboarding-month">Target Exam Month</label>
+          <select id="onboarding-month" required>
+            <!-- Populated dynamically via JS -->
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block shadow-neon" style="margin-top: 16px;">Set Target & Start</button>
+      </form>
+    </div>
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=9"></script>
+  <script type="module" src="js/app-premium.js?v=10"></script>
 </body>
 </html>

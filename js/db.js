@@ -320,18 +320,12 @@ const DEFAULT_VOCABULARY = [
 
 // Pre-load historic progress logs to populate the dashboard charts
 const DEFAULT_PROGRESS = {
-  streak: 5,
-  points: 350,
+  streak: 0,
+  points: 0,
   targetScore: 79,
-  examDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days in the future
-  scoreHistory: [
-    { date: "May 10", speaking: 65, writing: 68, reading: 62, listening: 64, overall: 65 },
-    { date: "May 18", speaking: 70, writing: 72, reading: 68, listening: 70, overall: 70 },
-    { date: "May 25", speaking: 74, writing: 70, reading: 72, listening: 75, overall: 73 },
-    { date: "June 02", speaking: 76, writing: 75, reading: 74, listening: 78, overall: 76 },
-    { date: "June 08", speaking: 80, writing: 74, reading: 78, listening: 81, overall: 78 }
-  ],
-  completedTasks: ["SP-101", "RD-301"],
+  examDate: "", // no target exam date/month set yet
+  scoreHistory: [],
+  completedTasks: [],
   unclearedTasks: [],
   tutorHistory: [
     { sender: "tutor", text: "Welcome to Aspire! I'm your AI PTE trainer. I can help you decode PTE exam structures, offer essay outlines, or analyze your practice outputs. What skill are we targeting today?", time: new Date(Date.now() - 3600000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
@@ -821,7 +815,7 @@ export const Database = {
   },
 
   init() {
-    const dbVersion = "v10";
+    const dbVersion = "v11";
     if (localStorage.getItem("fluentai_db_version") !== dbVersion) {
       this.safeSaveQuestions(DEFAULT_QUESTIONS);
       localStorage.setItem("fluentai_db_version", dbVersion);
@@ -1254,18 +1248,40 @@ export const Database = {
 
   getProgress() {
     try {
-      const stored = localStorage.getItem("fluentai_progress");
-      if (!stored) return DEFAULT_PROGRESS;
+      const user = this.getUser();
+      const email = (user && user.authenticated) ? user.email : 'guest';
+      
+      // If guest, try generic 'fluentai_progress' first
+      if (email === 'guest') {
+        const stored = localStorage.getItem("fluentai_progress");
+        if (!stored) return DEFAULT_PROGRESS;
+        return JSON.parse(stored);
+      }
+      
+      // If authenticated user, try user-specific key
+      const stored = localStorage.getItem(`fluentai_progress_${email}`);
+      if (!stored) {
+        // Initialize fresh user progress
+        const freshProgress = JSON.parse(JSON.stringify(DEFAULT_PROGRESS));
+        localStorage.setItem(`fluentai_progress_${email}`, JSON.stringify(freshProgress));
+        return freshProgress;
+      }
       return JSON.parse(stored);
     } catch (e) {
       console.error("Failed to parse fluentai_progress from localStorage, resetting to defaults", e);
-      localStorage.removeItem("fluentai_progress");
       return DEFAULT_PROGRESS;
     }
   },
 
   updateProgress(updated) {
-    localStorage.setItem("fluentai_progress", JSON.stringify(updated));
+    const user = this.getUser();
+    const email = (user && user.authenticated) ? user.email : 'guest';
+    if (email === 'guest') {
+      localStorage.setItem("fluentai_progress", JSON.stringify(updated));
+    } else {
+      localStorage.setItem(`fluentai_progress_${email}`, JSON.stringify(updated));
+      localStorage.setItem("fluentai_progress", JSON.stringify(updated)); // sync generic key as fallback
+    }
   },
 
   getUser() {

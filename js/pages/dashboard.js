@@ -8,17 +8,18 @@ export function renderDashboard(container) {
   
   // Calculate average score for circular chart
   const lastScore = progress.scoreHistory[progress.scoreHistory.length - 1] || {
-    speaking: 70,
-    writing: 70,
-    reading: 70,
-    listening: 70,
-    overall: 70
+    speaking: 0,
+    writing: 0,
+    reading: 0,
+    listening: 0,
+    overall: 0
   };
   const overallAvg = lastScore.overall;
-  const targetPct = Math.round((overallAvg / progress.targetScore) * 100);
+  const targetPct = progress.targetScore ? Math.round((overallAvg / progress.targetScore) * 100) : 0;
 
   // Countdown calculations
   const calculateDaysLeft = (targetDateStr) => {
+    if (!targetDateStr) return 0;
     const target = new Date(targetDateStr);
     const today = new Date();
     const diffTime = target - today;
@@ -183,7 +184,7 @@ export function renderDashboard(container) {
         <!-- countdown to PTE -->
         <div class="card-glass" style="margin-bottom: 24px;">
           <h3>Official Exam Target</h3>
-          <p style="font-size:12px; color:var(--text-secondary); margin-top:4px;">Date: <b>${progress.examDate}</b></p>
+          <p style="font-size:12px; color:var(--text-secondary); margin-top:4px;">Date: <b>${progress.examDate || 'Not Set'}</b></p>
           <div class="dashboard-countdown-box">
             <div class="countdown-unit">
               <span class="countdown-val">${daysLeft}</span>
@@ -225,6 +226,15 @@ export function renderDashboard(container) {
 function renderTrendChart(history) {
   const chartBox = document.getElementById('dashboard-trend-chart-box');
   if (!chartBox) return;
+
+  if (!history || history.length === 0) {
+    chartBox.innerHTML = `
+      <div style="height: 220px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 14px; border: 1px dashed var(--border-color); border-radius: var(--radius-md); background: rgba(255,255,255,0.02);">
+        No score history yet. Start practice or a mock test to see your progress trend!
+      </div>
+    `;
+    return;
+  }
 
   const width = chartBox.clientWidth;
   const height = 220;

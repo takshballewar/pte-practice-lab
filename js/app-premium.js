@@ -105,6 +105,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Update sidebar subscription badge on load & subscription changes
   updateSidebarSubscriptionBadge();
   document.addEventListener('subscription-changed', updateSidebarSubscriptionBadge);
+
+  // 9. Onboarding Setup Form Handler
+  const onboardingForm = document.getElementById('onboarding-form');
+  if (onboardingForm) {
+    onboardingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const targetScore = parseInt(document.getElementById('onboarding-target').value);
+      const examDate = document.getElementById('onboarding-month').value;
+      
+      const progress = Database.getProgress();
+      progress.targetScore = targetScore;
+      progress.examDate = examDate;
+      Database.updateProgress(progress);
+      
+      const overlay = document.getElementById('auth-modal-overlay');
+      const onboardingModal = document.getElementById('onboarding-modal');
+      if (overlay) overlay.classList.add('hidden');
+      if (onboardingModal) onboardingModal.classList.add('hidden');
+      
+      // Refresh the route to update dashboard view
+      Router.handleRouting();
+      
+      window.showToast("Your target settings have been configured successfully!", "success");
+    });
+  }
+
+  // 10. Check if onboarding is needed
+  setTimeout(checkOnboarding, 500);
 });
 
 function updateSidebarSubscriptionBadge() {
@@ -172,15 +200,18 @@ function initAuthUI() {
     e.preventDefault();
     const email = document.getElementById('login-email').value;
     
-    // Log user in
+    // Log user in dynamically naming new accounts instead of hardcoded Taksh Sharma
+    const namePrefix = email.split('@')[0];
+    const name = namePrefix.charAt(0).toUpperCase() + namePrefix.slice(1);
     Database.updateUser({
-      name: "Taksh Sharma",
+      name: name,
       email: email,
       authenticated: true
     });
     
     hideModal();
     Router.navigate('dashboard');
+    setTimeout(checkOnboarding, 100);
   });
 
   registerForm.addEventListener('submit', (e) => {
@@ -199,10 +230,12 @@ function initAuthUI() {
     // Seed target settings
     const progress = Database.getProgress();
     progress.targetScore = target;
+    progress.examDate = ""; // clear so exam month onboarding prompts
     Database.updateProgress(progress);
 
     hideModal();
     Router.navigate('dashboard');
+    setTimeout(checkOnboarding, 100);
   });
 
   // Google JWT Credential Decoder helper
@@ -237,6 +270,7 @@ function initAuthUI() {
       document.dispatchEvent(new CustomEvent('auth-updated'));
       
       window.showToast(`Welcome back, ${payload.given_name || payload.name}!`, 'success');
+      setTimeout(checkOnboarding, 100);
     } else {
       window.showToast("Google Authentication failed.", 'error');
     }
@@ -474,7 +508,7 @@ function populateNotifications() {
   const notifications = [
     { title: "Weekly study schedule generated", time: "2 hours ago", unread: true },
     { title: "Speaking Read Aloud task graded: PTE 80", time: "1 day ago", unread: false },
-    { title: "Streak alert: 5 days and counting!", time: "2 days ago", unread: false }
+    { title: "Streak alert: Keep up the daily practice!", time: "2 days ago", unread: false }
   ];
 
   const render = () => {
@@ -496,5 +530,52 @@ function populateNotifications() {
       const dot = document.querySelector('#notification-btn .badge-dot');
       if (dot) dot.classList.add('hidden');
     });
+  }
+}
+
+function checkOnboarding() {
+  const user = Database.getUser();
+  if (user && user.authenticated) {
+    const progress = Database.getProgress();
+    if (!progress.examDate) {
+      const overlay = document.getElementById('auth-modal-overlay');
+      const onboardingModal = document.getElementById('onboarding-modal');
+      const loginModal = document.getElementById('login-modal');
+      const registerModal = document.getElementById('register-modal');
+      
+      if (overlay && onboardingModal) {
+        overlay.classList.remove('hidden');
+        onboardingModal.classList.remove('hidden');
+        if (loginModal) loginModal.classList.add('hidden');
+        if (registerModal) registerModal.classList.add('hidden');
+        
+        populateOnboardingMonths();
+      }
+    }
+  }
+}
+
+function populateOnboardingMonths() {
+  const monthSelect = document.getElementById('onboarding-month');
+  if (!monthSelect) return;
+  
+  monthSelect.innerHTML = '';
+  
+  const currentDate = new Date();
+  const options = { month: 'long', year: 'numeric' };
+  
+  for (let i = 0; i < 12; i++) {
+    const futureDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + i, 1);
+    const dateString = futureDate.toLocaleDateString('en-US', options);
+    const valDate = new Date(futureDate.getFullYear(), futureDate.getMonth(), 15);
+    const valString = valDate.toISOString().split('T')[0];
+    
+    const option = document.createElement('option');
+    option.value = valString;
+    option.textContent = dateString;
+    if (i === 1) {
+      option.selected = true; // Default to next month
+    }
+    monthSelect.appendChild(option);
   }
 }
