@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=12';
-import { Router } from './router.js?v=12';
-import { Tutor } from './components/tutor.js?v=12';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=12';
+import { Database } from './db.js?v=13';
+import { Router } from './router.js?v=13';
+import { Tutor } from './components/tutor.js?v=13';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=13';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=12';
-import { renderDashboard } from './pages/dashboard.js?v=12';
-import { renderPractice } from './pages/practice-premium.js?v=12';
-import { renderMockTest } from './pages/mocktest.js?v=12';
-import { renderScoring } from './pages/scoring.js?v=12';
-import { renderProfile } from './pages/profile.js?v=12';
-import { renderPricing } from './pages/pricing.js?v=12';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=12';
+import { renderLanding } from './pages/landing.js?v=13';
+import { renderDashboard } from './pages/dashboard.js?v=13';
+import { renderPractice } from './pages/practice-premium.js?v=13';
+import { renderMockTest } from './pages/mocktest.js?v=13';
+import { renderScoring } from './pages/scoring.js?v=13';
+import { renderProfile } from './pages/profile.js?v=13';
+import { renderPricing } from './pages/pricing.js?v=13';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=13';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -287,10 +287,10 @@ function initAuthUI() {
         document.dispatchEvent(new CustomEvent('auth-updated'));
         window.showToast(`Welcome back, ${account.name}!`, "success");
       } else {
-        window.showToast("Incorrect password. Please try again.", "error");
+        window.showToast("Incorrect ID or password. Please try again.", "error");
       }
     } else {
-      window.showToast("Account not found. Please click 'Create one now' to register.", "error");
+      window.showToast("Incorrect ID or password. Please try again.", "error");
     }
   });
 

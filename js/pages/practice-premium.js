@@ -1,7 +1,7 @@
 /* FluentAI Practice Laboratory View & Interactive Workspace & Flashcards */
 
-import { Database } from '../db.js?v=12';
-import { Router } from '../router.js?v=12';
+import { Database } from '../db.js?v=13';
+import { Router } from '../router.js?v=13';
 
 // Global showToast is loaded from window scope
 

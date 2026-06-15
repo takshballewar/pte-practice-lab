@@ -1,7 +1,7 @@
 /* FluentAI Context-Aware Floating AI Tutor Chatbot Component */
 
-import { Database } from '../db.js?v=12';
-import { Router } from '../router.js?v=12';
+import { Database } from '../db.js?v=13';
+import { Router } from '../router.js?v=13';
 
 export const Tutor = {
   initialized: false,
