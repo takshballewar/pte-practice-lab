@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=16';
-import { Router } from './router.js?v=16';
-import { Tutor } from './components/tutor.js?v=16';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=16';
+import { Database } from './db.js?v=17';
+import { Router } from './router.js?v=17';
+import { Tutor } from './components/tutor.js?v=17';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=17';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=16';
-import { renderDashboard } from './pages/dashboard.js?v=16';
-import { renderPractice } from './pages/practice-premium.js?v=16';
-import { renderMockTest } from './pages/mocktest.js?v=16';
-import { renderScoring } from './pages/scoring.js?v=16';
-import { renderProfile } from './pages/profile.js?v=16';
-import { renderPricing } from './pages/pricing.js?v=16';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=16';
+import { renderLanding } from './pages/landing.js?v=17';
+import { renderDashboard } from './pages/dashboard.js?v=17';
+import { renderPractice } from './pages/practice-premium.js?v=17';
+import { renderMockTest } from './pages/mocktest.js?v=17';
+import { renderScoring } from './pages/scoring.js?v=17';
+import { renderProfile } from './pages/profile.js?v=17';
+import { renderPricing } from './pages/pricing.js?v=17';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=17';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -109,22 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. Onboarding Setup Form Handler
   const onboardingForm = document.getElementById('onboarding-form');
   if (onboardingForm) {
-    // Sync overall target to section targets
-    const onboardingTarget = document.getElementById('onboarding-target');
-    if (onboardingTarget) {
-      onboardingTarget.addEventListener('change', (e) => {
-        const val = e.target.value;
-        const s = document.getElementById('onboarding-speaking');
-        const w = document.getElementById('onboarding-writing');
-        const r = document.getElementById('onboarding-reading');
-        const l = document.getElementById('onboarding-listening');
-        if (s) s.value = val;
-        if (w) w.value = val;
-        if (r) r.value = val;
-        if (l) l.value = val;
-      });
-    }
-
     onboardingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
@@ -133,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const fullName = `${firstName} ${surname}`.trim();
       
       const targetScore = parseInt(document.getElementById('onboarding-target').value);
-      const targetSpeaking = parseInt(document.getElementById('onboarding-speaking').value);
-      const targetWriting = parseInt(document.getElementById('onboarding-writing').value);
-      const targetReading = parseInt(document.getElementById('onboarding-reading').value);
-      const targetListening = parseInt(document.getElementById('onboarding-listening').value);
+      const targetSpeaking = targetScore;
+      const targetWriting = targetScore;
+      const targetReading = targetScore;
+      const targetListening = targetScore;
       const examDate = document.getElementById('onboarding-month').value;
       
       const temp = window.tempRegistrationDetails || {};
@@ -590,6 +574,13 @@ function initLayoutUI() {
     // Close on click outside sidebar
     document.addEventListener('click', (e) => {
       if (!sidebar.contains(e.target) && e.target !== menuToggle && !menuToggle.contains(e.target)) {
+        closeSidebar();
+      }
+    });
+
+    // Collapse sidebar on nav link click
+    sidebar.addEventListener('click', (e) => {
+      if (e.target.closest('.nav-link, .nav-link-cockpit-glass, .btn-logout')) {
         closeSidebar();
       }
     });
