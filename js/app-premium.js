@@ -147,6 +147,8 @@ function initAuthUI() {
       registerModal.classList.remove('hidden');
       loginModal.classList.add('hidden');
     }
+    // Refresh Google Sign-In button state when modal is displayed
+    renderOfficialGoogleButtons();
   };
 
   const hideModal = () => {
@@ -240,27 +242,7 @@ function initAuthUI() {
     }
   };
 
-  // Google Social login action
-  const handleGoogleAuthAction = (e) => {
-    e.preventDefault();
-    const googleClientId = localStorage.getItem('google_client_id');
-    
-    if (googleClientId && typeof google !== 'undefined') {
-      try {
-        google.accounts.id.initialize({
-          client_id: googleClientId,
-          callback: window.handleGoogleCredentialResponse
-        });
-        google.accounts.id.prompt();
-      } catch (err) {
-        console.error("Google GIS initialization error", err);
-        runGoogleSimulation();
-      }
-    } else {
-      runGoogleSimulation();
-    }
-  };
-
+  // Simulated fallback handler
   const runGoogleSimulation = () => {
     Database.updateUser({
       name: "Google Scholar",
@@ -269,10 +251,97 @@ function initAuthUI() {
     });
     hideModal();
     Router.navigate('dashboard');
+    document.dispatchEvent(new CustomEvent('auth-updated'));
+    window.showToast("Welcome back, Google Scholar (Simulated)!", "success");
+  };
+
+  const handleGoogleAuthAction = (e) => {
+    e.preventDefault();
+    runGoogleSimulation();
   };
 
   if (googleLoginBtn) googleLoginBtn.addEventListener('click', handleGoogleAuthAction);
   if (googleRegisterBtn) googleRegisterBtn.addEventListener('click', handleGoogleAuthAction);
+
+  // Render official Google Buttons if Client ID is configured
+  const renderOfficialGoogleButtons = () => {
+    const googleClientId = localStorage.getItem('google_client_id');
+    const googleLoginContainer = document.getElementById('google-login-btn-container');
+    const googleRegisterContainer = document.getElementById('google-register-btn-container');
+
+    if (googleClientId && typeof google !== 'undefined' && google.accounts) {
+      try {
+        google.accounts.id.initialize({
+          client_id: googleClientId,
+          callback: window.handleGoogleCredentialResponse
+        });
+
+        if (googleLoginContainer) {
+          googleLoginContainer.classList.remove('hidden');
+          googleLoginContainer.style.display = 'block';
+          if (googleLoginBtn) {
+            googleLoginBtn.classList.add('hidden');
+            googleLoginBtn.style.display = 'none';
+          }
+          google.accounts.id.renderButton(googleLoginContainer, {
+            theme: "outline",
+            size: "large",
+            width: "320",
+            text: "signin_with"
+          });
+        }
+
+        if (googleRegisterContainer) {
+          googleRegisterContainer.classList.remove('hidden');
+          googleRegisterContainer.style.display = 'block';
+          if (googleRegisterBtn) {
+            googleRegisterBtn.classList.add('hidden');
+            googleRegisterBtn.style.display = 'none';
+          }
+          google.accounts.id.renderButton(googleRegisterContainer, {
+            theme: "outline",
+            size: "large",
+            width: "320",
+            text: "signup_with"
+          });
+        }
+
+        // Trigger One-Tap prompt automatically
+        google.accounts.id.prompt();
+      } catch (err) {
+        console.error("Error rendering official Google buttons", err);
+      }
+    } else {
+      // Clear containers and show fallback buttons
+      if (googleLoginContainer) {
+        googleLoginContainer.innerHTML = '';
+        googleLoginContainer.classList.add('hidden');
+        googleLoginContainer.style.display = 'none';
+      }
+      if (googleLoginBtn) {
+        googleLoginBtn.classList.remove('hidden');
+        googleLoginBtn.style.display = 'flex';
+      }
+      if (googleRegisterContainer) {
+        googleRegisterContainer.innerHTML = '';
+        googleRegisterContainer.classList.add('hidden');
+        googleRegisterContainer.style.display = 'none';
+      }
+      if (googleRegisterBtn) {
+        googleRegisterBtn.classList.remove('hidden');
+        googleRegisterBtn.style.display = 'flex';
+      }
+    }
+  };
+
+  // Try to render when library is loaded
+  const checkGoogleLoaded = setInterval(() => {
+    if (typeof google !== 'undefined' && google.accounts) {
+      renderOfficialGoogleButtons();
+      clearInterval(checkGoogleLoaded);
+    }
+  }, 300);
+  setTimeout(() => clearInterval(checkGoogleLoaded), 10000);
 }
 
 /* ==========================================================================
