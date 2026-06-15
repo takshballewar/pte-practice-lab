@@ -7,12 +7,13 @@ export function renderProfile(container) {
   const progress = Database.getProgress();
 
   const renderView = () => {
+    const avatarUrl = user && user.avatar ? user.avatar : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150';
     container.innerHTML = `
       <div class="profile-grid">
         <!-- LEFT COLUMN: AVATAR CARD & TARGET STATS -->
         <aside class="profile-sidebar-card card-glass">
           <div class="profile-large-avatar">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="User Avatar Large">
+            <img src="${avatarUrl}" alt="User Avatar Large">
           </div>
           <h3 style="font-size: 18px; margin-bottom: 4px;">${user ? user.name : 'Taksh Sharma'}</h3>
           <span style="font-size:12px; color:var(--accent); font-weight:600; text-transform:uppercase;">Premium Scholar</span>

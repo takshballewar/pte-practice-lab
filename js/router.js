@@ -123,12 +123,16 @@ export const Router = {
       const displayName = document.getElementById('user-display-name');
       const menuName = document.getElementById('menu-user-name');
       const menuEmail = document.getElementById('menu-user-email');
+      const userAvatarImg = document.getElementById('user-avatar-img');
 
       if (user) {
         if (initials) initials.textContent = user.name.split(' ').map(n=>n[0]).join('');
         if (displayName) displayName.textContent = user.name;
         if (menuName) menuName.textContent = user.name;
         if (menuEmail) menuEmail.textContent = user.email;
+        if (userAvatarImg) {
+          userAvatarImg.src = user.avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100";
+        }
       }
     }
 
