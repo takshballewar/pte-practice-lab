@@ -819,13 +819,13 @@ export const Database = {
   },
 
   init() {
-    const dbVersion = "v13";
+    const dbVersion = "v14";
     if (localStorage.getItem("fluentai_db_version") !== dbVersion) {
       this.safeSaveQuestions(DEFAULT_QUESTIONS);
       localStorage.setItem("fluentai_db_version", dbVersion);
       localStorage.setItem("fluentai_progress", JSON.stringify(DEFAULT_PROGRESS));
       localStorage.setItem("fluentai_vocabulary", JSON.stringify(DEFAULT_VOCABULARY));
-      localStorage.removeItem("fluentai_user"); // Reset default user details
+      localStorage.removeItem("fluentai_user"); // Reset default user details (forces logout)
       localStorage.removeItem("fluentai_accounts"); // Reset account database
     }
 
@@ -853,14 +853,8 @@ export const Database = {
     }
 
     if (!localStorage.getItem("fluentai_user")) {
-      const defaultUser = {
-        name: "Vivek Ballewar",
-        email: "vivek@example.com",
-        authenticated: true
-      };
-      localStorage.setItem("fluentai_user", JSON.stringify(defaultUser));
-      
-      // Seed default user-scoped progress
+      // By default, do NOT log the user in on first load. They must explicitly register or log in.
+      // Seed default user-scoped progress for Vivek Ballewar
       const freshProgress = JSON.parse(JSON.stringify(DEFAULT_PROGRESS));
       localStorage.setItem("fluentai_progress_vivek@example.com", JSON.stringify(freshProgress));
     }

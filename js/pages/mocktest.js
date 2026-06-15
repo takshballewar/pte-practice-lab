@@ -1,7 +1,7 @@
 /* FluentAI PTE Exam Simulator Module & Drag-Drop/Audio Systems */
 
-import { Database } from '../db.js?v=13';
-import { Router } from '../router.js?v=13';
+import { Database } from '../db.js?v=14';
+import { Router } from '../router.js?v=14';
 
 export function renderMockTest(container, params) {
   // Check if we are starting a test or viewing the landing selection
