@@ -265,7 +265,11 @@ function initAuthUI() {
 
   // Render official Google Buttons if Client ID is configured
   const renderOfficialGoogleButtons = () => {
-    const googleClientId = localStorage.getItem('google_client_id');
+    let googleClientId = localStorage.getItem('google_client_id');
+    if (!googleClientId || googleClientId.trim() === "") {
+      // Use your production Google Client ID as default
+      googleClientId = "715659602623-in0muf5nr7pcebptds6ftnodoborro65.apps.googleusercontent.com";
+    }
     const googleLoginContainer = document.getElementById('google-login-btn-container');
     const googleRegisterContainer = document.getElementById('google-register-btn-container');
 
