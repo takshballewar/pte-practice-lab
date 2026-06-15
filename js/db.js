@@ -1299,6 +1299,18 @@ export const Database = {
     } else {
       localStorage.setItem(`fluentai_progress_${email}`, JSON.stringify(updated));
       localStorage.setItem("fluentai_progress", JSON.stringify(updated)); // sync generic key as fallback
+      
+      // Keep accounts directory in sync so switching accounts doesn't overwrite data
+      try {
+        const accounts = this.getAccounts();
+        const idx = accounts.findIndex(a => a.email.toLowerCase() === email.toLowerCase());
+        if (idx !== -1) {
+          accounts[idx].progress = updated;
+          localStorage.setItem("fluentai_accounts", JSON.stringify(accounts));
+        }
+      } catch (err) {
+        console.error("Failed to sync progress to accounts directory", err);
+      }
     }
   },
 

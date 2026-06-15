@@ -1,7 +1,7 @@
 /* Aspire Education — Premium Pricing Page */
 
-import { Router } from '../router.js?v=14';
-import { Database } from '../db.js?v=14';
+import { Router } from '../router.js?v=15';
+import { Database } from '../db.js?v=15';
 
 export function renderPricing(container, params) {
   // Inject keyframe animations (only once)
@@ -714,7 +714,7 @@ export function renderPricing(container, params) {
       btn.style.pointerEvents = 'none';
 
       try {
-        const { CheckoutCoordinator } = await import('../checkout-coordinator.js?v=14');
+        const { CheckoutCoordinator } = await import('../checkout-coordinator.js?v=15');
         await CheckoutCoordinator.checkout(planId, billingCycle);
       } catch (err) {
         console.error('Checkout error:', err);
