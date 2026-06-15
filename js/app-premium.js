@@ -266,6 +266,11 @@ function initAuthUI() {
   // Render official Google Buttons if Client ID is configured
   const renderOfficialGoogleButtons = () => {
     let googleClientId = localStorage.getItem('google_client_id');
+    // Self-healing: if the saved ID is invalid (like a GitHub token), clear it
+    if (googleClientId && (!googleClientId.endsWith('.apps.googleusercontent.com') || googleClientId.startsWith('ghp_'))) {
+      localStorage.removeItem('google_client_id');
+      googleClientId = null;
+    }
     if (!googleClientId || googleClientId.trim() === "") {
       // Use your production Google Client ID as default
       googleClientId = "715659602623-in0muf5nr7pcebptds6ftnodoborro65.apps.googleusercontent.com";
