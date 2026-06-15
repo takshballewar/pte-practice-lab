@@ -1,6 +1,6 @@
 /* FluentAI Profile & AI Study Plan Generator Component */
 
-import { Database } from '../db.js?v=11';
+import { Database } from '../db.js?v=12';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
@@ -78,6 +78,43 @@ export function renderProfile(container) {
                 <input type="date" id="prof-exam-date" value="${progress.examDate}">
               </div>
               
+              <div class="input-group">
+                <label for="prof-target-speaking">Target Speaking</label>
+                <select id="prof-target-speaking">
+                  <option value="50" ${progress.targetSpeaking === 50 ? 'selected' : ''}>PTE 50</option>
+                  <option value="65" ${progress.targetSpeaking === 65 ? 'selected' : ''}>PTE 65</option>
+                  <option value="79" ${progress.targetSpeaking === 79 || !progress.targetSpeaking ? 'selected' : ''}>PTE 79</option>
+                  <option value="90" ${progress.targetSpeaking === 90 ? 'selected' : ''}>PTE 90</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="prof-target-writing">Target Writing</label>
+                <select id="prof-target-writing">
+                  <option value="50" ${progress.targetWriting === 50 ? 'selected' : ''}>PTE 50</option>
+                  <option value="65" ${progress.targetWriting === 65 ? 'selected' : ''}>PTE 65</option>
+                  <option value="79" ${progress.targetWriting === 79 || !progress.targetWriting ? 'selected' : ''}>PTE 79</option>
+                  <option value="90" ${progress.targetWriting === 90 ? 'selected' : ''}>PTE 90</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="prof-target-reading">Target Reading</label>
+                <select id="prof-target-reading">
+                  <option value="50" ${progress.targetReading === 50 ? 'selected' : ''}>PTE 50</option>
+                  <option value="65" ${progress.targetReading === 65 ? 'selected' : ''}>PTE 65</option>
+                  <option value="79" ${progress.targetReading === 79 || !progress.targetReading ? 'selected' : ''}>PTE 79</option>
+                  <option value="90" ${progress.targetReading === 90 ? 'selected' : ''}>PTE 90</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="prof-target-listening">Target Listening</label>
+                <select id="prof-target-listening">
+                  <option value="50" ${progress.targetListening === 50 ? 'selected' : ''}>PTE 50</option>
+                  <option value="65" ${progress.targetListening === 65 ? 'selected' : ''}>PTE 65</option>
+                  <option value="79" ${progress.targetListening === 79 || !progress.targetListening ? 'selected' : ''}>PTE 79</option>
+                  <option value="90" ${progress.targetListening === 90 ? 'selected' : ''}>PTE 90</option>
+                </select>
+              </div>
+              
               <div style="grid-column:1/-1; display:flex; justify-content:flex-end;">
                 <button type="submit" class="btn btn-primary btn-sm shadow-neon">Save profile updates</button>
               </div>
@@ -114,19 +151,37 @@ export function renderProfile(container) {
       const newEmail = document.getElementById('prof-email').value;
       const newTarget = parseInt(document.getElementById('prof-target').value);
       const newExamDate = document.getElementById('prof-exam-date').value;
+      const newSpeaking = parseInt(document.getElementById('prof-target-speaking').value);
+      const newWriting = parseInt(document.getElementById('prof-target-writing').value);
+      const newReading = parseInt(document.getElementById('prof-target-reading').value);
+      const newListening = parseInt(document.getElementById('prof-target-listening').value);
 
       // Update User details
-      Database.updateUser({
+      const oldUser = Database.getUser();
+      const updatedUser = {
+        ...oldUser,
         name: newName,
         email: newEmail,
         authenticated: true
-      });
+      };
+      Database.updateUser(updatedUser);
 
       // Update progress
       const currentProg = Database.getProgress();
       currentProg.targetScore = newTarget;
+      currentProg.targetSpeaking = newSpeaking;
+      currentProg.targetWriting = newWriting;
+      currentProg.targetReading = newReading;
+      currentProg.targetListening = newListening;
       currentProg.examDate = newExamDate;
       Database.updateProgress(currentProg);
+
+      // Save to accounts list
+      Database.saveAccount({
+        name: newName,
+        email: newEmail,
+        progress: currentProg
+      });
 
       // Flash feedback and reload
       const submitBtn = e.target.querySelector('button[type="submit"]');

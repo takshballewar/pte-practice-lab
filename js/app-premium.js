@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=11';
-import { Router } from './router.js?v=11';
-import { Tutor } from './components/tutor.js?v=11';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=11';
+import { Database } from './db.js?v=12';
+import { Router } from './router.js?v=12';
+import { Tutor } from './components/tutor.js?v=12';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=12';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=11';
-import { renderDashboard } from './pages/dashboard.js?v=11';
-import { renderPractice } from './pages/practice-premium.js?v=11';
-import { renderMockTest } from './pages/mocktest.js?v=11';
-import { renderScoring } from './pages/scoring.js?v=11';
-import { renderProfile } from './pages/profile.js?v=11';
-import { renderPricing } from './pages/pricing.js?v=11';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=11';
+import { renderLanding } from './pages/landing.js?v=12';
+import { renderDashboard } from './pages/dashboard.js?v=12';
+import { renderPractice } from './pages/practice-premium.js?v=12';
+import { renderMockTest } from './pages/mocktest.js?v=12';
+import { renderScoring } from './pages/scoring.js?v=12';
+import { renderProfile } from './pages/profile.js?v=12';
+import { renderPricing } from './pages/pricing.js?v=12';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=12';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -109,25 +109,91 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. Onboarding Setup Form Handler
   const onboardingForm = document.getElementById('onboarding-form');
   if (onboardingForm) {
+    // Sync overall target to section targets
+    const onboardingTarget = document.getElementById('onboarding-target');
+    if (onboardingTarget) {
+      onboardingTarget.addEventListener('change', (e) => {
+        const val = e.target.value;
+        const s = document.getElementById('onboarding-speaking');
+        const w = document.getElementById('onboarding-writing');
+        const r = document.getElementById('onboarding-reading');
+        const l = document.getElementById('onboarding-listening');
+        if (s) s.value = val;
+        if (w) w.value = val;
+        if (r) r.value = val;
+        if (l) l.value = val;
+      });
+    }
+
     onboardingForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      
+      const firstName = document.getElementById('onboarding-firstname').value.trim();
+      const surname = document.getElementById('onboarding-surname').value.trim();
+      const fullName = `${firstName} ${surname}`.trim();
+      
       const targetScore = parseInt(document.getElementById('onboarding-target').value);
+      const targetSpeaking = parseInt(document.getElementById('onboarding-speaking').value);
+      const targetWriting = parseInt(document.getElementById('onboarding-writing').value);
+      const targetReading = parseInt(document.getElementById('onboarding-reading').value);
+      const targetListening = parseInt(document.getElementById('onboarding-listening').value);
       const examDate = document.getElementById('onboarding-month').value;
       
-      const progress = Database.getProgress();
-      progress.targetScore = targetScore;
-      progress.examDate = examDate;
-      Database.updateProgress(progress);
+      const temp = window.tempRegistrationDetails || {};
+      const email = temp.email || 'user@example.com';
+      
+      // Setup progress profile
+      const progressProfile = {
+        streak: 0,
+        points: 0,
+        targetScore,
+        targetSpeaking,
+        targetWriting,
+        targetReading,
+        targetListening,
+        examDate,
+        scoreHistory: [],
+        completedTasks: [],
+        unclearedTasks: [],
+        tutorHistory: [
+          { sender: "tutor", text: `Welcome to Aspire, ${firstName}! I'm your AI PTE trainer. Let's start practicing to hit your target of PTE ${targetScore}!`, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
+        ]
+      };
+      
+      // Save the account
+      Database.saveAccount({
+        name: fullName,
+        email: email,
+        password: temp.password || '',
+        avatar: temp.avatar || null,
+        progress: progressProfile
+      });
+      
+      // Authenticate user
+      Database.updateUser({
+        name: fullName,
+        email: email,
+        avatar: temp.avatar || null,
+        authenticated: true
+      });
+      
+      // Save progress
+      Database.updateProgress(progressProfile);
+      
+      // Clean up temp details
+      delete window.tempRegistrationDetails;
       
       const overlay = document.getElementById('auth-modal-overlay');
       const onboardingModal = document.getElementById('onboarding-modal');
       if (overlay) overlay.classList.add('hidden');
       if (onboardingModal) onboardingModal.classList.add('hidden');
       
-      // Refresh the route to update dashboard view
+      // Refresh user interfaces and navigate
+      document.dispatchEvent(new CustomEvent('auth-updated'));
+      Router.navigate('dashboard');
       Router.handleRouting();
       
-      window.showToast("Your target settings have been configured successfully!", "success");
+      window.showToast(`Account successfully created for ${fullName}!`, "success");
     });
   }
 
@@ -198,44 +264,81 @@ function initAuthUI() {
   // Handle forms submit
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById('login-email').value;
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
     
-    // Log user in dynamically naming new accounts instead of hardcoded Taksh Sharma
-    const namePrefix = email.split('@')[0];
-    const name = namePrefix.charAt(0).toUpperCase() + namePrefix.slice(1);
-    Database.updateUser({
-      name: name,
-      email: email,
-      authenticated: true
-    });
+    const accounts = Database.getAccounts();
+    const account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
     
-    hideModal();
-    Router.navigate('dashboard');
-    setTimeout(checkOnboarding, 100);
+    if (account) {
+      if (account.password === password) {
+        Database.updateUser({
+          name: account.name,
+          email: account.email,
+          avatar: account.avatar || null,
+          authenticated: true
+        });
+        if (account.progress) {
+          Database.updateProgress(account.progress);
+        }
+        hideModal();
+        Router.navigate('dashboard');
+        // Notify other components of auth updates
+        document.dispatchEvent(new CustomEvent('auth-updated'));
+        window.showToast(`Welcome back, ${account.name}!`, "success");
+      } else {
+        window.showToast("Incorrect password. Please try again.", "error");
+      }
+    } else {
+      window.showToast("Account not found. Please click 'Create one now' to register.", "error");
+    }
   });
 
   registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('register-name').value;
-    const email = document.getElementById('register-email').value;
+    const name = document.getElementById('register-name').value.trim();
+    const email = document.getElementById('register-email').value.trim();
+    const password = document.getElementById('register-password').value;
     const target = parseInt(document.getElementById('register-target').value);
 
-    // Create user profile
-    Database.updateUser({
+    const accounts = Database.getAccounts();
+    const existing = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+    if (existing) {
+      window.showToast("Email address already registered. Please login instead.", "warning");
+      return;
+    }
+
+    // Save registration details in temp state
+    window.tempRegistrationDetails = {
       name,
       email,
-      authenticated: true
-    });
+      password,
+      target
+    };
 
-    // Seed target settings
-    const progress = Database.getProgress();
-    progress.targetScore = target;
-    progress.examDate = ""; // clear so exam month onboarding prompts
-    Database.updateProgress(progress);
+    // Prepopulate name/surname in the onboarding form
+    const nameParts = name.split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const surname = nameParts.slice(1).join(' ') || '';
+    
+    const firstInput = document.getElementById('onboarding-firstname');
+    const surnameInput = document.getElementById('onboarding-surname');
+    if (firstInput) firstInput.value = firstName;
+    if (surnameInput) surnameInput.value = surname;
+    
+    const onboardingTarget = document.getElementById('onboarding-target');
+    if (onboardingTarget) {
+      onboardingTarget.value = target.toString();
+      onboardingTarget.dispatchEvent(new Event('change'));
+    }
 
-    hideModal();
-    Router.navigate('dashboard');
-    setTimeout(checkOnboarding, 100);
+    // Hide register modal and open onboarding modal
+    const onboardingModal = document.getElementById('onboarding-modal');
+    registerModal.classList.add('hidden');
+    if (onboardingModal) {
+      onboardingModal.classList.remove('hidden');
+      populateOnboardingMonths();
+    }
   });
 
   // Google JWT Credential Decoder helper
@@ -257,20 +360,59 @@ function initAuthUI() {
   window.handleGoogleCredentialResponse = function(response) {
     const payload = parseJwt(response.credential);
     if (payload) {
-      Database.updateUser({
-        name: payload.name,
-        email: payload.email,
-        avatar: payload.picture,
-        authenticated: true
-      });
-      hideModal();
-      Router.navigate('dashboard');
+      const email = payload.email;
+      const accounts = Database.getAccounts();
+      const account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
       
-      // Notify other components of auth updates
-      document.dispatchEvent(new CustomEvent('auth-updated'));
-      
-      window.showToast(`Welcome back, ${payload.given_name || payload.name}!`, 'success');
-      setTimeout(checkOnboarding, 100);
+      if (account) {
+        // Existing user logs in
+        Database.updateUser({
+          name: account.name,
+          email: account.email,
+          avatar: payload.picture || account.avatar || null,
+          authenticated: true
+        });
+        if (account.progress) {
+          Database.updateProgress(account.progress);
+        }
+        hideModal();
+        Router.navigate('dashboard');
+        
+        // Notify other components of auth updates
+        document.dispatchEvent(new CustomEvent('auth-updated'));
+        
+        window.showToast(`Welcome back, ${account.name}!`, 'success');
+      } else {
+        // New Google user: go to the onboarding setup page
+        window.tempRegistrationDetails = {
+          name: payload.name,
+          email: payload.email,
+          avatar: payload.picture,
+          provider: 'google'
+        };
+        
+        // Pre-fill name and surname
+        const nameParts = payload.name.trim().split(/\s+/);
+        const firstName = nameParts[0] || '';
+        const surname = nameParts.slice(1).join(' ') || '';
+        
+        const firstInput = document.getElementById('onboarding-firstname');
+        const surnameInput = document.getElementById('onboarding-surname');
+        if (firstInput) firstInput.value = firstName;
+        if (surnameInput) surnameInput.value = surname;
+        
+        // Hide standard modals and open onboarding modal
+        const onboardingModal = document.getElementById('onboarding-modal');
+        loginModal.classList.add('hidden');
+        registerModal.classList.add('hidden');
+        
+        if (onboardingModal) {
+          onboardingModal.classList.remove('hidden');
+          populateOnboardingMonths();
+        }
+        
+        window.showToast("Google account authenticated. Please configure your target settings.", "info");
+      }
     } else {
       window.showToast("Google Authentication failed.", 'error');
     }

@@ -323,6 +323,10 @@ const DEFAULT_PROGRESS = {
   streak: 0,
   points: 0,
   targetScore: 79,
+  targetSpeaking: 79,
+  targetWriting: 79,
+  targetReading: 79,
+  targetListening: 79,
   examDate: "", // no target exam date/month set yet
   scoreHistory: [],
   completedTasks: [],
@@ -815,13 +819,14 @@ export const Database = {
   },
 
   init() {
-    const dbVersion = "v12";
+    const dbVersion = "v13";
     if (localStorage.getItem("fluentai_db_version") !== dbVersion) {
       this.safeSaveQuestions(DEFAULT_QUESTIONS);
       localStorage.setItem("fluentai_db_version", dbVersion);
       localStorage.setItem("fluentai_progress", JSON.stringify(DEFAULT_PROGRESS));
       localStorage.setItem("fluentai_vocabulary", JSON.stringify(DEFAULT_VOCABULARY));
       localStorage.removeItem("fluentai_user"); // Reset default user details
+      localStorage.removeItem("fluentai_accounts"); // Reset account database
     }
 
     if (!localStorage.getItem("fluentai_questions")) {
@@ -833,6 +838,20 @@ export const Database = {
     if (!localStorage.getItem("fluentai_progress")) {
       localStorage.setItem("fluentai_progress", JSON.stringify(DEFAULT_PROGRESS));
     }
+    
+    // Seed default accounts list
+    if (!localStorage.getItem("fluentai_accounts")) {
+      const defaultAccounts = [
+        {
+          name: "Vivek Ballewar",
+          email: "vivek@example.com",
+          password: "password",
+          authenticated: true
+        }
+      ];
+      localStorage.setItem("fluentai_accounts", JSON.stringify(defaultAccounts));
+    }
+
     if (!localStorage.getItem("fluentai_user")) {
       const defaultUser = {
         name: "Vivek Ballewar",
@@ -840,6 +859,10 @@ export const Database = {
         authenticated: true
       };
       localStorage.setItem("fluentai_user", JSON.stringify(defaultUser));
+      
+      // Seed default user-scoped progress
+      const freshProgress = JSON.parse(JSON.stringify(DEFAULT_PROGRESS));
+      localStorage.setItem("fluentai_progress_vivek@example.com", JSON.stringify(freshProgress));
     }
 
     // Auto-seed to 2500 questions per category if needed
@@ -1304,6 +1327,32 @@ export const Database = {
   clearUserData() {
     localStorage.removeItem("fluentai_user");
     localStorage.setItem("fluentai_progress", JSON.stringify(DEFAULT_PROGRESS));
+  },
+
+  getAccounts() {
+    try {
+      const stored = localStorage.getItem("fluentai_accounts");
+      if (!stored) return [];
+      return JSON.parse(stored);
+    } catch (e) {
+      console.error("Failed to parse accounts from localStorage", e);
+      return [];
+    }
+  },
+
+  saveAccount(account) {
+    try {
+      const accounts = this.getAccounts();
+      const idx = accounts.findIndex(a => a.email === account.email);
+      if (idx !== -1) {
+        accounts[idx] = { ...accounts[idx], ...account };
+      } else {
+        accounts.push(account);
+      }
+      localStorage.setItem("fluentai_accounts", JSON.stringify(accounts));
+    } catch (e) {
+      console.error("Failed to save account to localStorage", e);
+    }
   },
 
   /* ==========================================================================

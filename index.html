@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=11">
+  <link rel="stylesheet" href="css/styles-premium.css?v=12">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -378,32 +378,85 @@
     </div>
 
     <!-- Onboarding / Target Setup Modal -->
-    <div id="onboarding-modal" class="modal-card hidden">
+    <div id="onboarding-modal" class="modal-card hidden" style="max-width: 500px;">
       <div class="modal-header">
-        <h2>Set Your Exam Target</h2>
-        <p>Customize Aspire PTE for your specific test timeline</p>
+        <h2>Complete Profile Setup</h2>
+        <p>Configure your target scores and test timeline</p>
       </div>
       <form id="onboarding-form" class="modal-form">
-        <div class="input-group">
-          <label for="onboarding-target">Target PTE Score</label>
+        <div class="grid-cols-2" style="gap: 16px; margin-bottom: 12px;">
+          <div class="input-group" style="margin-bottom: 0;">
+            <label for="onboarding-firstname">First Name</label>
+            <input type="text" id="onboarding-firstname" required placeholder="Vivek">
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label for="onboarding-surname">Surname</label>
+            <input type="text" id="onboarding-surname" required placeholder="Ballewar">
+          </div>
+        </div>
+
+        <div class="input-group" style="margin-bottom: 16px;">
+          <label for="onboarding-target">Target Overall PTE Score</label>
           <select id="onboarding-target" required>
             <option value="65">PTE 65 (Competent English)</option>
             <option value="79" selected>PTE 79 (Superior English)</option>
             <option value="90">PTE 90 (Perfect Score)</option>
           </select>
         </div>
-        <div class="input-group">
+
+        <div style="font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; letter-spacing: 0.5px;">Section Targets</div>
+        
+        <div class="grid-cols-2" style="gap: 16px; margin-bottom: 16px;">
+          <div class="input-group" style="margin-bottom: 0;">
+            <label for="onboarding-speaking">Speaking</label>
+            <select id="onboarding-speaking" required>
+              <option value="50">PTE 50</option>
+              <option value="65">PTE 65</option>
+              <option value="79" selected>PTE 79</option>
+              <option value="90">PTE 90</option>
+            </select>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label for="onboarding-writing">Writing</label>
+            <select id="onboarding-writing" required>
+              <option value="50">PTE 50</option>
+              <option value="65">PTE 65</option>
+              <option value="79" selected>PTE 79</option>
+              <option value="90">PTE 90</option>
+            </select>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label for="onboarding-reading">Reading</label>
+            <select id="onboarding-reading" required>
+              <option value="50">PTE 50</option>
+              <option value="65">PTE 65</option>
+              <option value="79" selected>PTE 79</option>
+              <option value="90">PTE 90</option>
+            </select>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label for="onboarding-listening">Listening</label>
+            <select id="onboarding-listening" required>
+              <option value="50">PTE 50</option>
+              <option value="65">PTE 65</option>
+              <option value="79" selected>PTE 79</option>
+              <option value="90">PTE 90</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group" style="margin-bottom: 16px;">
           <label for="onboarding-month">Target Exam Month</label>
           <select id="onboarding-month" required>
             <!-- Populated dynamically via JS -->
           </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-block shadow-neon" style="margin-top: 16px;">Set Target & Start</button>
+        <button type="submit" class="btn btn-primary btn-block shadow-neon" style="margin-top: 16px;">Create Profile & Start</button>
       </form>
     </div>
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=11"></script>
+  <script type="module" src="js/app-premium.js?v=12"></script>
 </body>
 </html>
