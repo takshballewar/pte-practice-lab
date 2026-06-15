@@ -30,7 +30,7 @@ function renderMockLanding(container) {
             <span class="badge-status active">Ready</span>
           </div>
           <ul class="mock-card-details">
-            <li>⏳ Duration: 45 Minutes (Accelerated Demo)</li>
+            <li>⏳ Duration: 45 Minutes</li>
             <li>📝 4 Questions (Speaking, Writing, Reading, Listening)</li>
             <li>✨ Full AI grading breakdown</li>
           </ul>

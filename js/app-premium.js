@@ -242,22 +242,9 @@ function initAuthUI() {
     }
   };
 
-  // Simulated fallback handler
-  const runGoogleSimulation = () => {
-    Database.updateUser({
-      name: "Google Scholar",
-      email: "scholar@gmail.com",
-      authenticated: true
-    });
-    hideModal();
-    Router.navigate('dashboard');
-    document.dispatchEvent(new CustomEvent('auth-updated'));
-    window.showToast("Welcome back, Google Scholar (Simulated)!", "success");
-  };
-
   const handleGoogleAuthAction = (e) => {
     e.preventDefault();
-    runGoogleSimulation();
+    window.showToast("Google Sign-In is initializing. Please click the official Google button above.", "warning");
   };
 
   if (googleLoginBtn) googleLoginBtn.addEventListener('click', handleGoogleAuthAction);
