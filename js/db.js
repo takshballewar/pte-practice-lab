@@ -815,12 +815,13 @@ export const Database = {
   },
 
   init() {
-    const dbVersion = "v11";
+    const dbVersion = "v12";
     if (localStorage.getItem("fluentai_db_version") !== dbVersion) {
       this.safeSaveQuestions(DEFAULT_QUESTIONS);
       localStorage.setItem("fluentai_db_version", dbVersion);
       localStorage.setItem("fluentai_progress", JSON.stringify(DEFAULT_PROGRESS));
       localStorage.setItem("fluentai_vocabulary", JSON.stringify(DEFAULT_VOCABULARY));
+      localStorage.removeItem("fluentai_user"); // Reset default user details
     }
 
     if (!localStorage.getItem("fluentai_questions")) {
@@ -834,8 +835,8 @@ export const Database = {
     }
     if (!localStorage.getItem("fluentai_user")) {
       const defaultUser = {
-        name: "Taksh Sharma",
-        email: "taksh@example.com",
+        name: "Vivek Ballewar",
+        email: "vivek@example.com",
         authenticated: true
       };
       localStorage.setItem("fluentai_user", JSON.stringify(defaultUser));

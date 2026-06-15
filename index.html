@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=10">
+  <link rel="stylesheet" href="css/styles-premium.css?v=11">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -142,11 +142,11 @@
       <div class="sidebar-footer">
         <div class="profile-summary">
           <div class="profile-avatar">
-            <span id="user-initials">TS</span>
+            <div id="user-initials" class="user-initials-avatar">VB</div>
             <div class="status-indicator-dot online"></div>
           </div>
           <div class="profile-details">
-            <div id="user-display-name" class="profile-name">Taksh Sharma</div>
+            <div id="user-display-name" class="profile-name">Vivek Ballewar</div>
             <div id="user-tier-badge" class="profile-tier">Premium Plan</div>
           </div>
         </div>
@@ -221,8 +221,8 @@
             </button>
             <div id="user-menu-dropdown" class="dropdown-menu hidden">
               <div class="dropdown-user-header">
-                <span class="dropdown-name" id="menu-user-name">Taksh Sharma</span>
-                <span class="dropdown-email" id="menu-user-email">taksh@example.com</span>
+                <span class="dropdown-name" id="menu-user-name">Vivek Ballewar</span>
+                <span class="dropdown-email" id="menu-user-email">vivek@example.com</span>
               </div>
               <hr class="dropdown-divider">
               <a href="#profile" class="dropdown-item">Settings & Targets</a>
@@ -343,7 +343,7 @@
       <form id="register-form" class="modal-form">
         <div class="input-group">
           <label for="register-name">Full Name</label>
-          <input type="text" id="register-name" required placeholder="Taksh Sharma">
+          <input type="text" id="register-name" required placeholder="Vivek Ballewar">
         </div>
         <div class="input-group">
           <label for="register-email">Email Address</label>
@@ -404,6 +404,6 @@
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=10"></script>
+  <script type="module" src="js/app-premium.js?v=11"></script>
 </body>
 </html>

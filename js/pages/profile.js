@@ -1,6 +1,6 @@
 /* FluentAI Profile & AI Study Plan Generator Component */
 
-import { Database } from '../db.js?v=10';
+import { Database } from '../db.js?v=11';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
@@ -22,7 +22,7 @@ export function renderProfile(container) {
   const progress = Database.getProgress();
 
   const renderView = () => {
-    const avatarUrl = user && user.avatar ? user.avatar : generateInitialsSvg(user ? user.name : 'Taksh Sharma');
+    const avatarUrl = user && user.avatar ? user.avatar : generateInitialsSvg(user ? user.name : 'Vivek Ballewar');
     container.innerHTML = `
       <div class="profile-grid">
         <!-- LEFT COLUMN: AVATAR CARD & TARGET STATS -->
@@ -30,7 +30,7 @@ export function renderProfile(container) {
           <div class="profile-large-avatar">
             <img src="${avatarUrl}" alt="User Avatar Large">
           </div>
-          <h3 style="font-size: 18px; margin-bottom: 4px;">${user ? user.name : 'Taksh Sharma'}</h3>
+          <h3 style="font-size: 18px; margin-bottom: 4px;">${user ? user.name : 'Vivek Ballewar'}</h3>
           <span style="font-size:12px; color:var(--accent); font-weight:600; text-transform:uppercase;">Premium Scholar</span>
           
           <div style="width:100%; border-top:1px solid var(--border-color); margin-top:20px; padding-top:20px; text-align:left; display:flex; flex-direction:column; gap:12px;">
