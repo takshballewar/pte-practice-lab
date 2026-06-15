@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=15';
-import { Router } from './router.js?v=15';
-import { Tutor } from './components/tutor.js?v=15';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=15';
+import { Database } from './db.js?v=16';
+import { Router } from './router.js?v=16';
+import { Tutor } from './components/tutor.js?v=16';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=16';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=15';
-import { renderDashboard } from './pages/dashboard.js?v=15';
-import { renderPractice } from './pages/practice-premium.js?v=15';
-import { renderMockTest } from './pages/mocktest.js?v=15';
-import { renderScoring } from './pages/scoring.js?v=15';
-import { renderProfile } from './pages/profile.js?v=15';
-import { renderPricing } from './pages/pricing.js?v=15';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=15';
+import { renderLanding } from './pages/landing.js?v=16';
+import { renderDashboard } from './pages/dashboard.js?v=16';
+import { renderPractice } from './pages/practice-premium.js?v=16';
+import { renderMockTest } from './pages/mocktest.js?v=16';
+import { renderScoring } from './pages/scoring.js?v=16';
+import { renderProfile } from './pages/profile.js?v=16';
+import { renderPricing } from './pages/pricing.js?v=16';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=16';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -260,6 +260,48 @@ function initAuthUI() {
 
   if (toRegisterLink) toRegisterLink.addEventListener('click', (e) => { e.preventDefault(); showModal('register'); });
   if (toLoginLink) toLoginLink.addEventListener('click', (e) => { e.preventDefault(); showModal('login'); });
+
+  // Password Strength Real-time Feedback
+  const registerPasswordInput = document.getElementById('register-password');
+  const strengthWrapper = document.getElementById('password-strength-wrapper');
+  const strengthBarFill = document.getElementById('strength-bar-fill');
+  const strengthText = document.getElementById('strength-text');
+
+  if (registerPasswordInput && strengthWrapper && strengthBarFill && strengthText) {
+    registerPasswordInput.addEventListener('input', (e) => {
+      const val = e.target.value;
+      if (!val) {
+        strengthWrapper.style.display = 'none';
+        return;
+      }
+      
+      strengthWrapper.style.display = 'block';
+      
+      let score = 0;
+      if (val.length >= 8) score++;
+      if (/[a-z]/.test(val)) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+      
+      if (val.length < 6) {
+        strengthBarFill.style.width = '33%';
+        strengthBarFill.style.background = '#ef4444'; // Red
+        strengthText.textContent = 'Weak Password';
+        strengthText.style.color = '#ef4444';
+      } else if (score >= 4 && val.length >= 8) {
+        strengthBarFill.style.width = '100%';
+        strengthBarFill.style.background = '#10b981'; // Green
+        strengthText.textContent = 'Strong Password';
+        strengthText.style.color = '#10b981';
+      } else {
+        strengthBarFill.style.width = '66%';
+        strengthBarFill.style.background = '#f97316'; // Orange
+        strengthText.textContent = 'Medium Password';
+        strengthText.style.color = '#f97316';
+      }
+    });
+  }
 
   // Handle forms submit
   loginForm.addEventListener('submit', (e) => {

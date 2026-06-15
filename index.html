@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=15">
+  <link rel="stylesheet" href="css/styles-premium.css?v=16">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -349,9 +349,16 @@
           <label for="register-email">Email Address</label>
           <input type="email" id="register-email" required placeholder="name@domain.com">
         </div>
-        <div class="input-group">
+        <div class="input-group" style="margin-bottom: 12px;">
           <label for="register-password">Password</label>
           <input type="password" id="register-password" required placeholder="••••••••">
+          <!-- Password Strength Indicator -->
+          <div id="password-strength-wrapper" style="margin-top: 6px; display: none; width: 100%;">
+            <div style="background: rgba(128, 128, 128, 0.25); height: 4px; border-radius: 2px; overflow: hidden; margin-bottom: 4px; width: 100%;">
+              <div id="strength-bar-fill" style="width: 0%; height: 100%; transition: all 0.3s ease; background: #ef4444;"></div>
+            </div>
+            <span id="strength-text" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #ef4444;">Weak Password</span>
+          </div>
         </div>
         <div class="input-group">
           <label for="register-target">Target PTE Score</label>
@@ -457,6 +464,6 @@
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=15"></script>
+  <script type="module" src="js/app-premium.js?v=16"></script>
 </body>
 </html>

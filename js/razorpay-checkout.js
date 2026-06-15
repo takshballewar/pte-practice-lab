@@ -8,7 +8,7 @@
  *  - Persists subscription state using the Database module
  */
 
-import { Database } from './db.js?v=15';
+import { Database } from './db.js?v=16';
 
 const PLAN_PRICES = {
   pro_monthly: 999,
