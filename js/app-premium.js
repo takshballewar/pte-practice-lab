@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=24';
-import { Router } from './router.js?v=24';
-import { Tutor } from './components/tutor.js?v=24';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=24';
+import { Database } from './db.js?v=25';
+import { Router } from './router.js?v=25';
+import { Tutor } from './components/tutor.js?v=25';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=25';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=24';
-import { renderDashboard } from './pages/dashboard.js?v=24';
-import { renderPractice } from './pages/practice-premium.js?v=24';
-import { renderMockTest } from './pages/mocktest.js?v=24';
-import { renderScoring } from './pages/scoring.js?v=24';
-import { renderProfile } from './pages/profile.js?v=24';
-import { renderPricing } from './pages/pricing.js?v=24';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=24';
+import { renderLanding } from './pages/landing.js?v=25';
+import { renderDashboard } from './pages/dashboard.js?v=25';
+import { renderPractice } from './pages/practice-premium.js?v=25';
+import { renderMockTest } from './pages/mocktest.js?v=25';
+import { renderScoring } from './pages/scoring.js?v=25';
+import { renderProfile } from './pages/profile.js?v=25';
+import { renderPricing } from './pages/pricing.js?v=25';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=25';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -288,13 +288,27 @@ function initAuthUI() {
   }
 
   // Handle forms submit
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('login-email').value.trim().toLowerCase();
     const password = document.getElementById('login-password').value;
     
-    const accounts = Database.getAccounts();
-    const account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+    let accounts = Database.getAccounts();
+    let account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+    
+    if (!account) {
+      try {
+        const res = await fetch('/api/accounts');
+        const serverAccounts = await res.json();
+        if (Array.isArray(serverAccounts)) {
+          localStorage.setItem("fluentai_accounts", JSON.stringify(serverAccounts));
+          accounts = serverAccounts;
+          account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+        }
+      } catch (err) {
+        console.error("Failed to sync accounts during login check", err);
+      }
+    }
     
     if (account) {
       if (account.password === password) {
@@ -383,12 +397,26 @@ function initAuthUI() {
   }
 
   // Global Google credential handler
-  window.handleGoogleCredentialResponse = function(response) {
+  window.handleGoogleCredentialResponse = async function(response) {
     const payload = parseJwt(response.credential);
     if (payload) {
-      const email = payload.email;
-      const accounts = Database.getAccounts();
-      const account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+      const email = payload.email.toLowerCase().trim();
+      let accounts = Database.getAccounts();
+      let account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+      
+      if (!account) {
+        try {
+          const res = await fetch('/api/accounts');
+          const serverAccounts = await res.json();
+          if (Array.isArray(serverAccounts)) {
+            localStorage.setItem("fluentai_accounts", JSON.stringify(serverAccounts));
+            accounts = serverAccounts;
+            account = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
+          }
+        } catch (err) {
+          console.error("Failed to sync accounts during Google login check", err);
+        }
+      }
       
       if (account) {
         // Existing user logs in
