@@ -6,6 +6,16 @@ import urllib.parse
 
 # Determine database connection details
 DB_URL = os.environ.get('DATABASE_URL')
+if not DB_URL:
+    try:
+        if os.path.exists('.env'):
+            with open('.env') as f:
+                for line in f:
+                    if line.startswith('DATABASE_URL='):
+                        DB_URL = line.split('=', 1)[1].strip().strip('"').strip("'")
+    except Exception:
+        pass
+
 IS_POSTGRES = DB_URL is not None and (DB_URL.startswith('postgresql://') or DB_URL.startswith('postgres://'))
 
 # If not PostgreSQL, check for persistent disk SQLite path, otherwise local SQLite
@@ -13,6 +23,7 @@ if not IS_POSTGRES:
     DB_PATH = '/data/database.db' if os.path.exists('/data') else 'database.db'
 else:
     DB_PATH = DB_URL
+
 
 def get_db_connection():
     if IS_POSTGRES:
@@ -59,7 +70,7 @@ def init_db():
                 { "sender": "tutor", "text": "Welcome to Aspire, Vivek! I'm your AI PTE trainer. Let's start practicing to hit your target of PTE 79!", "time": "12:00 PM" }
             ]
         }
-        cursor.execute('''
+        execute_query(cursor, '''
             INSERT INTO accounts (email, name, password, avatar, progress)
             VALUES (?, ?, ?, ?, ?)
         ''', (
