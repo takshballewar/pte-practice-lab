@@ -26,9 +26,17 @@ else:
 
 
 def get_db_connection():
+    global IS_POSTGRES, DB_PATH
     if IS_POSTGRES:
-        import psycopg2
-        return psycopg2.connect(DB_PATH)
+        try:
+            import psycopg2
+            return psycopg2.connect(DB_PATH)
+        except Exception as e:
+            print(f"PostgreSQL connection failed: {e}. Falling back to SQLite.")
+            IS_POSTGRES = False
+            DB_PATH = '/data/database.db' if os.path.exists('/data') else 'database.db'
+            import sqlite3
+            return sqlite3.connect(DB_PATH)
     else:
         import sqlite3
         return sqlite3.connect(DB_PATH)
