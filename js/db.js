@@ -819,7 +819,7 @@ export const Database = {
   },
 
   init() {
-    const dbVersion = "v14";
+    const dbVersion = "v15";
     if (localStorage.getItem("fluentai_db_version") !== dbVersion) {
       this.safeSaveQuestions(DEFAULT_QUESTIONS);
       localStorage.setItem("fluentai_db_version", dbVersion);
@@ -3034,201 +3034,3328 @@ Return ONLY the plain text title, nothing else. No markdown, no quotes, no extra
 const PREDICTION_QUESTIONS = {
   "speaking": [
     {
-      "id": "SP-PRED-10101",
-      "title": "Read Aloud: Student Visa Documentation",
+      "id": "SP-PRED-200",
+      "title": "Read Aloud: Deep Sea Vents",
       "difficulty": "medium",
       "prepTime": 40,
       "readTime": 40,
-      "text": "The student visa application process requires meticulous preparation of documents. Applicants must demonstrate sufficient financial capacity, submit a valid letter of acceptance from a designated learning institution, and prove their intention to return home after completing their studies.",
-      "modelAnswer": "The student visa application process requires meticulous preparation of documents. Applicants must demonstrate sufficient financial capacity, submit a valid letter of acceptance from a designated learning institution, and prove their intention to return home after completing their studies.",
+      "text": "Hydrothermal vents on the ocean floor support unique ecosystems that do not rely on sunlight. Instead of photosynthesis, the primary producers in these dark environments use chemosynthesis, converting toxic hydrogen sulfide into organic energy that sustains crabs, shrimp, and giant tube worms.",
+      "modelAnswer": "Hydrothermal vents on the ocean floor support unique ecosystems that do not rely on sunlight. Instead of photosynthesis, the primary producers in these dark environments use chemosynthesis, converting toxic hydrogen sulfide into organic energy that sustains crabs, shrimp, and giant tube worms.",
       "tips": [
-        "Pay attention to the natural rhythm and word linking.",
-        "Stress key content words (nouns, verbs, adjectives).",
-        "Keep a steady flow and avoid long pauses between sentences."
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
       ],
       "taskType": "read-aloud",
       "isPrediction": true
     },
     {
-      "id": "SP-PRED-10102",
-      "title": "Read Aloud: Academic Culture Adaptation",
-      "difficulty": "medium",
+      "id": "SP-PRED-201",
+      "title": "Read Aloud: Quantum Computing",
+      "difficulty": "easy",
       "prepTime": 40,
       "readTime": 40,
-      "text": "Adapting to a new academic environment abroad involves adjusting to different teaching styles, assessment formats, and classroom dynamics. Students who actively participate in campus orientation programs tend to integrate more smoothly into their new communities.",
-      "modelAnswer": "Adapting to a new academic environment abroad involves adjusting to different teaching styles, assessment formats, and classroom dynamics. Students who actively participate in campus orientation programs tend to integrate more smoothly into their new communities.",
+      "text": "Quantum computers leverage the principles of superposition and entanglement to perform calculations at speeds unimaginable with classical processors. By processing multiple states simultaneously, these systems are poised to revolutionize cryptography, materials science, and complex optimization problems.",
+      "modelAnswer": "Quantum computers leverage the principles of superposition and entanglement to perform calculations at speeds unimaginable with classical processors. By processing multiple states simultaneously, these systems are poised to revolutionize cryptography, materials science, and complex optimization problems.",
       "tips": [
-        "Pay attention to the natural rhythm and word linking.",
-        "Stress key content words (nouns, verbs, adjectives).",
-        "Keep a steady flow and avoid long pauses between sentences."
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
       ],
       "taskType": "read-aloud",
       "isPrediction": true
     },
     {
-      "id": "SP-PRED-10103",
-      "title": "Read Aloud: English Proficiency Exams",
+      "id": "SP-PRED-202",
+      "title": "Read Aloud: Behavioral Economics",
       "difficulty": "medium",
       "prepTime": 40,
       "readTime": 40,
-      "text": "Standardized English proficiency tests, such as PTE Academic and IELTS, assess a candidate's communicative capabilities under exam conditions. Scoring well is critical for obtaining admissions into top-tier global universities and securing migration pathway points.",
-      "modelAnswer": "Standardized English proficiency tests, such as PTE Academic and IELTS, assess a candidate's communicative capabilities under exam conditions. Scoring well is critical for obtaining admissions into top-tier global universities and securing migration pathway points.",
+      "text": "Behavioral economics challenges the traditional assumption that human actors always make rational choices. By incorporating insights from cognitive psychology, researchers study how emotional biases, peer pressure, and cognitive limitations systematically distort financial decision-making and consumer spending patterns.",
+      "modelAnswer": "Behavioral economics challenges the traditional assumption that human actors always make rational choices. By incorporating insights from cognitive psychology, researchers study how emotional biases, peer pressure, and cognitive limitations systematically distort financial decision-making and consumer spending patterns.",
       "tips": [
-        "Pay attention to the natural rhythm and word linking.",
-        "Stress key content words (nouns, verbs, adjectives).",
-        "Keep a steady flow and avoid long pauses between sentences."
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
       ],
       "taskType": "read-aloud",
       "isPrediction": true
     },
     {
-      "id": "SP-PRED-10104",
-      "title": "Read Aloud: Consulting Immigration Advisors",
-      "difficulty": "medium",
+      "id": "SP-PRED-203",
+      "title": "Read Aloud: Neuroplasticity",
+      "difficulty": "easy",
       "prepTime": 40,
       "readTime": 40,
-      "text": "Consulting with professional immigration advisors helps candidates avoid common errors in visa applications. Experienced consultants provide updated guidelines on point allocation systems, language requirements, and regional nomination programs.",
-      "modelAnswer": "Consulting with professional immigration advisors helps candidates avoid common errors in visa applications. Experienced consultants provide updated guidelines on point allocation systems, language requirements, and regional nomination programs.",
+      "text": "For decades, scientists believed the adult brain was entirely static. Recent neuroscientific discoveries, however, prove the brain maintains neuroplasticity throughout life, rewiring neural pathways and forming new synaptic connections in response to learning, physical exercise, and environmental stimuli.",
+      "modelAnswer": "For decades, scientists believed the adult brain was entirely static. Recent neuroscientific discoveries, however, prove the brain maintains neuroplasticity throughout life, rewiring neural pathways and forming new synaptic connections in response to learning, physical exercise, and environmental stimuli.",
       "tips": [
-        "Pay attention to the natural rhythm and word linking.",
-        "Stress key content words (nouns, verbs, adjectives).",
-        "Keep a steady flow and avoid long pauses between sentences."
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
       ],
       "taskType": "read-aloud",
       "isPrediction": true
     },
     {
-      "id": "SP-PRED-10105",
-      "title": "Read Aloud: Study Abroad Destinations",
+      "id": "SP-PRED-204",
+      "title": "Read Aloud: Etruscan Civilization",
       "difficulty": "medium",
       "prepTime": 40,
       "readTime": 40,
-      "text": "Choosing the correct study destination is a major decision that influences a student's long-term career prospects. Factors like post-study work rights, immigration pathways, and industry connection links play a decisive role in their final selection.",
-      "modelAnswer": "Choosing the correct study destination is a major decision that influences a student's long-term career prospects. Factors like post-study work rights, immigration pathways, and industry connection links play a decisive role in their final selection.",
+      "text": "The Etruscan civilization thrived in ancient Italy before the rise of the Roman Republic. Despite their major influence on Roman architecture, religion, and metallurgy, much of Etruscan history remains mysterious because their literature has been lost, leaving only tomb murals and pottery inscriptions.",
+      "modelAnswer": "The Etruscan civilization thrived in ancient Italy before the rise of the Roman Republic. Despite their major influence on Roman architecture, religion, and metallurgy, much of Etruscan history remains mysterious because their literature has been lost, leaving only tomb murals and pottery inscriptions.",
       "tips": [
-        "Pay attention to the natural rhythm and word linking.",
-        "Stress key content words (nouns, verbs, adjectives).",
-        "Keep a steady flow and avoid long pauses between sentences."
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
       ],
       "taskType": "read-aloud",
       "isPrediction": true
     },
     {
-      "id": "SP-PRED-10106",
-      "title": "Read Aloud: Vibrancy of Campus Diversity",
+      "id": "SP-PRED-205",
+      "title": "Read Aloud: Macroeconomic Inflation",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Central banks utilize monetary policy to curb runaway inflation and preserve purchasing power. By elevating benchmark interest rates, they increase the cost of borrowing, which cools consumer demand, slows business investment expansion, and gradually stabilizes consumer price indices.",
+      "modelAnswer": "Central banks utilize monetary policy to curb runaway inflation and preserve purchasing power. By elevating benchmark interest rates, they increase the cost of borrowing, which cools consumer demand, slows business investment expansion, and gradually stabilizes consumer price indices.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-206",
+      "title": "Read Aloud: Glacial Retreat",
       "difficulty": "medium",
       "prepTime": 40,
       "readTime": 40,
-      "text": "International students contribute significantly to the cultural diversity and intellectual vibrancy of university campuses. Engaging in academic research and cultural exchanges helps foster global collaboration and community integration.",
-      "modelAnswer": "International students contribute significantly to the cultural diversity and intellectual vibrancy of university campuses. Engaging in academic research and cultural exchanges helps foster global collaboration and community integration.",
+      "text": "Satellite imagery reveals that glacial retreat has accelerated across almost all mountain ranges. As alpine glaciers melt due to rising global temperatures, they threaten local water security, cause downstream flooding, and contribute significantly to thermal expansion and sea-level rise.",
+      "modelAnswer": "Satellite imagery reveals that glacial retreat has accelerated across almost all mountain ranges. As alpine glaciers melt due to rising global temperatures, they threaten local water security, cause downstream flooding, and contribute significantly to thermal expansion and sea-level rise.",
       "tips": [
-        "Pay attention to the natural rhythm and word linking.",
-        "Stress key content words (nouns, verbs, adjectives).",
-        "Keep a steady flow and avoid long pauses between sentences."
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
       ],
       "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-207",
+      "title": "Read Aloud: Language Acquisition",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Children acquire their native language through a combination of innate cognitive capabilities and environmental exposure. While early theorists argued language was learned purely through imitation, modern linguists emphasize the brain's specialized circuits for grammar extraction.",
+      "modelAnswer": "Children acquire their native language through a combination of innate cognitive capabilities and environmental exposure. While early theorists argued language was learned purely through imitation, modern linguists emphasize the brain's specialized circuits for grammar extraction.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-208",
+      "title": "Read Aloud: Plant Defenses",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "When attacked by herbivores, plants employ sophisticated chemical defense mechanisms. Many species release volatile organic compounds that repel insects directly, while others emit specific distress signals that attract natural predators of the attacking pests.",
+      "modelAnswer": "When attacked by herbivores, plants employ sophisticated chemical defense mechanisms. Many species release volatile organic compounds that repel insects directly, while others emit specific distress signals that attract natural predators of the attacking pests.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-209",
+      "title": "Read Aloud: Plate Tectonics",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "The earth's outer crust is divided into several massive plates that float atop the semi-fluid mantle below. Driven by convection currents in the deep earth, tectonic movement creates mountain ranges, triggers volcanic activity, and generates seismic energy along plate boundaries.",
+      "modelAnswer": "The earth's outer crust is divided into several massive plates that float atop the semi-fluid mantle below. Driven by convection currents in the deep earth, tectonic movement creates mountain ranges, triggers volcanic activity, and generates seismic energy along plate boundaries.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-210",
+      "title": "Read Aloud: Renewable Grids",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Integrating high percentages of wind and solar energy into existing electric grids requires robust storage systems. Because wind and sunlight are intermittent resources, utility-scale batteries and smart grids are crucial to balance electricity supply and demand in real time.",
+      "modelAnswer": "Integrating high percentages of wind and solar energy into existing electric grids requires robust storage systems. Because wind and sunlight are intermittent resources, utility-scale batteries and smart grids are crucial to balance electricity supply and demand in real time.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-211",
+      "title": "Read Aloud: E-Commerce Evolution",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "The transition from physical retail stores to digital e-commerce platforms has transformed global supply chains. Logistics companies now rely on automated distribution centers and predictive inventory algorithms to fulfill consumer expectations for rapid, same-day shipping.",
+      "modelAnswer": "The transition from physical retail stores to digital e-commerce platforms has transformed global supply chains. Logistics companies now rely on automated distribution centers and predictive inventory algorithms to fulfill consumer expectations for rapid, same-day shipping.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-212",
+      "title": "Read Aloud: DNA Repair",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "modelAnswer": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-213",
+      "title": "Read Aloud: Urban Heat Island",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Concrete structures and asphalt pavements absorb solar radiation and retain heat far longer than natural landscapes. This phenomenon, known as the urban heat island effect, elevates metropolitan temperatures, increases air conditioning demand, and worsens urban air pollution.",
+      "modelAnswer": "Concrete structures and asphalt pavements absorb solar radiation and retain heat far longer than natural landscapes. This phenomenon, known as the urban heat island effect, elevates metropolitan temperatures, increases air conditioning demand, and worsens urban air pollution.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-214",
+      "title": "Read Aloud: Microbiome Science",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "The human gut is inhabited by trillions of microbes that constitute the digestive microbiome. Research indicates these microorganisms play a vital role in synthesizing vitamins, maintaining intestinal barrier integrity, and regulating immune system responses.",
+      "modelAnswer": "The human gut is inhabited by trillions of microbes that constitute the digestive microbiome. Research indicates these microorganisms play a vital role in synthesizing vitamins, maintaining intestinal barrier integrity, and regulating immune system responses.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-215",
+      "title": "Read Aloud: Dark Matter",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Astronomical observations suggest that visible matter accounts for only a small fraction of the universe. The vast majority of cosmic mass consists of dark matter, a mysterious substance that does not emit or absorb light but exerts massive gravitational influence on galaxies.",
+      "modelAnswer": "Astronomical observations suggest that visible matter accounts for only a small fraction of the universe. The vast majority of cosmic mass consists of dark matter, a mysterious substance that does not emit or absorb light but exerts massive gravitational influence on galaxies.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-216",
+      "title": "Read Aloud: Sustainable Forestry",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Sustainable forestry practices aim to harvest timber while conserving ecological balance and forest biodiversity. By employing selective logging techniques rather than clear-cutting, foresters allow woodlands to regenerate naturally and preserve essential carbon sinks.",
+      "modelAnswer": "Sustainable forestry practices aim to harvest timber while conserving ecological balance and forest biodiversity. By employing selective logging techniques rather than clear-cutting, foresters allow woodlands to regenerate naturally and preserve essential carbon sinks.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-217",
+      "title": "Read Aloud: Cognitive Dissonance",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Psychologists define cognitive dissonance as the mental discomfort experienced by individuals holding contradictory beliefs or values. To resolve this psychological tension, people often rationalize their behaviors, alter their perceptions, or actively reject conflicting facts.",
+      "modelAnswer": "Psychologists define cognitive dissonance as the mental discomfort experienced by individuals holding contradictory beliefs or values. To resolve this psychological tension, people often rationalize their behaviors, alter their perceptions, or actively reject conflicting facts.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-218",
+      "title": "Read Aloud: Aqueous Solutions",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "In chemistry, the properties of aqueous solutions depend largely on the concentration of dissolved solutes. Understanding how ionic compounds dissociate in water is fundamental for analyzing chemical equilibrium, electrical conductivity, and acid-base neutralization reactions.",
+      "modelAnswer": "In chemistry, the properties of aqueous solutions depend largely on the concentration of dissolved solutes. Understanding how ionic compounds dissociate in water is fundamental for analyzing chemical equilibrium, electrical conductivity, and acid-base neutralization reactions.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-219",
+      "title": "Read Aloud: History of Mapping",
+      "difficulty": "easy",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Early cartography was a blend of geometric navigation and artistic imagination. Before modern satellite systems, cartographers relied on astronomical observations and marine travel logs to construct maps, which often exaggerated the size of unexplored continents.",
+      "modelAnswer": "Early cartography was a blend of geometric navigation and artistic imagination. Before modern satellite systems, cartographers relied on astronomical observations and marine travel logs to construct maps, which often exaggerated the size of unexplored continents.",
+      "tips": [
+        "Pause slightly at commas and fully at periods to maintain phrasing.",
+        "Pronounce plural endings and tense suffixes clearly.",
+        "Ensure steady pacing and avoid repeating words if you mispronounce them."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-220",
+      "title": "Repeat Sentence: Lecture Segment 1",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The lecture slides will be uploaded to the student portal after class.",
+      "modelAnswer": "The lecture slides will be uploaded to the student portal after class.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-221",
+      "title": "Repeat Sentence: Lecture Segment 2",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "Please remember to bring your student identification card to the exam hall.",
+      "modelAnswer": "Please remember to bring your student identification card to the exam hall.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-222",
+      "title": "Repeat Sentence: Lecture Segment 3",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The primary research data was collected using qualitative interviews and surveys.",
+      "modelAnswer": "The primary research data was collected using qualitative interviews and surveys.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-223",
+      "title": "Repeat Sentence: Lecture Segment 4",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "Your final grade will be based on the essay and the final presentation.",
+      "modelAnswer": "Your final grade will be based on the essay and the final presentation.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-224",
+      "title": "Repeat Sentence: Lecture Segment 5",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "There is a mandatory orientation meeting for all international students next week.",
+      "modelAnswer": "There is a mandatory orientation meeting for all international students next week.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-225",
+      "title": "Repeat Sentence: Lecture Segment 6",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "To access the online library database, you must enter your university credentials.",
+      "modelAnswer": "To access the online library database, you must enter your university credentials.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-226",
+      "title": "Repeat Sentence: Lecture Segment 7",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "Please note that the chemistry lab is closed for renovations until Monday.",
+      "modelAnswer": "Please note that the chemistry lab is closed for renovations until Monday.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-227",
+      "title": "Repeat Sentence: Lecture Segment 8",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The professor will hold extra office hours to assist with essay preparation.",
+      "modelAnswer": "The professor will hold extra office hours to assist with essay preparation.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-228",
+      "title": "Repeat Sentence: Lecture Segment 9",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "You are required to submit a printed copy of your research proposal.",
+      "modelAnswer": "You are required to submit a printed copy of your research proposal.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-229",
+      "title": "Repeat Sentence: Lecture Segment 10",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The deadline for course registration has been extended by three days.",
+      "modelAnswer": "The deadline for course registration has been extended by three days.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-230",
+      "title": "Repeat Sentence: Lecture Segment 11",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "It is essential to cite all your academic sources to avoid plagiarism.",
+      "modelAnswer": "It is essential to cite all your academic sources to avoid plagiarism.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-231",
+      "title": "Repeat Sentence: Lecture Segment 12",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The university offers several scholarships for students majoring in engineering.",
+      "modelAnswer": "The university offers several scholarships for students majoring in engineering.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-232",
+      "title": "Repeat Sentence: Lecture Segment 13",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "Please turn off all mobile devices before entering the lecture room.",
+      "modelAnswer": "Please turn off all mobile devices before entering the lecture room.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-233",
+      "title": "Repeat Sentence: Lecture Segment 14",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The seminar on macroeconomics has been rescheduled to Thursday afternoon.",
+      "modelAnswer": "The seminar on macroeconomics has been rescheduled to Thursday afternoon.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-234",
+      "title": "Repeat Sentence: Lecture Segment 15",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "Detailed information about the student accommodation is available at the housing office.",
+      "modelAnswer": "Detailed information about the student accommodation is available at the housing office.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-235",
+      "title": "Repeat Sentence: Lecture Segment 16",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "Applicants must demonstrate proficiency in English before gaining admission.",
+      "modelAnswer": "Applicants must demonstrate proficiency in English before gaining admission.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-236",
+      "title": "Repeat Sentence: Lecture Segment 17",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The science department is hosting a conference on renewable energy systems.",
+      "modelAnswer": "The science department is hosting a conference on renewable energy systems.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-237",
+      "title": "Repeat Sentence: Lecture Segment 18",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "You can pick up your graduation tickets from the administrative office.",
+      "modelAnswer": "You can pick up your graduation tickets from the administrative office.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-238",
+      "title": "Repeat Sentence: Lecture Segment 19",
+      "difficulty": "medium",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "All laboratory equipment must be cleaned and returned to its shelf.",
+      "modelAnswer": "All laboratory equipment must be cleaned and returned to its shelf.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-239",
+      "title": "Repeat Sentence: Lecture Segment 20",
+      "difficulty": "easy",
+      "prepTime": 3,
+      "readTime": 15,
+      "text": "The introductory course covers the fundamental principles of organic chemistry.",
+      "modelAnswer": "The introductory course covers the fundamental principles of organic chemistry.",
+      "tips": [
+        "Listen carefully to the rhythm and emphasis of the speaker.",
+        "Do not try to write the words down; rely on your auditory memory.",
+        "If you miss a word, keep speaking the remaining words fluidly without hesitation."
+      ],
+      "taskType": "repeat-sentence",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-240",
+      "title": "Describe Image: Global Carbon Emissions Bar Chart",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A vertical bar chart illustrating global carbon emissions from 2000 to 2025. It shows steady growth from 25 billion metric tons to a peak of 37 billion metric tons in 2020, followed by a slight plateau as renewable energy grids expanded.",
+      "modelAnswer": "This chart illustrates the global carbon emissions bar chart. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-241",
+      "title": "Describe Image: Water Cycle Diagram",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A flow diagram illustrating the hydrologic water cycle. It depicts solar energy heating ocean waters, causing evaporation. The vapor condenses into clouds, leading to precipitation over mountains, surface run-off into rivers, and return flow back to the sea.",
+      "modelAnswer": "This chart illustrates the water cycle diagram. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-242",
+      "title": "Describe Image: Demographic Transition Model Graph",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A line graph displaying the four stages of the Demographic Transition Model. Line 1 depicts birth rates, which drop sharply in Stage 3. Line 2 represents death rates, which fall in Stage 2. Line 3 indicates total population, which stabilizes in Stage 4.",
+      "modelAnswer": "This chart illustrates the demographic transition model graph. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-243",
+      "title": "Describe Image: Photosynthesis Process Flowchart",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A process flowchart depicting photosynthesis in leaves. Sunlight, carbon dioxide from the air, and water from the soil are absorbed. Inside the chloroplasts, these are converted into glucose and oxygen, which is released as a byproduct.",
+      "modelAnswer": "This chart illustrates the photosynthesis process flowchart. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-244",
+      "title": "Describe Image: Atmospheric Layers Temperature Profile",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A line chart showing atmospheric temperature profile across altitudes. It details the Troposphere where temperature drops with height, the Stratosphere where it rises due to the ozone layer, followed by the Mesosphere and Thermosphere.",
+      "modelAnswer": "This chart illustrates the atmospheric layers temperature profile. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-245",
+      "title": "Describe Image: Solar Panel Layout Map",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A schematic layout of a photovoltaic residential solar energy system. It shows roof-mounted solar panels feeding direct current into an inverter, which converts it to alternating current to power home appliances, with excess flowing to grid batteries.",
+      "modelAnswer": "This chart illustrates the solar panel layout map. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-246",
+      "title": "Describe Image: Global Temperature Anomalies Line Chart",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A line chart documenting global surface temperature anomalies from 1880 to 2020. The graph displays a gradual warming trend, showing temperatures rising by approximately 1.2 degrees Celsius above the pre-industrial average.",
+      "modelAnswer": "This chart illustrates the global temperature anomalies line chart. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-247",
+      "title": "Describe Image: Rainforest Layers Chart",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A vertical cross-section chart of a tropical rainforest's vegetative strata. It labels four distinct layers: the forest floor, the understory, the canopy housing the majority of animal species, and the emergent layer stretching above forty meters.",
+      "modelAnswer": "This chart illustrates the rainforest layers chart. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-248",
+      "title": "Describe Image: Geological Fault Lines Map",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A tectonic map showing geological fault lines and plate margins. It highlights plate boundaries where subduction zones and transform faults are active, creating friction that triggers earthquakes and builds volcanic arcs.",
+      "modelAnswer": "This chart illustrates the geological fault lines map. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-249",
+      "title": "Describe Image: Hydrogen Fuel Cell Mechanism",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A diagram detailing the inner workings of a hydrogen fuel cell. Hydrogen enters the anode, oxygen enters the cathode, and an electrolyte membrane splits electrons from protons, generating electricity with water as the only waste output.",
+      "modelAnswer": "This chart illustrates the hydrogen fuel cell mechanism. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-250",
+      "title": "Describe Image: Global Forest Cover Pie Chart",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A circular pie chart showing the global distribution of forest cover. It reveals that tropical forests comprise 45 percent of woodlands, followed by boreal forests at 27 percent, temperate forests at 16 percent, and subtropical forests at 12 percent.",
+      "modelAnswer": "This chart illustrates the global forest cover pie chart. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-251",
+      "title": "Describe Image: Ocean Conveyor Belt Map",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A world map illustrating the global thermohaline circulation conveyor belt. It traces red warm surface currents flowing from the equator towards north latitudes, and blue cold deep-saline currents returning southward to sink zones.",
+      "modelAnswer": "This chart illustrates the ocean conveyor belt map. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-252",
+      "title": "Describe Image: Wind Turbine Cross-Section",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "An industrial diagram of a wind turbine nacelle. It labels key components: rotor blades, a low-speed shaft, a gearbox that accelerates rotation, a high-speed generator, and a yaw drive that aligns the rotor with the wind direction.",
+      "modelAnswer": "This chart illustrates the wind turbine cross-section. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-253",
+      "title": "Describe Image: Global Population Growth Graph",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A line graph showing global human population from 1750 to 2025. The curve displays slow, steady growth until the mid-20th century, where a steep exponential rise occurs, with the population soaring past eight billion in recent years.",
+      "modelAnswer": "This chart illustrates the global population growth graph. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-254",
+      "title": "Describe Image: Recycling Process Loop",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A closed-loop flowchart of the plastic recycling process. It illustrates consumer disposal, waste collection, automated sorting by material density, mechanical shredding, sanitization, pelletization, and manufacturing into new consumer goods.",
+      "modelAnswer": "This chart illustrates the recycling process loop. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-255",
+      "title": "Describe Image: Human Brain Lobes Schematic",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "An anatomical diagram of the human brain's cerebral cortex. It highlights and colors the four main lobes: the frontal lobe for cognitive control, parietal lobe for sensory integration, occipital lobe for vision, and temporal lobe for memory.",
+      "modelAnswer": "This chart illustrates the human brain lobes schematic. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-256",
+      "title": "Describe Image: Deep Sea Trench Cross-Section",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A subduction zone geological diagram showing the creation of an oceanic trench. An oceanic plate collides with and slides beneath a thicker continental plate, dragging down sediment and melting mantle rocks to fuel active volcanoes.",
+      "modelAnswer": "This chart illustrates the deep sea trench cross-section. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-257",
+      "title": "Describe Image: Electric Car Battery Pack Diagram",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A mechanical blueprint of an electric vehicle chassis. It outlines a modular lithium-ion battery pack mounted flat along the floorboard between the front and rear axles to optimize center of gravity, feeding power to the electric motor.",
+      "modelAnswer": "This chart illustrates the electric car battery pack diagram. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-258",
+      "title": "Describe Image: Global Freshwater Distribution Chart",
+      "difficulty": "hard",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A stacked bar chart detailing freshwater sources on Earth. It illustrates that glaciers and ice caps store 68.7 percent of freshwater, groundwater stores 30.1 percent, while accessible surface water in lakes and rivers holds only 1.2 percent.",
+      "modelAnswer": "This chart illustrates the global freshwater distribution chart. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-259",
+      "title": "Describe Image: Soil Horizon Layers Diagram",
+      "difficulty": "medium",
+      "prepTime": 25,
+      "readTime": 40,
+      "text": "A geological cross-section of a soil profile. It details the organic top layer (O Horizon), the nutrient-rich topsoil (A Horizon), the subsoil accumulation zone (B Horizon), the weathered bedrock (C Horizon), and the solid bedrock layer (R Horizon).",
+      "modelAnswer": "This chart illustrates the soil horizon layers diagram. The diagram details crucial variables including key data points and trends over time. From the overall layout, it is clear that values start at a lower point and show a steady change, reaching a peak towards the final stages. In conclusion, the information indicates that this system represents a highly structured and efficient process.",
+      "tips": [
+        "Open with a clear introductory sentence naming the title of the image.",
+        "Mention key data points, coordinates, peaks, or significant changes.",
+        "Structure your delivery smoothly without halting; the computer scores fluency above vocabulary."
+      ],
+      "taskType": "describe-image",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-260",
+      "title": "Re-Tell Lecture: Rise of Megacities",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The lecture explored the rapid urbanization of the global population. The speaker noted that by 2050, over two-thirds of the world will live in urban centers, putting major pressure on housing, electricity, and sanitation systems.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of rise of megacities. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-261",
+      "title": "Re-Tell Lecture: Origins of Agriculture",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker discussed the transition from foraging to sedentary farming during the Neolithic Revolution. The lecture emphasized that independent farming pockets emerged globally due to post-ice-age climate stabilization.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of origins of agriculture. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-262",
+      "title": "Re-Tell Lecture: Theory of Relativity",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "This lecture outlined Einstein's General Theory of Relativity. The professor explained that gravity is not a pull force but a curvature of space-time fabric caused by massive astronomical bodies like stars and planets.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of theory of relativity. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-263",
+      "title": "Re-Tell Lecture: Discovery of Penicillin",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The lecture recounted Alexander Fleming's discovery of penicillin in 1928. The speaker detailed how mold accidentally contaminated a petri dish, leading to the development of the world's first mass-produced antibiotic.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of discovery of penicillin. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-264",
+      "title": "Re-Tell Lecture: History of Silk Road",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker highlighted the cultural and economic exchanges along the ancient Silk Road. The lecture noted that beyond silk and spices, this trade network facilitated the spread of technologies and religious philosophies.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of history of silk road. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-265",
+      "title": "Re-Tell Lecture: Impact of Gutenberg Press",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The professor discussed the print revolution triggered by Johannes Gutenberg's movable type. The speaker emphasized how mass-producing books lowered educational costs and accelerated the Protestant Reformation.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of impact of gutenberg press. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-266",
+      "title": "Re-Tell Lecture: Concept of Biodiversity",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The lecture analyzed the ecological importance of biodiversity. The speaker explained that ecosystems with high species variety are far more resilient to natural disasters, diseases, and climate disturbances.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of concept of biodiversity. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-267",
+      "title": "Re-Tell Lecture: Industrial Automation",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker outlined the history of industrial automation, tracing the path from early steam engines to assembly lines, and finally modern computer-controlled robotic arms in smart factories.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of industrial automation. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-268",
+      "title": "Re-Tell Lecture: Structure of the Sun",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "This lecture detailed the inner layers of the Sun, explaining nuclear fusion in the core, the radiation zone where heat travels slowly, and the convection zone where plasma loops emerge on the solar surface.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of structure of the sun. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-269",
+      "title": "Re-Tell Lecture: Human Cognitive Development",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker discussed Jean Piaget's stages of cognitive development in children, emphasizing the shift from sensorimotor actions to operational logic and abstract reasoning as the child matures.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of human cognitive development. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-270",
+      "title": "Re-Tell Lecture: Rise of Roman Empire",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The lecture analyzed the political transition of Rome from a republican senate to a massive centralized empire under Augustus Caesar, outlining their expansion strategies and engineering achievements.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of rise of roman empire. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-271",
+      "title": "Re-Tell Lecture: Ocean Acidification",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The professor warned about the threat of ocean acidification. The lecture explained that excess atmospheric carbon dioxide dissolves into seawater, forming carbonic acid that destroys coral reefs.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of ocean acidification. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-272",
+      "title": "Re-Tell Lecture: History of Astronomy",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker contrasted geocentric and heliocentric models of the solar system, discussing how Galileo's telescope observations of Venus validated Copernicus's theory that planets orbit the Sun.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of history of astronomy. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-273",
+      "title": "Re-Tell Lecture: Principles of Economics",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The lecture defined the law of supply and demand, explaining how the market equilibrium price is established at the intersection where producer output matches consumer purchasing volumes.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of principles of economics. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-274",
+      "title": "Re-Tell Lecture: Psychology of Memory",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker defined the distinctions between sensory memory, short-term working memory, and long-term memory systems, explaining how rehearsal and emotional significance aid retention.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of psychology of memory. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-275",
+      "title": "Re-Tell Lecture: Functions of the Heart",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "This lecture described the cardiovascular system, detailng how the heart pumps deoxygenated blood to the lungs and subsequently circulates oxygen-rich blood through the arteries to sustain tissues.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of functions of the heart. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-276",
+      "title": "Re-Tell Lecture: Origins of Democracy",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker traced the origins of democratic governance to ancient Athens, explaining their direct voting assembly system and contrasting it with modern representative republics.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of origins of democracy. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-277",
+      "title": "Re-Tell Lecture: Behavior of Gases",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The professor explained the gas laws, detailing how pressure, volume, and absolute temperature are interconnected in closed containers as outlined by Boyle's and Charles's laws.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of behavior of gases. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-278",
+      "title": "Re-Tell Lecture: The Arctic Climate",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The lecture explored the feedback loops in the Arctic climate, explaining how melting white ice exposes dark ocean water, which absorbs more solar heat and accelerates further melting.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of the arctic climate. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-279",
+      "title": "Re-Tell Lecture: Philosophy of Ethics",
+      "difficulty": "medium",
+      "prepTime": 10,
+      "readTime": 40,
+      "text": "The speaker contrasted deontological duty-based ethics with utilitarian consequentialism, discussing how philosophers assess whether an action is morally good based on duty or outcomes.",
+      "modelAnswer": "The speaker in the lecture discussed the main theme of philosophy of ethics. The presentation highlighted crucial concepts and details regarding this topic. Firstly, the speaker emphasized the importance of key factors and historical events. Additionally, the lecture detailed the impacts of scientific discoveries and policy changes. In conclusion, the speaker provided a summary indicating that this area will remain highly relevant for future research.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+      "tips": [
+        "Take notes of key nouns, actions, and connections during the playback.",
+        "Speak smoothly using a template to connect your notes into a coherent narrative.",
+        "Ensure your voice is steady and clear; avoid correcting mistakes mid-sentence."
+      ],
+      "taskType": "retell-lecture",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-280",
+      "title": "Short Question: Trivia 1",
+      "difficulty": "easy",
+      "questionText": "What is the term for a period of ten years?",
+      "correctAnswers": [
+        "decade"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-281",
+      "title": "Short Question: Trivia 2",
+      "difficulty": "easy",
+      "questionText": "What force pulls objects toward the center of the Earth?",
+      "correctAnswers": [
+        "gravity",
+        "gravitation"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-282",
+      "title": "Short Question: Trivia 3",
+      "difficulty": "easy",
+      "questionText": "Which instrument is used to measure atmospheric temperature?",
+      "correctAnswers": [
+        "thermometer"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-283",
+      "title": "Short Question: Trivia 4",
+      "difficulty": "easy",
+      "questionText": "How many sides does a pentagon have?",
+      "correctAnswers": [
+        "five",
+        "5"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-284",
+      "title": "Short Question: Trivia 5",
+      "difficulty": "easy",
+      "questionText": "What is the term for a person who studies stars and planets?",
+      "correctAnswers": [
+        "astronomer"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-285",
+      "title": "Short Question: Trivia 6",
+      "difficulty": "easy",
+      "questionText": "What gas do humans breathe out as a byproduct of respiration?",
+      "correctAnswers": [
+        "carbon dioxide",
+        "co2"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-286",
+      "title": "Short Question: Trivia 7",
+      "difficulty": "easy",
+      "questionText": "What do we call the frozen form of water?",
+      "correctAnswers": [
+        "ice"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-287",
+      "title": "Short Question: Trivia 8",
+      "difficulty": "easy",
+      "questionText": "Which season follows autumn and comes before spring?",
+      "correctAnswers": [
+        "winter"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-288",
+      "title": "Short Question: Trivia 9",
+      "difficulty": "easy",
+      "questionText": "What is the term for a book that lists words and their definitions?",
+      "correctAnswers": [
+        "dictionary"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-289",
+      "title": "Short Question: Trivia 10",
+      "difficulty": "easy",
+      "questionText": "What is the primary language spoken in Australia?",
+      "correctAnswers": [
+        "english"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-290",
+      "title": "Short Question: Trivia 11",
+      "difficulty": "easy",
+      "questionText": "What is the term for a doctor who performs surgery?",
+      "correctAnswers": [
+        "surgeon"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-291",
+      "title": "Short Question: Trivia 12",
+      "difficulty": "easy",
+      "questionText": "Which planet is closest to the Sun?",
+      "correctAnswers": [
+        "mercury"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-292",
+      "title": "Short Question: Trivia 13",
+      "difficulty": "easy",
+      "questionText": "What is the term for the day that comes after Friday?",
+      "correctAnswers": [
+        "saturday"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-293",
+      "title": "Short Question: Trivia 14",
+      "difficulty": "easy",
+      "questionText": "Which component of the blood carries oxygen throughout the body?",
+      "correctAnswers": [
+        "red blood cells",
+        "erythrocytes"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-294",
+      "title": "Short Question: Trivia 15",
+      "difficulty": "easy",
+      "questionText": "What is the term for a shape with three sides?",
+      "correctAnswers": [
+        "triangle"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-295",
+      "title": "Short Question: Trivia 16",
+      "difficulty": "easy",
+      "questionText": "What do you call a baby dog?",
+      "correctAnswers": [
+        "puppy"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-296",
+      "title": "Short Question: Trivia 17",
+      "difficulty": "easy",
+      "questionText": "What is the chemical symbol for water?",
+      "correctAnswers": [
+        "h2o"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-297",
+      "title": "Short Question: Trivia 18",
+      "difficulty": "easy",
+      "questionText": "What is the term for a person who writes plays?",
+      "correctAnswers": [
+        "playwright",
+        "dramatist"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-298",
+      "title": "Short Question: Trivia 19",
+      "difficulty": "easy",
+      "questionText": "Which large mammal is known for having a long trunk?",
+      "correctAnswers": [
+        "elephant"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-299",
+      "title": "Short Question: Trivia 20",
+      "difficulty": "easy",
+      "questionText": "What is the name of the primary currency used in Japan?",
+      "correctAnswers": [
+        "yen"
+      ],
+      "tips": [
+        "Keep your answer short: a single word or short phrase is best.",
+        "Speak clearly and immediately after the tone.",
+        "If you don't know, state a simple logical guess."
+      ],
+      "taskType": "short-question",
       "isPrediction": true
     }
   ],
   "writing": [
     {
-      "id": "WR-PRED-20101",
-      "title": "Write Essay: Studying Abroad vs Local",
+      "id": "WR-PRED-200",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 1)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-201",
+      "title": "Summarize Written Text: The Printing Press (Ver. 2)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-202",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 3)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-203",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 4)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-204",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 5)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-205",
+      "title": "Summarize Written Text: The Printing Press (Ver. 6)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-206",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 7)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-207",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 8)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-208",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 9)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-209",
+      "title": "Summarize Written Text: The Printing Press (Ver. 10)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-210",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 11)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-211",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 12)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-212",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 13)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-213",
+      "title": "Summarize Written Text: The Printing Press (Ver. 14)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-214",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 15)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-215",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 16)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-216",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 17)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-217",
+      "title": "Summarize Written Text: The Printing Press (Ver. 18)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-218",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 19)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-219",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 20)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-220",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 21)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-221",
+      "title": "Summarize Written Text: The Printing Press (Ver. 22)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-222",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 23)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-223",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 24)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-224",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 25)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-225",
+      "title": "Summarize Written Text: The Printing Press (Ver. 26)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-226",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 27)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-227",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 28)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-228",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 29)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-229",
+      "title": "Summarize Written Text: The Printing Press (Ver. 30)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-230",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 31)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-231",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 32)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-232",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 33)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-233",
+      "title": "Summarize Written Text: The Printing Press (Ver. 34)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-234",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 35)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-235",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 36)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-236",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 37)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-237",
+      "title": "Summarize Written Text: The Printing Press (Ver. 38)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-238",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 39)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-239",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 40)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-240",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 41)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-241",
+      "title": "Summarize Written Text: The Printing Press (Ver. 42)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-242",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 43)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-243",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 44)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-244",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 45)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-245",
+      "title": "Summarize Written Text: The Printing Press (Ver. 46)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-246",
+      "title": "Summarize Written Text: Microbiome Health (Ver. 47)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The human body is host to trillions of microorganisms, collectively known as the human microbiome. The vast majority of these microbes reside in the gut, where they perform essential functions for human health. They help digest complex carbohydrates, synthesize critical vitamins, and regulate the immune system. Recent scientific research suggests that imbalances in the gut microbiome may be linked to chronic health conditions, including obesity, inflammatory bowel diseases, and even mental health disorders. Maintaining a diverse microbiome through diet and lifestyle is crucial for overall wellness.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-247",
+      "title": "Summarize Written Text: Ocean Acidification (Ver. 48)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Ocean acidification is a direct consequence of rising carbon dioxide emissions. The oceans absorb about 30 percent of the carbon dioxide released into the atmosphere by human activities. When CO2 dissolves in seawater, it reacts to form carbonic acid, lowering the water's pH. This chemical change reduces the availability of carbonate ions, which marine organisms like corals and shellfish need to build their skeletons and shells. Without these building blocks, marine ecosystems, particularly coral reefs, face severe decline, threatening ocean biodiversity.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-248",
+      "title": "Summarize Written Text: Glacial Melting (Ver. 49)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "Worldwide temperatures have risen by over 1 degree Celsius since the late 19th century, with the past decade being the warmest on record. This warming has led to widespread melting of glaciers and ice caps. Glaciers act as natural reservoirs, storing water during the winter and releasing it slowly during the summer. Their retreat threatens freshwater supplies for millions of people who rely on them for agriculture, drinking water, and hydropower. Furthermore, the melting ice contributes to sea-level rise, threatening low-lying coastal communities with flooding and erosion.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-249",
+      "title": "Summarize Written Text: The Printing Press (Ver. 50)",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "prompt": "The invention of the movable type printing press by Johannes Gutenberg in the 15th century revolutionized communication in Europe. Before the printing press, books were copied by hand, a slow and labor-intensive process that made them rare and expensive. Gutenberg's invention allowed for the rapid and cheap mass production of texts. This dramatic increase in book availability fostered higher literacy rates, stimulated intellectual debate, and facilitated the spread of new scientific and religious ideas, ultimately paving the way for the Renaissance and the Scientific Revolution.",
+      "minWords": 5,
+      "maxWords": 75,
+      "modelAnswer": "The rise in temperature has led to glacial retreat, which threatens freshwater resources and contributes to global sea-level rise.",
+      "tips": [
+        "Write exactly one single, complete sentence.",
+        "Ensure your summary is between 5 and 75 words.",
+        "Focus on linking the main point with secondary points using conjunctions (e.g. 'and', 'but', 'although')."
+      ],
+      "taskType": "summarize-written",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-250",
+      "title": "Write Essay: Remote Work Debate (Ver. 1)",
       "difficulty": "medium",
       "timeLimit": 1200,
-      "prompt": "Many students choose to pursue higher education abroad, despite the high tuition fees and challenges of living far from home. In your opinion, do the professional and personal advantages of studying in another country outweigh the financial burdens? Support your view with examples.",
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
       "minWords": 200,
       "maxWords": 300,
-      "modelAnswer": "In recent years, a growing number of individuals have chosen to pursue higher education at foreign universities, despite the significant financial commitments and cultural adjustments required. In my opinion, the personal and professional benefits of studying abroad far outweigh the associated financial burdens.\n\nFrom a professional perspective, earning a degree from a top-tier international institution provides students with superior career opportunities. Global employers highly value graduates who possess international experience, as it demonstrates adaptability and cross-cultural communication skills. For instance, a student studying in Canada or the United Kingdom is exposed to diverse viewpoints and advanced research facilities, which significantly enhances their employability. Furthermore, students can build a global network of peers and professionals that can assist them throughout their careers.\n\nOn a personal level, living independently in a foreign country fosters self-reliance and maturity. Students must manage their own budgets, cook, and navigate complex local systems without immediate family support. This immersive experience helps individuals develop problem-solving skills and a broader worldview.\n\nIn conclusion, while the financial cost of studying abroad is indeed high, the long-term rewards in terms of career advancement, networking, and personal growth make it a highly worthwhile investment.",
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
       "tips": [
-        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
-        "Keep your word count strictly between 200 and 300 words.",
-        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
       ],
       "taskType": "write-essay",
       "isPrediction": true
     },
     {
-      "id": "WR-PRED-20102",
-      "title": "Write Essay: Skilled Immigration Impacts",
+      "id": "WR-PRED-251",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 2)",
       "difficulty": "medium",
       "timeLimit": 1200,
-      "prompt": "Skilled immigration programs are designed to address labor shortages and promote economic growth in host nations. However, some argue that high immigration rates put pressure on local infrastructure and housing. Discuss both sides and give your opinion.",
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
       "minWords": 200,
       "maxWords": 300,
-      "modelAnswer": "Skilled immigration programs have become a cornerstone of economic development in many developed nations. While some argue that high rates of immigration put excessive pressure on local infrastructure and housing markets, I believe the economic benefits and cultural contributions of skilled workers outweigh these challenges.\n\nOn the one hand, skilled immigrants fill critical labor shortages in high-growth industries such as technology, healthcare, and engineering. By bringing advanced skills and entrepreneurial spirit, they stimulate innovation and create jobs, thereby boosting the national economy. For instance, many successful technology startups in Silicon Valley were founded by immigrants, showing their positive impact. Additionally, they contribute to the tax base, which helps fund public services.\n\nOn the other hand, critics point out that rapid population growth can strain local services like public transit, schools, and healthcare. Furthermore, it can drive up housing demand, leading to higher rents and property prices. However, these issues are often due to government planning deficits rather than immigration itself.\n\nIn conclusion, skilled immigration is highly beneficial for addressing demographic and labor challenges. With proper urban planning and infrastructure investment, governments can maximize these benefits while mitigating local strain.",
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
       "tips": [
-        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
-        "Keep your word count strictly between 200 and 300 words.",
-        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
       ],
       "taskType": "write-essay",
       "isPrediction": true
     },
     {
-      "id": "WR-PRED-20103",
-      "title": "Write Essay: Online Classrooms Value",
+      "id": "WR-PRED-252",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 3)",
       "difficulty": "medium",
       "timeLimit": 1200,
-      "prompt": "With the rise of digital technology, virtual classrooms allow students to earn degrees from foreign universities without traveling. Does virtual learning offer the same value as the physical experience of studying and living in a foreign country?",
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
       "minWords": 200,
       "maxWords": 300,
-      "modelAnswer": "The rapid advancement of digital technology has enabled universities to offer degrees online, allowing students to study from anywhere in the world. While virtual classrooms offer flexibility and cost savings, I believe they do not provide the same value as the physical experience of studying and living abroad.\n\nUndoubtedly, online learning is highly convenient. It allows students to balance education with work and avoids the high expenses of international travel, housing, and visas. However, online programs lack the rich cultural immersion that comes from living in a foreign society. A student learning from home misses the opportunity to practice a new language daily, navigate a new city, and interact directly with a diverse student body.\n\nMoreover, physical campuses offer valuable networking opportunities and face-to-face collaborations that are difficult to replicate digitally. Participating in campus clubs, attending seminars, and building personal relationships with professors are essential aspects of university life that enhance personal growth and career prospects.\n\nIn conclusion, while virtual classrooms are a useful tool for accessible education, they cannot replace the transformative personal development and cultural integration gained from physically studying in a foreign country.",
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
       "tips": [
-        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
-        "Keep your word count strictly between 200 and 300 words.",
-        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
       ],
       "taskType": "write-essay",
       "isPrediction": true
     },
     {
-      "id": "WR-PRED-20104",
-      "title": "Write Essay: Mandatory Integration Courses",
+      "id": "WR-PRED-253",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 4)",
       "difficulty": "medium",
       "timeLimit": 1200,
-      "prompt": "Some host countries require immigrants to undergo mandatory cultural integration courses as a condition for permanent residency. Critics argue this violates individual rights, while supporters claim it fosters social cohesion. What is your opinion?",
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
       "minWords": 200,
       "maxWords": 300,
-      "modelAnswer": "Some host countries have introduced mandatory cultural integration courses as a requirement for permanent residency. In my opinion, while critics argue that these courses violate individual rights, I believe they are highly beneficial for fostering social cohesion and helping immigrants adapt to their new environments.\n\nOn the one hand, integration courses provide immigrants with vital knowledge about the host country's laws, societal values, history, and language. Understanding these elements helps newcomers navigate daily life, secure employment, and avoid legal misunderstandings. For example, learning about local civic responsibilities enables active participation in community life. Consequently, this prevents social isolation and helps immigrants build connections with local residents.\n\nOn the other hand, opponents claim that forcing immigrants to undergo cultural training is paternalistic and infringes on personal freedoms. They argue that integration should occur naturally. However, integration courses do not force immigrants to abandon their heritage; rather, they equip them with the tools to succeed alongside their cultural customs.\n\nIn conclusion, mandatory integration courses are a positive measure. They facilitate a smoother transition for immigrants and build a harmonious, united society by establishing shared values and mutual understanding.",
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
       "tips": [
-        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
-        "Keep your word count strictly between 200 and 300 words.",
-        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
       ],
       "taskType": "write-essay",
       "isPrediction": true
     },
     {
-      "id": "WR-PRED-20105",
-      "title": "Write Essay: Working Hours for Students",
+      "id": "WR-PRED-254",
+      "title": "Write Essay: Remote Work Debate (Ver. 5)",
       "difficulty": "medium",
       "timeLimit": 1200,
-      "prompt": "Some argue that international students should be allowed to work unlimited hours while studying to cover living costs. Others believe this distracts from academic performance and displaces local workers. Discuss the merits and drawbacks of this proposal.",
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
       "minWords": 200,
       "maxWords": 300,
-      "modelAnswer": "The debate over whether international students should be permitted to work unlimited hours is highly significant. While some advocate for this policy to help students cover high tuition and living costs, I believe that retaining a sensible cap on working hours is crucial for maintaining academic standards and protecting student welfare.\n\nSupporters of unlimited working hours argue that international education is expensive, and students often face severe financial stress. Allowing them to work more would help them support themselves without relying on external funding. However, working long hours can severely detract from academic performance. University education requires dedication, and students who work full-time jobs are likely to experience fatigue, miss classes, and perform poorly in exams.\n\nFurthermore, unlimited work rights could lead to exploitation by employers seeking cheap labor, and it might displace local workers in entry-level positions. The primary purpose of a student visa is education, not immigration or employment.\n\nIn conclusion, while students need financial support, allowing unlimited working hours is counterproductive. Maintaining a balanced limit ensures that students focus on their studies while still gaining valuable work experience.",
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
       "tips": [
-        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
-        "Keep your word count strictly between 200 and 300 words.",
-        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
       ],
       "taskType": "write-essay",
       "isPrediction": true
     },
     {
-      "id": "WR-PRED-20106",
-      "title": "Write Essay: Immigration & Aging Populations",
+      "id": "WR-PRED-255",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 6)",
       "difficulty": "medium",
       "timeLimit": 1200,
-      "prompt": "Many developed countries are experiencing aging populations and declining birth rates. To what extent can increased immigration of young families resolve the demographic and economic challenges faced by these nations?",
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
       "minWords": 200,
       "maxWords": 300,
-      "modelAnswer": "Many developed nations are currently facing severe demographic challenges characterized by declining birth rates and aging populations. I believe that increasing the immigration of young families is a highly effective strategy to resolve the economic and social issues associated with this shift.\n\nAn aging population places a significant burden on a nation's economy and social welfare systems. As the ratio of retirees to active workers increases, pension funds face deficits and healthcare costs soar. By welcoming young immigrant families, host countries can instantly expand their active workforce. These new residents contribute to income taxes, sustaining public services and pension programs.\n\nMoreover, young families bring children who will become the future workforce, helping to stabilize population demographics over the long term. Immigrant children also enrich local schools and contribute to cultural diversity. While integrating new families requires investment in language classes and housing, the long-term economic returns are substantial.\n\nIn conclusion, welcoming young immigrant families provides a vital source of labor and tax revenue. It is an indispensable solution for developed nations striving to maintain economic growth and social stability.",
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
       "tips": [
-        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
-        "Keep your word count strictly between 200 and 300 words.",
-        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-256",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 7)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-257",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 8)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-258",
+      "title": "Write Essay: Remote Work Debate (Ver. 9)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-259",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 10)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-260",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 11)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-261",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 12)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-262",
+      "title": "Write Essay: Remote Work Debate (Ver. 13)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-263",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 14)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-264",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 15)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-265",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 16)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-266",
+      "title": "Write Essay: Remote Work Debate (Ver. 17)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-267",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 18)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-268",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 19)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-269",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 20)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-270",
+      "title": "Write Essay: Remote Work Debate (Ver. 21)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-271",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 22)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-272",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 23)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-273",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 24)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-274",
+      "title": "Write Essay: Remote Work Debate (Ver. 25)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-275",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 26)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-276",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 27)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-277",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 28)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-278",
+      "title": "Write Essay: Remote Work Debate (Ver. 29)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-279",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 30)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-280",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 31)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-281",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 32)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-282",
+      "title": "Write Essay: Remote Work Debate (Ver. 33)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-283",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 34)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-284",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 35)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-285",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 36)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-286",
+      "title": "Write Essay: Remote Work Debate (Ver. 37)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-287",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 38)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-288",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 39)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-289",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 40)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-290",
+      "title": "Write Essay: Remote Work Debate (Ver. 41)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-291",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 42)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-292",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 43)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-293",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 44)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-294",
+      "title": "Write Essay: Remote Work Debate (Ver. 45)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-295",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 46)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-296",
+      "title": "Write Essay: Space Exploration Funding Debate (Ver. 47)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Governments spend billions of dollars on space exploration. Some believe this money would be better spent on solving Earth's immediate problems, such as poverty and climate change. To what extent do you agree?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while space exploration funding has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-297",
+      "title": "Write Essay: Social Media Impact Debate (Ver. 48)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Social media has transformed how people communicate. Has it brought people closer together, or has it isolated individuals from real-world relationships? Discuss your view.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while social media impact has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-298",
+      "title": "Write Essay: Remote Work Debate (Ver. 49)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Some argue that remote working boosts productivity and employee satisfaction, while others claim it harms collaboration and company culture. Discuss both views and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while remote work has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-299",
+      "title": "Write Essay: Automation and Jobs Debate (Ver. 50)",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Write an essay answering the following prompt: Artificial intelligence and robotics are automating many traditional jobs. Will this lead to mass unemployment, or will it create new opportunities for the workforce? Give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "This essay argues that while automation and jobs has challenges, its long-term societal and economic benefits far outweigh the temporary drawbacks, provided there is structured governance.",
+      "tips": [
+        "Write between 200 and 300 words.",
+        "Structure your essay: Introduction, Body Paragraph 1 (pros), Body Paragraph 2 (cons), and Conclusion.",
+        "Use high-quality academic transitions and avoid informal language."
       ],
       "taskType": "write-essay",
       "isPrediction": true
@@ -3236,317 +6363,4805 @@ const PREDICTION_QUESTIONS = {
   ],
   "reading": [
     {
-      "id": "RD-PRED-30101",
-      "title": "Fill in the Blanks (Drag & Drop): Applying for Student Visa",
+      "id": "RD-PRED-200",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 1",
       "difficulty": "medium",
-      "paragraphHTML": "International students seeking to study abroad must obtain a valid student visa before entering the host country. This process involves submitting academic <span class='blank-box' data-index='0'></span>, proving financial sustainability, and undergoing medical clearances. Failure to provide complete <span class='blank-box' data-index='1'></span> can lead to processing delays or visa <span class='blank-box' data-index='2'></span>.",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-201",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 2",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-202",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 3",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-203",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 4",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-204",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 5",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-205",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 6",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-206",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 7",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-207",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 8",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-208",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 9",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-209",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 10",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-210",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 11",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-211",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 12",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-212",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 13",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-213",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 14",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-214",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 15",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-215",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 16",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-216",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 17",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-217",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 18",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-218",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 19",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-219",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 20",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-220",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 21",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-221",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 22",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-222",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 23",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-223",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 24",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-224",
+      "title": "Fill in the Blanks (Dropdown): Academic Context 25",
+      "difficulty": "medium",
+      "text": "Scientific research plays a [blank-0] role in modern technological advances. By [blank-1] theories and testing hypotheses, scientists can discover new laws of nature. This knowledge is then [blank-2] to industrial systems to create innovative products that improve societal standards.",
+      "blanks": {
+        "0": {
+          "correct": "crucial",
+          "options": [
+            "crucial",
+            "minor",
+            "nominal",
+            "static"
+          ]
+        },
+        "1": {
+          "correct": "formulating",
+          "options": [
+            "formulating",
+            "ignoring",
+            "guessing",
+            "delaying"
+          ]
+        },
+        "2": {
+          "correct": "applied",
+          "options": [
+            "applied",
+            "forgotten",
+            "removed",
+            "separated"
+          ]
+        }
+      },
+      "tips": [
+        "Read the entire sentence for contextual clues before selecting a word.",
+        "Check subject-verb agreement and tenses around the blank."
+      ],
+      "taskType": "fib-dropdown",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-225",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 1",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
       "correctAnswers": [
-        "transcripts",
-        "documentation",
-        "refusal"
+        "globe",
+        "melt",
+        "reduction"
       ],
       "wordsPool": [
-        "transcripts",
-        "documentation",
-        "refusal",
-        "suspensions",
-        "scholarships",
-        "admissions"
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
       ],
-      "explanations": {
-        "0": "'academic transcripts' are official records of student grades, required for visa and university evaluation.",
-        "1": "'complete documentation' represents the full set of paper credentials needed to verify application claims.",
-        "2": "'visa refusal' represents the rejection of a visa request due to failure to meet legal entry conditions."
-      },
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
       "taskType": "fib-drag",
       "isPrediction": true
     },
     {
-      "id": "RD-PRED-30102",
-      "title": "Fill in the Blanks (Drag & Drop): Express Entry Ranking Systems",
+      "id": "RD-PRED-226",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 2",
       "difficulty": "medium",
-      "paragraphHTML": "Skilled migration selection systems rank candidates based on points scored for key human capital criteria. Points are <span class='blank-box' data-index='0'></span> for age, education levels, language proficiency, and work experience. Candidates with high scores receive an <span class='blank-box' data-index='1'></span> to apply for permanent residency, facilitating a smoother transition into their new <span class='blank-box' data-index='2'></span>.",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
       "correctAnswers": [
-        "allocated",
-        "invitation",
-        "society"
+        "globe",
+        "melt",
+        "reduction"
       ],
       "wordsPool": [
-        "allocated",
-        "invitation",
-        "society",
-        "subtracted",
-        "rejection",
-        "profession"
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
       ],
-      "explanations": {
-        "0": "'points are allocated' is a passive verb structure meaning points are distributed or awarded for qualification criteria.",
-        "1": "'invitation' refers to the official 'Invitation to Apply' (ITA) issued to selected candidates in immigration pools.",
-        "2": "Integrating into a 'new society' signifies adapting to the cultural, social, and economic systems of the host nation."
-      },
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
       "taskType": "fib-drag",
       "isPrediction": true
     },
     {
-      "id": "RD-PRED-30103",
-      "title": "Fill in the Blanks (Drag & Drop): Selecting Foreign Universities",
+      "id": "RD-PRED-227",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 3",
       "difficulty": "medium",
-      "paragraphHTML": "Selecting the right foreign university is a critical decision that shapes a student's future career path. Factors to <span class='blank-box' data-index='0'></span> include program curriculum, institution ranking, campus location, and tuition costs. Consulting with experienced advisors helps students <span class='blank-box' data-index='1'></span> the complex application steps and secure university <span class='blank-box' data-index='2'></span>.",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
       "correctAnswers": [
-        "consider",
-        "navigate",
-        "admission"
+        "globe",
+        "melt",
+        "reduction"
       ],
       "wordsPool": [
-        "consider",
-        "navigate",
-        "admission",
-        "ignore",
-        "complicate",
-        "rejection"
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
       ],
-      "explanations": {
-        "0": "'factors to consider' is a standard grammatical construct denoting variables to evaluate before deciding.",
-        "1": "To 'navigate complex steps' is a metaphorical collocation meaning to guide through or understand complicated bureaucratic processes.",
-        "2": "'secure university admission' represents obtaining a confirmed offer of study at a learning institution."
-      },
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
       "taskType": "fib-drag",
       "isPrediction": true
     },
     {
-      "id": "RD-PRED-30104",
-      "title": "Fill in the Blanks (Drag & Drop): Cross-Cultural Competencies",
+      "id": "RD-PRED-228",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 4",
       "difficulty": "medium",
-      "paragraphHTML": "Studying abroad offers a valuable opportunity to develop cross-cultural competency. Living in an unfamiliar culture helps students expand their <span class='blank-box' data-index='0'></span>, build international friendship groups, and master a foreign tongue. These skills are highly <span class='blank-box' data-index='1'></span> by global employers looking for flexible workers who can succeed in diverse <span class='blank-box' data-index='2'></span>.",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
       "correctAnswers": [
-        "perspectives",
-        "valued",
-        "environments"
+        "globe",
+        "melt",
+        "reduction"
       ],
       "wordsPool": [
-        "perspectives",
-        "valued",
-        "environments",
-        "limits",
-        "ignored",
-        "isolation"
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
       ],
-      "explanations": {
-        "0": "'expand their perspectives' means to broaden one's viewpoints or outlooks on life and cultures.",
-        "1": "Skills 'highly valued' by employers are qualities that companies hold in high esteem and seek during recruitment.",
-        "2": "'diverse environments' represents workspace setups containing multi-ethnic or globally spread teams."
-      },
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
       "taskType": "fib-drag",
       "isPrediction": true
     },
     {
-      "id": "RD-PRED-30105",
-      "title": "Fill in the Blanks (Drag & Drop): Language Requirements (IELTS/PTE)",
+      "id": "RD-PRED-229",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 5",
       "difficulty": "medium",
-      "paragraphHTML": "To qualify for permanent residency in Australia or Canada, applicants must pass official language exams. High scores in IELTS or PTE can add <span class='blank-box' data-index='0'></span> points to the immigration score card. Advisors recommend rigorous prep courses to ensure candidates meet the minimum <span class='blank-box' data-index='1'></span> score required to exit the migration pool and obtain an ITA for active visa <span class='blank-box' data-index='2'></span>.",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
       "correctAnswers": [
-        "substantial",
-        "threshold",
-        "lodgement"
+        "globe",
+        "melt",
+        "reduction"
       ],
       "wordsPool": [
-        "substantial",
-        "threshold",
-        "lodgement",
-        "trivial",
-        "peak",
-        "cancellation"
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
       ],
-      "explanations": {
-        "0": "'substantial points' signifies a large or critical amount of points that can significantly shift applicant standing.",
-        "1": "'threshold score' is the minimum boundary limit score required to qualify.",
-        "2": "'visa lodgement' is the official term for submitting a completed visa application to immigration authorities."
-      },
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
       "taskType": "fib-drag",
       "isPrediction": true
     },
     {
-      "id": "RD-PRED-30106",
-      "title": "Fill in the Blanks (Drag & Drop): Cultural Adjustment Stages",
+      "id": "RD-PRED-230",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 6",
       "difficulty": "medium",
-      "paragraphHTML": "Cultural adjustment follows a recognizable pattern of stages. Initially, students experience the 'honeymoon stage', fascinated by new sights. This is often followed by 'culture shock', where difference causes <span class='blank-box' data-index='0'></span>. Over time, through active participation and support, students achieve the 'adaptation stage', where they feel comfortable in both their native and <span class='blank-box' data-index='1'></span> cultural <span class='blank-box' data-index='2'></span>.",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
       "correctAnswers": [
-        "anxiety",
-        "adopted",
-        "settings"
+        "globe",
+        "melt",
+        "reduction"
       ],
       "wordsPool": [
-        "anxiety",
-        "adopted",
-        "settings",
-        "elation",
-        "rejected",
-        "isolation"
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
       ],
-      "explanations": {
-        "0": "'culture shock causes anxiety' is a psychological fact representing the stress of navigating unfamiliar cues.",
-        "1": "An 'adopted culture' is the new cultural framework that a migrant integrates into their daily lifestyle.",
-        "2": "'cultural settings' denotes the environments or circumstances characterized by specific cultural customs."
-      },
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
       "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-231",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 7",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-232",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 8",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-233",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 9",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-234",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 10",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-235",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 11",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-236",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 12",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-237",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 13",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-238",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 14",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-239",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 15",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-240",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 16",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-241",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 17",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-242",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 18",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-243",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 19",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-244",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 20",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-245",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 21",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-246",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 22",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-247",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 23",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-248",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 24",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-249",
+      "title": "Fill in the Blanks (Drag & Drop): Environmental Ecology 25",
+      "difficulty": "medium",
+      "paragraphHTML": "Climate change is affecting weather patterns around the <span class='blank-box' data-index='0'></span>. Rising ocean temperatures are causing stronger storms and increasing glacial <span class='blank-box' data-index='1'></span>. Governments are meeting regularly to negotiate carbon <span class='blank-box' data-index='2'></span> policies to protect biodiversity.",
+      "correctAnswers": [
+        "globe",
+        "melt",
+        "reduction"
+      ],
+      "wordsPool": [
+        "globe",
+        "melt",
+        "reduction",
+        "stagnant",
+        "elevate",
+        "uncontrolled"
+      ],
+      "tips": [
+        "Identify the part of speech required for each blank (noun, verb, adjective).",
+        "Test multiple words in the slot to see which fits logically."
+      ],
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-250",
+      "title": "Reorder Paragraphs: Scientific Innovation 1",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-251",
+      "title": "Reorder Paragraphs: Scientific Innovation 2",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-252",
+      "title": "Reorder Paragraphs: Scientific Innovation 3",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-253",
+      "title": "Reorder Paragraphs: Scientific Innovation 4",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-254",
+      "title": "Reorder Paragraphs: Scientific Innovation 5",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-255",
+      "title": "Reorder Paragraphs: Scientific Innovation 6",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-256",
+      "title": "Reorder Paragraphs: Scientific Innovation 7",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-257",
+      "title": "Reorder Paragraphs: Scientific Innovation 8",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-258",
+      "title": "Reorder Paragraphs: Scientific Innovation 9",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-259",
+      "title": "Reorder Paragraphs: Scientific Innovation 10",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-260",
+      "title": "Reorder Paragraphs: Scientific Innovation 11",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-261",
+      "title": "Reorder Paragraphs: Scientific Innovation 12",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-262",
+      "title": "Reorder Paragraphs: Scientific Innovation 13",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-263",
+      "title": "Reorder Paragraphs: Scientific Innovation 14",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-264",
+      "title": "Reorder Paragraphs: Scientific Innovation 15",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-265",
+      "title": "Reorder Paragraphs: Scientific Innovation 16",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-266",
+      "title": "Reorder Paragraphs: Scientific Innovation 17",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-267",
+      "title": "Reorder Paragraphs: Scientific Innovation 18",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-268",
+      "title": "Reorder Paragraphs: Scientific Innovation 19",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-269",
+      "title": "Reorder Paragraphs: Scientific Innovation 20",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-270",
+      "title": "Reorder Paragraphs: Scientific Innovation 21",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-271",
+      "title": "Reorder Paragraphs: Scientific Innovation 22",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-272",
+      "title": "Reorder Paragraphs: Scientific Innovation 23",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-273",
+      "title": "Reorder Paragraphs: Scientific Innovation 24",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-274",
+      "title": "Reorder Paragraphs: Scientific Innovation 25",
+      "difficulty": "hard",
+      "paragraphs": [
+        "This printer could fabricate three-dimensional objects using bioplastics.",
+        "In 1984, Charles Hull invented stereolithography, the first commercial 3D printing technology.",
+        "His invention paved the way for modern additive manufacturing systems.",
+        "Today, this technology is utilized in fields ranging from aerospace engineering to medicine."
+      ],
+      "correctOrder": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "tips": [
+        "Find the independent topic sentence that can stand alone (usually contains the subject definition).",
+        "Look for transition words and pronouns ('this', 'he', 'they') that link paragraphs together.",
+        "Arrange chronological sequences logically."
+      ],
+      "taskType": "reorder-paragraphs",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-275",
+      "title": "Multiple Choice (Single): Reading Comprehension 1",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-276",
+      "title": "Multiple Choice (Single): Reading Comprehension 2",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-277",
+      "title": "Multiple Choice (Single): Reading Comprehension 3",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-278",
+      "title": "Multiple Choice (Single): Reading Comprehension 4",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-279",
+      "title": "Multiple Choice (Single): Reading Comprehension 5",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-280",
+      "title": "Multiple Choice (Single): Reading Comprehension 6",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-281",
+      "title": "Multiple Choice (Single): Reading Comprehension 7",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-282",
+      "title": "Multiple Choice (Single): Reading Comprehension 8",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-283",
+      "title": "Multiple Choice (Single): Reading Comprehension 9",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-284",
+      "title": "Multiple Choice (Single): Reading Comprehension 10",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-285",
+      "title": "Multiple Choice (Single): Reading Comprehension 11",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-286",
+      "title": "Multiple Choice (Single): Reading Comprehension 12",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-287",
+      "title": "Multiple Choice (Single): Reading Comprehension 13",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-288",
+      "title": "Multiple Choice (Single): Reading Comprehension 14",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-289",
+      "title": "Multiple Choice (Single): Reading Comprehension 15",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-290",
+      "title": "Multiple Choice (Single): Reading Comprehension 16",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-291",
+      "title": "Multiple Choice (Single): Reading Comprehension 17",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-292",
+      "title": "Multiple Choice (Single): Reading Comprehension 18",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-293",
+      "title": "Multiple Choice (Single): Reading Comprehension 19",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-294",
+      "title": "Multiple Choice (Single): Reading Comprehension 20",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-295",
+      "title": "Multiple Choice (Single): Reading Comprehension 21",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-296",
+      "title": "Multiple Choice (Single): Reading Comprehension 22",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-297",
+      "title": "Multiple Choice (Single): Reading Comprehension 23",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-298",
+      "title": "Multiple Choice (Single): Reading Comprehension 24",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-299",
+      "title": "Multiple Choice (Single): Reading Comprehension 25",
+      "difficulty": "medium",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic product, inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the health of the entire national economy to help governments formulate fiscal and monetary guidelines.",
+      "question": "What is the primary focus of macroeconomics according to the text?",
+      "options": [
+        "Aggregate national economic metrics and policy guidelines.",
+        "Individual household spending and consumption.",
+        "Corporate stock dividends and investments.",
+        "Linguistic patterns and cultural history."
+      ],
+      "correctAnswer": 0,
+      "tips": [
+        "Locate the keywords in the text that match the query.",
+        "Eliminate options that are too narrow or contradict the passage."
+      ],
+      "taskType": "mcq-single-reading",
       "isPrediction": true
     }
   ],
   "listening": [
     {
-      "id": "LS-PRED-40101",
-      "title": "Summarize Spoken Text: Language Proficiency Success",
-      "difficulty": "medium",
-      "timeLimit": 600,
-      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
-      "lectureText": "In English proficiency speaking tests, test-takers are evaluated on fluency, pronunciation, and vocabulary. A common mistake is speaking too quickly, which leads to slurring and poor pronunciation. Instead, keep a steady pace, speak clearly into the microphone, and use natural pauses at punctuation marks. Maintaining confidence and avoiding long hesitations will significantly improve your fluency score.",
-      "keywords": [
-        "proficiency",
-        "fluency",
-        "pronunciation",
-        "vocabulary",
-        "microphone",
-        "pauses"
-      ],
-      "minWords": 50,
-      "maxWords": 70,
-      "modelAnswer": "To achieve high success in English proficiency tests, candidates must focus on oral fluency and pronunciation rather than speed. Speaking too quickly leads to mistakes. Instead, maintain a steady pace, speak clearly into the microphone, use natural pauses, and expand your vocabulary. Avoiding long hesitations will significantly improve your overall scores.",
-      "tips": [
-        "Write between 50 and 70 words.",
-        "Summarize the main points and make sure to include key nouns from the lecture.",
-        "Ensure grammatical correctness and proper sentence structure."
-      ],
-      "taskType": "summarize-spoken",
-      "isPrediction": true
-    },
-    {
-      "id": "LS-PRED-40102",
-      "title": "Summarize Spoken Text: Express Entry System Overview",
-      "difficulty": "medium",
-      "timeLimit": 600,
-      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
-      "lectureText": "The Express Entry system is a fast-track pathway for skilled workers seeking permanent residency in Canada. It manages three federal programs: the Federal Skilled Worker Program, the Federal Skilled Trades Program, and the Canadian Experience Class. Candidates are ranked using a Comprehensive Ranking System, which awards points for age, education, and language skills. Frequent invitation rounds select high-scoring candidates.",
-      "keywords": [
-        "pathway",
-        "residency",
-        "programs",
-        "comprehensive",
-        "ranking",
-        "points"
-      ],
-      "minWords": 50,
-      "maxWords": 70,
-      "modelAnswer": "The Canadian Express Entry system is a fast-track pathway for skilled workers seeking permanent residency. It manages three key federal programs, ranking candidates using the Comprehensive Ranking System. This system awards points based on criteria like age, education, and language skills. Frequent invitation rounds are held to select high-scoring applicants from the pool.",
-      "tips": [
-        "Write between 50 and 70 words.",
-        "Summarize the main points and make sure to include key nouns from the lecture.",
-        "Ensure grammatical correctness and proper sentence structure."
-      ],
-      "taskType": "summarize-spoken",
-      "isPrediction": true
-    },
-    {
-      "id": "LS-PRED-40103",
-      "title": "Summarize Spoken Text: Cultural Adaptation Readiness",
-      "difficulty": "medium",
-      "timeLimit": 600,
-      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
-      "lectureText": "Preparing to study abroad requires more than just academic readiness; cultural and mental preparation are equally vital. Students should research the local customs, weather conditions, and transport systems of their destination city. Developing basic cooking and budgeting skills helps manage independent living. Creating a strong peer network early on prevents homesickness and eases social integration.",
-      "keywords": [
-        "readiness",
-        "preparation",
-        "customs",
-        "budgeting",
-        "network",
-        "integration"
-      ],
-      "minWords": 50,
-      "maxWords": 70,
-      "modelAnswer": "Preparing to study abroad requires academic readiness and vital cultural preparation. Students should research local customs, weather conditions, and transport systems of their destination. Additionally, developing budgeting skills is essential for independent living. Creating a strong peer network early on is also crucial for preventing homesickness and easing social integration.",
-      "tips": [
-        "Write between 50 and 70 words.",
-        "Summarize the main points and make sure to include key nouns from the lecture.",
-        "Ensure grammatical correctness and proper sentence structure."
-      ],
-      "taskType": "summarize-spoken",
-      "isPrediction": true
-    },
-    {
-      "id": "LS-PRED-40104",
-      "title": "Summarize Spoken Text: Post-Study Work Permits",
-      "difficulty": "medium",
-      "timeLimit": 600,
-      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
-      "lectureText": "Post-study work permits are designed to retain global talent by allowing international graduates to gain local work experience. In Canada, the Post-Graduation Work Permit program offers permits matching the duration of study, up to three years. This work experience is highly valuable, as it helps graduates accumulate points toward permanent residency pathways, facilitating a transition from student status to skilled immigrant.",
-      "keywords": [
-        "permits",
-        "graduates",
-        "duration",
-        "pathways",
-        "residency",
-        "transition"
-      ],
-      "minWords": 50,
-      "maxWords": 70,
-      "modelAnswer": "Post-study work permits help retain global talent by allowing international graduates to gain local experience. The program offers permits with a duration matching their studies, up to three years. This experience is highly valuable, helping graduates accumulate points toward permanent residency pathways and facilitating a smooth transition into skilled immigration status.",
-      "tips": [
-        "Write between 50 and 70 words.",
-        "Summarize the main points and make sure to include key nouns from the lecture.",
-        "Ensure grammatical correctness and proper sentence structure."
-      ],
-      "taskType": "summarize-spoken",
-      "isPrediction": true
-    },
-    {
-      "id": "LS-PRED-40105",
-      "title": "Summarize Spoken Text: Student Accommodation Selection",
+      "id": "LS-PRED-200",
+      "title": "Summarize Spoken Text: Academic Lecture 1",
       "difficulty": "medium",
       "timeLimit": 600,
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
-      "lectureText": "Securing appropriate accommodation is one of the most pressing challenges for international students. Options include university halls of residence, homestays, and private shared rentals. While university halls offer convenience and social links, they tend to be expensive. Shared rentals are cost-effective but require careful lease signing. Students must evaluate proximity to campus, safety ratings, and utility costs before booking.",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
       "keywords": [
-        "accommodation",
-        "homestays",
-        "rentals",
-        "convenience",
-        "lease",
-        "proximity"
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
       ],
       "minWords": 50,
       "maxWords": 70,
-      "modelAnswer": "Securing appropriate student accommodation is a major challenge, with choices ranging from homestays to shared rentals. University halls offer social convenience but are expensive. Shared rentals are cost-effective but require careful lease signing. Students must evaluate factors like proximity to campus, safety ratings, and utility bills before booking their stay.",
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
       "tips": [
         "Write between 50 and 70 words.",
-        "Summarize the main points and make sure to include key nouns from the lecture.",
-        "Ensure grammatical correctness and proper sentence structure."
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
       ],
       "taskType": "summarize-spoken",
       "isPrediction": true
     },
     {
-      "id": "LS-PRED-40106",
-      "title": "Summarize Spoken Text: Financial Evidence Requirements",
+      "id": "LS-PRED-201",
+      "title": "Summarize Spoken Text: Academic Lecture 2",
       "difficulty": "medium",
       "timeLimit": 600,
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
-      "lectureText": "Immigration departments enforce strict proof of funds requirements to ensure international students can support themselves without local employment. Financial evidence must show cover for tuition fees and basic living expenses for at least the first year. Acceptable documents include bank certificates, education loans, or proof of government scholarships. Insufficient or unverified financial evidence is the leading cause of student visa rejections.",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
       "keywords": [
-        "funds",
-        "evidence",
-        "expenses",
-        "bank",
-        "loans",
-        "rejections"
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
       ],
       "minWords": 50,
       "maxWords": 70,
-      "modelAnswer": "Immigration departments require strict proof of funds to ensure international students can cover tuition fees and living expenses. Acceptable financial evidence includes bank certificates, education loans, or scholarship letters. Providing insufficient or unverified financial proof is the leading cause of visa rejections, making careful documentation essential for success.",
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
       "tips": [
         "Write between 50 and 70 words.",
-        "Summarize the main points and make sure to include key nouns from the lecture.",
-        "Ensure grammatical correctness and proper sentence structure."
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
       ],
       "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-202",
+      "title": "Summarize Spoken Text: Academic Lecture 3",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-203",
+      "title": "Summarize Spoken Text: Academic Lecture 4",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-204",
+      "title": "Summarize Spoken Text: Academic Lecture 5",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-205",
+      "title": "Summarize Spoken Text: Academic Lecture 6",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-206",
+      "title": "Summarize Spoken Text: Academic Lecture 7",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-207",
+      "title": "Summarize Spoken Text: Academic Lecture 8",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-208",
+      "title": "Summarize Spoken Text: Academic Lecture 9",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-209",
+      "title": "Summarize Spoken Text: Academic Lecture 10",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-210",
+      "title": "Summarize Spoken Text: Academic Lecture 11",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-211",
+      "title": "Summarize Spoken Text: Academic Lecture 12",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-212",
+      "title": "Summarize Spoken Text: Academic Lecture 13",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-213",
+      "title": "Summarize Spoken Text: Academic Lecture 14",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-214",
+      "title": "Summarize Spoken Text: Academic Lecture 15",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-215",
+      "title": "Summarize Spoken Text: Academic Lecture 16",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-216",
+      "title": "Summarize Spoken Text: Academic Lecture 17",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-217",
+      "title": "Summarize Spoken Text: Academic Lecture 18",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-218",
+      "title": "Summarize Spoken Text: Academic Lecture 19",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-219",
+      "title": "Summarize Spoken Text: Academic Lecture 20",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-220",
+      "title": "Summarize Spoken Text: Academic Lecture 21",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-221",
+      "title": "Summarize Spoken Text: Academic Lecture 22",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-222",
+      "title": "Summarize Spoken Text: Academic Lecture 23",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-223",
+      "title": "Summarize Spoken Text: Academic Lecture 24",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-224",
+      "title": "Summarize Spoken Text: Academic Lecture 25",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "The lecture focused on the principles of neural network structures in machine learning. The speaker detailed how neurons are arranged in layers, utilizing input data to adjust mathematical weights, ultimately optimizing accuracy.",
+      "keywords": [
+        "neural networks",
+        "layers",
+        "machine learning",
+        "weights",
+        "optimization"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The speaker discussed neural networks in machine learning, outlining how layers utilize inputs to adjust weights and optimize system accuracy.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Capture essential keywords and outline the main points clearly.",
+        "Verify spelling and punctuation before submitting."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-225",
+      "title": "Write from Dictation: Task 1",
+      "difficulty": "medium",
+      "sentence": "The primary data was collected using qualitative surveys.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-226",
+      "title": "Write from Dictation: Task 2",
+      "difficulty": "medium",
+      "sentence": "Your essay must be submitted by Friday at five PM.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-227",
+      "title": "Write from Dictation: Task 3",
+      "difficulty": "medium",
+      "sentence": "The professor will hold office hours in the science building.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-228",
+      "title": "Write from Dictation: Task 4",
+      "difficulty": "medium",
+      "sentence": "Please review the introductory chapter before the lecture.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-229",
+      "title": "Write from Dictation: Task 5",
+      "difficulty": "medium",
+      "sentence": "All international students must attend the mandatory orientation.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-230",
+      "title": "Write from Dictation: Task 6",
+      "difficulty": "medium",
+      "sentence": "The university library offers free research assistance services.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-231",
+      "title": "Write from Dictation: Task 7",
+      "difficulty": "medium",
+      "sentence": "Please bring your student identification card to the exam.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-232",
+      "title": "Write from Dictation: Task 8",
+      "difficulty": "medium",
+      "sentence": "The deadline for course registration is next Monday.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-233",
+      "title": "Write from Dictation: Task 9",
+      "difficulty": "medium",
+      "sentence": "Monetary policy is used to stabilize the national economy.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-234",
+      "title": "Write from Dictation: Task 10",
+      "difficulty": "medium",
+      "sentence": "Ecosystem biodiversity is critical for environmental resilience.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-235",
+      "title": "Write from Dictation: Task 11",
+      "difficulty": "medium",
+      "sentence": "The chemistry laboratory is undergoing renovation this semester.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-236",
+      "title": "Write from Dictation: Task 12",
+      "difficulty": "medium",
+      "sentence": "Please turn off your phones before the exam starts.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-237",
+      "title": "Write from Dictation: Task 13",
+      "difficulty": "medium",
+      "sentence": "Detailed housing information is available at the housing desk.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-238",
+      "title": "Write from Dictation: Task 14",
+      "difficulty": "medium",
+      "sentence": "English proficiency is required for university admission.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-239",
+      "title": "Write from Dictation: Task 15",
+      "difficulty": "medium",
+      "sentence": "The geology department is planning a field trip next month.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-240",
+      "title": "Write from Dictation: Task 16",
+      "difficulty": "medium",
+      "sentence": "Please return all laboratory tools to their correct drawers.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-241",
+      "title": "Write from Dictation: Task 17",
+      "difficulty": "medium",
+      "sentence": "The new administrative building is located near the park.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-242",
+      "title": "Write from Dictation: Task 18",
+      "difficulty": "medium",
+      "sentence": "Citing your references correctly prevents academic plagiarism.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-243",
+      "title": "Write from Dictation: Task 19",
+      "difficulty": "medium",
+      "sentence": "The science conference will discuss renewable energy grids.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-244",
+      "title": "Write from Dictation: Task 20",
+      "difficulty": "medium",
+      "sentence": "You can collect your exam tickets from the office.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-245",
+      "title": "Write from Dictation: Task 21",
+      "difficulty": "medium",
+      "sentence": "Macroeconomic policies are adjusted to curb rising inflation.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-246",
+      "title": "Write from Dictation: Task 22",
+      "difficulty": "medium",
+      "sentence": "The gut microbiome plays a major role in human health.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-247",
+      "title": "Write from Dictation: Task 23",
+      "difficulty": "medium",
+      "sentence": "Quantum computing will transform cryptographic encryption methods.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-248",
+      "title": "Write from Dictation: Task 24",
+      "difficulty": "medium",
+      "sentence": "Remote working benefits employees by increasing flexibility.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-249",
+      "title": "Write from Dictation: Task 25",
+      "difficulty": "medium",
+      "sentence": "Social media impact on human relationships is widely studied.",
+      "tips": [
+        "Write exactly what you hear.",
+        "Pay attention to the spelling of academic terms.",
+        "Ensure proper capitalization and punctuation at the end of the sentence."
+      ],
+      "taskType": "write-dictation",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-250",
+      "title": "Fill in the Blanks (Listening): Context 1",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-251",
+      "title": "Fill in the Blanks (Listening): Context 2",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-252",
+      "title": "Fill in the Blanks (Listening): Context 3",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-253",
+      "title": "Fill in the Blanks (Listening): Context 4",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-254",
+      "title": "Fill in the Blanks (Listening): Context 5",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-255",
+      "title": "Fill in the Blanks (Listening): Context 6",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-256",
+      "title": "Fill in the Blanks (Listening): Context 7",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-257",
+      "title": "Fill in the Blanks (Listening): Context 8",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-258",
+      "title": "Fill in the Blanks (Listening): Context 9",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-259",
+      "title": "Fill in the Blanks (Listening): Context 10",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-260",
+      "title": "Fill in the Blanks (Listening): Context 11",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-261",
+      "title": "Fill in the Blanks (Listening): Context 12",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-262",
+      "title": "Fill in the Blanks (Listening): Context 13",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-263",
+      "title": "Fill in the Blanks (Listening): Context 14",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-264",
+      "title": "Fill in the Blanks (Listening): Context 15",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-265",
+      "title": "Fill in the Blanks (Listening): Context 16",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-266",
+      "title": "Fill in the Blanks (Listening): Context 17",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-267",
+      "title": "Fill in the Blanks (Listening): Context 18",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-268",
+      "title": "Fill in the Blanks (Listening): Context 19",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-269",
+      "title": "Fill in the Blanks (Listening): Context 20",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-270",
+      "title": "Fill in the Blanks (Listening): Context 21",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-271",
+      "title": "Fill in the Blanks (Listening): Context 22",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-272",
+      "title": "Fill in the Blanks (Listening): Context 23",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-273",
+      "title": "Fill in the Blanks (Listening): Context 24",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-274",
+      "title": "Fill in the Blanks (Listening): Context 25",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "text": "The study of macroeconomics focuses on aggregate national metrics, such as gross domestic [blank-0], inflation indices, and national unemployment rates. Unlike microeconomics, which analyzes individual household and corporate decisions, macroeconomics assesses the [blank-1] of the entire national economy to help governments formulate fiscal and monetary [blank-2].",
+      "correctAnswers": [
+        "product",
+        "health",
+        "guidelines"
+      ],
+      "tips": [
+        "Type the exact words you hear in the recording.",
+        "Ensure correct spelling for all blank slots."
+      ],
+      "taskType": "fib-listening",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-275",
+      "title": "Highlight Incorrect Words: Science Session 1",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-276",
+      "title": "Highlight Incorrect Words: Science Session 2",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-277",
+      "title": "Highlight Incorrect Words: Science Session 3",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-278",
+      "title": "Highlight Incorrect Words: Science Session 4",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-279",
+      "title": "Highlight Incorrect Words: Science Session 5",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-280",
+      "title": "Highlight Incorrect Words: Science Session 6",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-281",
+      "title": "Highlight Incorrect Words: Science Session 7",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-282",
+      "title": "Highlight Incorrect Words: Science Session 8",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-283",
+      "title": "Highlight Incorrect Words: Science Session 9",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-284",
+      "title": "Highlight Incorrect Words: Science Session 10",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-285",
+      "title": "Highlight Incorrect Words: Science Session 11",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-286",
+      "title": "Highlight Incorrect Words: Science Session 12",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-287",
+      "title": "Highlight Incorrect Words: Science Session 13",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-288",
+      "title": "Highlight Incorrect Words: Science Session 14",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-289",
+      "title": "Highlight Incorrect Words: Science Session 15",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-290",
+      "title": "Highlight Incorrect Words: Science Session 16",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-291",
+      "title": "Highlight Incorrect Words: Science Session 17",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-292",
+      "title": "Highlight Incorrect Words: Science Session 18",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-293",
+      "title": "Highlight Incorrect Words: Science Session 19",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-294",
+      "title": "Highlight Incorrect Words: Science Session 20",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-295",
+      "title": "Highlight Incorrect Words: Science Session 21",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-296",
+      "title": "Highlight Incorrect Words: Science Session 22",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-297",
+      "title": "Highlight Incorrect Words: Science Session 23",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-298",
+      "title": "Highlight Incorrect Words: Science Session 24",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-299",
+      "title": "Highlight Incorrect Words: Science Session 25",
+      "difficulty": "medium",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "text": "Living cells are constantly exposed to environmental factors like radiation and toxic chemicals. To prevent lethal damages and cellular decay, cells rely on specialized DNA repair enzymes that monitor, identify, and replace damaged sections in the double helix.",
+      "transcript": "Living cells are constantly exposed to environmental mutagens like radiation and toxic chemicals. To prevent lethal mutations and cellular decay, cells rely on specialized DNA repair enzymes that monitor, excise, and replace damaged nucleotides in the double helix.",
+      "incorrectWords": [
+        "factors",
+        "damages",
+        "identify",
+        "sections"
+      ],
+      "correctWords": [
+        "mutagens",
+        "mutations",
+        "excise",
+        "nucleotides"
+      ],
+      "tips": [
+        "Follow the text cursor with your eyes as the audio plays.",
+        "Click on the words in the text that differ from the spoken audio."
+      ],
+      "taskType": "highlight-incorrect",
       "isPrediction": true
     }
   ]
