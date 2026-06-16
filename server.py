@@ -4,8 +4,11 @@ import os
 import sqlite3
 import urllib.parse
 
+# Determine database path (use persistent disk path on Render if available)
+DB_PATH = '/data/database.db' if os.path.exists('/data') else 'database.db'
+
 def init_db():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS accounts (
@@ -308,7 +311,7 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         import json
         import sqlite3
         try:
-            conn = sqlite3.connect('database.db')
+            conn = sqlite3.connect(DB_PATH)
             cursor = conn.cursor()
             cursor.execute("SELECT email, name, password, avatar, progress FROM accounts")
             rows = cursor.fetchall()
@@ -350,7 +353,7 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(400, {"error": "Missing email"})
                 return
                 
-            conn = sqlite3.connect('database.db')
+            conn = sqlite3.connect(DB_PATH)
             cursor = conn.cursor()
             
             # Serialize progress if it's a dict or list
