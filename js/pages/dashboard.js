@@ -1,7 +1,7 @@
 /* FluentAI Progress Dashboard & SVG Custom Graphs */
 
-import { Database } from '../db.js?v=17';
-import { Router } from '../router.js?v=17';
+import { Database } from '../db.js?v=18';
+import { Router } from '../router.js?v=18';
 
 export function renderDashboard(container) {
   const progress = Database.getProgress();

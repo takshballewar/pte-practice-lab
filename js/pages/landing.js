@@ -1,6 +1,6 @@
 /* FluentAI Landing Page Component & Sine Wave Visualizer */
 
-import { Router } from '../router.js?v=17';
+import { Router } from '../router.js?v=18';
 
 export function renderLanding(container) {
   container.innerHTML = `
