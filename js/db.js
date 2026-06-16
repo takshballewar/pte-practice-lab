@@ -1288,7 +1288,7 @@ export const Database = {
   getProgress() {
     try {
       const user = this.getUser();
-      const email = (user && user.authenticated) ? user.email : 'guest';
+      const email = (user && user.authenticated) ? user.email.toLowerCase().trim() : 'guest';
       
       // If guest, try generic 'fluentai_progress' first
       if (email === 'guest') {
@@ -1314,7 +1314,7 @@ export const Database = {
 
   updateProgress(updated) {
     const user = this.getUser();
-    const email = (user && user.authenticated) ? user.email : 'guest';
+    const email = (user && user.authenticated) ? user.email.toLowerCase().trim() : 'guest';
     if (email === 'guest') {
       localStorage.setItem("fluentai_progress", JSON.stringify(updated));
     } else {
@@ -1378,8 +1378,11 @@ export const Database = {
 
   saveAccount(account) {
     try {
+      if (account && account.email) {
+        account.email = account.email.toLowerCase().trim();
+      }
       const accounts = this.getAccounts();
-      const idx = accounts.findIndex(a => a.email === account.email);
+      const idx = accounts.findIndex(a => a.email.toLowerCase() === account.email.toLowerCase());
       if (idx !== -1) {
         accounts[idx] = { ...accounts[idx], ...account };
       } else {

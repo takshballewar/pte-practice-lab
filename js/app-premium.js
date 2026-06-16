@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=22';
-import { Router } from './router.js?v=22';
-import { Tutor } from './components/tutor.js?v=22';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=22';
+import { Database } from './db.js?v=23';
+import { Router } from './router.js?v=23';
+import { Tutor } from './components/tutor.js?v=23';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=23';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=22';
-import { renderDashboard } from './pages/dashboard.js?v=22';
-import { renderPractice } from './pages/practice-premium.js?v=22';
-import { renderMockTest } from './pages/mocktest.js?v=22';
-import { renderScoring } from './pages/scoring.js?v=22';
-import { renderProfile } from './pages/profile.js?v=22';
-import { renderPricing } from './pages/pricing.js?v=22';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=22';
+import { renderLanding } from './pages/landing.js?v=23';
+import { renderDashboard } from './pages/dashboard.js?v=23';
+import { renderPractice } from './pages/practice-premium.js?v=23';
+import { renderMockTest } from './pages/mocktest.js?v=23';
+import { renderScoring } from './pages/scoring.js?v=23';
+import { renderProfile } from './pages/profile.js?v=23';
+import { renderPricing } from './pages/pricing.js?v=23';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=23';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -290,7 +290,7 @@ function initAuthUI() {
   // Handle forms submit
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById('login-email').value.trim();
+    const email = document.getElementById('login-email').value.trim().toLowerCase();
     const password = document.getElementById('login-password').value;
     
     const accounts = Database.getAccounts();
@@ -323,7 +323,7 @@ function initAuthUI() {
   registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('register-name').value.trim();
-    const email = document.getElementById('register-email').value.trim();
+    const email = document.getElementById('register-email').value.trim().toLowerCase();
     const password = document.getElementById('register-password').value;
     const target = parseInt(document.getElementById('register-target').value);
 

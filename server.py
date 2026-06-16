@@ -362,7 +362,7 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     except Exception:
                         progress_val = row[4]
                 accounts.append({
-                    "email": row[0],
+                    "email": row[0].lower() if row[0] else "",
                     "name": row[1],
                     "password": row[2],
                     "avatar": row[3],
@@ -381,6 +381,8 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             account = json.loads(body) if body else {}
             
             email = account.get('email')
+            if email:
+                email = email.strip().lower()
             name = account.get('name')
             password = account.get('password')
             avatar = account.get('avatar')

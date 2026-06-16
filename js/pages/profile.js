@@ -1,6 +1,6 @@
 /* FluentAI Profile & AI Study Plan Generator Component */
 
-import { Database } from '../db.js?v=22';
+import { Database } from '../db.js?v=23';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
