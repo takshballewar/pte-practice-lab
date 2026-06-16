@@ -1,6 +1,53 @@
 import http.server
 import socketserver
 import os
+import sqlite3
+import urllib.parse
+
+def init_db():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS accounts (
+            email TEXT PRIMARY KEY,
+            name TEXT,
+            password TEXT,
+            avatar TEXT,
+            progress TEXT
+        )
+    ''')
+    # Seed default user if not present
+    cursor.execute("SELECT 1 FROM accounts WHERE email = ?", ('vivek@example.com',))
+    if not cursor.fetchone():
+        import json
+        default_progress = {
+            "streak": 0,
+            "points": 0,
+            "targetScore": 79,
+            "targetSpeaking": 79,
+            "targetWriting": 79,
+            "targetReading": 79,
+            "targetListening": 79,
+            "examDate": "2026-07",
+            "scoreHistory": [],
+            "completedTasks": [],
+            "unclearedTasks": [],
+            "tutorHistory": [
+                { "sender": "tutor", "text": "Welcome to Aspire, Vivek! I'm your AI PTE trainer. Let's start practicing to hit your target of PTE 79!", "time": "12:00 PM" }
+            ]
+        }
+        cursor.execute('''
+            INSERT INTO accounts (email, name, password, avatar, progress)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (
+            'vivek@example.com',
+            'Vivek Ballewar',
+            'password',
+            None,
+            json.dumps(default_progress)
+        ))
+    conn.commit()
+    conn.close()
 
 PORT = int(os.environ.get('PORT', 8081))
 
@@ -19,13 +66,23 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Expires', '0')
         super().end_headers()
 
+    def do_GET(self):
+        parsed_url = urllib.parse.urlparse(self.path)
+        if parsed_url.path == '/api/accounts':
+            self.handle_get_accounts()
+        else:
+            super().do_GET()
+
     def do_POST(self):
-        if self.path == '/api/create-checkout-session':
+        parsed_url = urllib.parse.urlparse(self.path)
+        if parsed_url.path == '/api/create-checkout-session':
             self.handle_create_checkout_session()
-        elif self.path == '/api/razorpay/create-order':
+        elif parsed_url.path == '/api/razorpay/create-order':
             self.handle_razorpay_create_order()
-        elif self.path == '/api/razorpay/verify-payment':
+        elif parsed_url.path == '/api/razorpay/verify-payment':
             self.handle_razorpay_verify_payment()
+        elif parsed_url.path == '/api/accounts/save':
+            self.handle_save_account()
         else:
             self.send_error(404, "Not Found")
 
@@ -247,6 +304,77 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         except Exception as e:
             self.send_json_response(500, {"error": str(e)})
 
+    def handle_get_accounts(self):
+        import json
+        import sqlite3
+        try:
+            conn = sqlite3.connect('database.db')
+            cursor = conn.cursor()
+            cursor.execute("SELECT email, name, password, avatar, progress FROM accounts")
+            rows = cursor.fetchall()
+            accounts = []
+            for row in rows:
+                progress_val = None
+                if row[4]:
+                    try:
+                        progress_val = json.loads(row[4])
+                    except Exception:
+                        progress_val = row[4]
+                accounts.append({
+                    "email": row[0],
+                    "name": row[1],
+                    "password": row[2],
+                    "avatar": row[3],
+                    "progress": progress_val
+                })
+            conn.close()
+            self.send_json_response(200, accounts)
+        except Exception as e:
+            self.send_json_response(500, {"error": str(e)})
+
+    def handle_save_account(self):
+        import json
+        import sqlite3
+        try:
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length).decode('utf-8')
+            account = json.loads(body) if body else {}
+            
+            email = account.get('email')
+            name = account.get('name')
+            password = account.get('password')
+            avatar = account.get('avatar')
+            progress = account.get('progress')
+            
+            if not email:
+                self.send_json_response(400, {"error": "Missing email"})
+                return
+                
+            conn = sqlite3.connect('database.db')
+            cursor = conn.cursor()
+            
+            # Serialize progress if it's a dict or list
+            progress_str = json.dumps(progress) if isinstance(progress, (dict, list)) else progress
+            
+            cursor.execute("SELECT 1 FROM accounts WHERE email = ?", (email,))
+            if cursor.fetchone():
+                cursor.execute('''
+                    UPDATE accounts
+                    SET name = ?, password = ?, avatar = ?, progress = ?
+                    WHERE email = ?
+                ''', (name, password, avatar, progress_str, email))
+            else:
+                cursor.execute('''
+                    INSERT INTO accounts (email, name, password, avatar, progress)
+                    VALUES (?, ?, ?, ?, ?)
+                ''', (email, name, password, avatar, progress_str))
+            
+            conn.commit()
+            conn.close()
+            self.send_json_response(200, {"status": "success"})
+        except Exception as e:
+            self.send_json_response(500, {"error": str(e)})
+
     def send_json_response(self, status, data):
         import json
         self.send_response(status)
@@ -258,6 +386,8 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 if __name__ == '__main__':
     # Ensure we serve the directory where this script is located
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    # Initialize the SQLite database
+    init_db()
     # Allow port reuse to avoid 'Address already in use' errors
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", PORT), NoCacheHTTPRequestHandler) as httpd:

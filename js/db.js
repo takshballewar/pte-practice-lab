@@ -852,6 +852,16 @@ export const Database = {
       localStorage.setItem("fluentai_accounts", JSON.stringify(defaultAccounts));
     }
 
+    // Sync accounts from server-side database in background
+    fetch('/api/accounts')
+      .then(r => r.json())
+      .then(accounts => {
+        if (Array.isArray(accounts) && accounts.length > 0) {
+          localStorage.setItem("fluentai_accounts", JSON.stringify(accounts));
+        }
+      })
+      .catch(err => console.error("Failed to sync accounts from server", err));
+
     if (!localStorage.getItem("fluentai_user")) {
       // By default, do NOT log the user in on first load. They must explicitly register or log in.
       // Seed default user-scoped progress for Vivek Ballewar
@@ -1307,6 +1317,15 @@ export const Database = {
         if (idx !== -1) {
           accounts[idx].progress = updated;
           localStorage.setItem("fluentai_accounts", JSON.stringify(accounts));
+          
+          // Sync progress updates to SQLite server-side database
+          fetch('/api/accounts/save', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(accounts[idx])
+          }).catch(err => console.error("Failed to sync progress to server", err));
         }
       } catch (err) {
         console.error("Failed to sync progress to accounts directory", err);
@@ -1356,6 +1375,15 @@ export const Database = {
         accounts.push(account);
       }
       localStorage.setItem("fluentai_accounts", JSON.stringify(accounts));
+      
+      // Sync account creation/update to SQLite server-side database
+      fetch('/api/accounts/save', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(account)
+      }).catch(err => console.error("Failed to save account to server", err));
     } catch (e) {
       console.error("Failed to save account to localStorage", e);
     }
