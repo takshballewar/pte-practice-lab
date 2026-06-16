@@ -4,11 +4,31 @@ import os
 import sqlite3
 import urllib.parse
 
-# Determine database path (use persistent disk path on Render if available)
-DB_PATH = '/data/database.db' if os.path.exists('/data') else 'database.db'
+# Determine database connection details
+DB_URL = os.environ.get('DATABASE_URL')
+IS_POSTGRES = DB_URL is not None and (DB_URL.startswith('postgresql://') or DB_URL.startswith('postgres://'))
+
+# If not PostgreSQL, check for persistent disk SQLite path, otherwise local SQLite
+if not IS_POSTGRES:
+    DB_PATH = '/data/database.db' if os.path.exists('/data') else 'database.db'
+else:
+    DB_PATH = DB_URL
+
+def get_db_connection():
+    if IS_POSTGRES:
+        import psycopg2
+        return psycopg2.connect(DB_PATH)
+    else:
+        import sqlite3
+        return sqlite3.connect(DB_PATH)
+
+def execute_query(cursor, query, params=()):
+    if IS_POSTGRES:
+        query = query.replace('?', '%s')
+    cursor.execute(query, params)
 
 def init_db():
-    conn = sqlite3.connect(DB_PATH)
+    conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS accounts (
@@ -20,7 +40,7 @@ def init_db():
         )
     ''')
     # Seed default user if not present
-    cursor.execute("SELECT 1 FROM accounts WHERE email = ?", ('vivek@example.com',))
+    execute_query(cursor, "SELECT 1 FROM accounts WHERE email = ?", ('vivek@example.com',))
     if not cursor.fetchone():
         import json
         default_progress = {
@@ -309,11 +329,10 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def handle_get_accounts(self):
         import json
-        import sqlite3
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = get_db_connection()
             cursor = conn.cursor()
-            cursor.execute("SELECT email, name, password, avatar, progress FROM accounts")
+            execute_query(cursor, "SELECT email, name, password, avatar, progress FROM accounts")
             rows = cursor.fetchall()
             accounts = []
             for row in rows:
@@ -337,7 +356,6 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
     def handle_save_account(self):
         import json
-        import sqlite3
         try:
             content_length = int(self.headers.get('Content-Length', 0))
             body = self.rfile.read(content_length).decode('utf-8')
@@ -353,21 +371,21 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_json_response(400, {"error": "Missing email"})
                 return
                 
-            conn = sqlite3.connect(DB_PATH)
+            conn = get_db_connection()
             cursor = conn.cursor()
             
             # Serialize progress if it's a dict or list
             progress_str = json.dumps(progress) if isinstance(progress, (dict, list)) else progress
             
-            cursor.execute("SELECT 1 FROM accounts WHERE email = ?", (email,))
+            execute_query(cursor, "SELECT 1 FROM accounts WHERE email = ?", (email,))
             if cursor.fetchone():
-                cursor.execute('''
+                execute_query(cursor, '''
                     UPDATE accounts
                     SET name = ?, password = ?, avatar = ?, progress = ?
                     WHERE email = ?
                 ''', (name, password, avatar, progress_str, email))
             else:
-                cursor.execute('''
+                execute_query(cursor, '''
                     INSERT INTO accounts (email, name, password, avatar, progress)
                     VALUES (?, ?, ?, ?, ?)
                 ''', (email, name, password, avatar, progress_str))
