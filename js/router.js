@@ -1,6 +1,6 @@
 /* FluentAI SPA Hash Router and Page Views Lifecycle Coordinator */
 
-import { Database } from './db.js?v=21';
+import { Database } from './db.js?v=22';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';

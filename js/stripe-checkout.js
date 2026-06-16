@@ -2,7 +2,7 @@
  * Stripe Checkout Module for Aspire Education PTE Platform
  */
 
-import { Database } from './db.js?v=21';
+import { Database } from './db.js?v=22';
 
 const PLAN_PRICES = {
   pro_monthly: 'price_pro_monthly_placeholder',
@@ -43,7 +43,7 @@ const StripeCheckout = {
     if (!this.stripeInstance || !priceId || priceId.includes('placeholder')) {
       console.warn('[Stripe] Stripe is not configured properly. Falling back to Demo Mode.');
       // Fallback checkout simulation via CheckoutCoordinator
-      const { CheckoutCoordinator } = await import('./checkout-coordinator.js?v=21');
+      const { CheckoutCoordinator } = await import('./checkout-coordinator.js?v=22');
       return CheckoutCoordinator._simulateDemoCheckout(planId, billingCycle);
     }
 
