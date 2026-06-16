@@ -147,6 +147,8 @@ export function renderPractice(container, params) {
   let searchQuery = '';
   let filterDifficulty = 'all';
   let filterStatus = 'all';
+  let filterSource = 'all';
+  let pearsonModeActive = false;
 
   let allQuestions = [];
   const rebuildAllQuestions = () => {
@@ -370,6 +372,11 @@ export function renderPractice(container, params) {
           <option value="completed" ${filterStatus === 'completed' ? 'selected' : ''}>Cleared</option>
           <option value="uncleared" ${filterStatus === 'uncleared' ? 'selected' : ''}>Uncleared</option>
         </select>
+        <select class="cockpit-filter-select" id="cockpit-filter-source">
+          <option value="all" ${filterSource === 'all' ? 'selected' : ''}>Source: All</option>
+          <option value="standard" ${filterSource === 'standard' ? 'selected' : ''}>Standard</option>
+          <option value="prediction" ${filterSource === 'prediction' ? 'selected' : ''}>Real Exams</option>
+        </select>
       </div>
       <div class="cockpit-questions-list" id="cockpit-questions-deck">
         ${questionsHtml}
@@ -401,6 +408,14 @@ export function renderPractice(container, params) {
       });
     }
 
+    const sourceEl = document.getElementById('cockpit-filter-source');
+    if (sourceEl) {
+      sourceEl.addEventListener('change', () => {
+        filterSource = sourceEl.value;
+        updateCockpit();
+      });
+    }
+
     colQuestions.querySelectorAll('.cockpit-q-card').forEach(card => {
       card.addEventListener('click', () => {
         const qid = card.getAttribute('data-qid');
@@ -423,6 +438,13 @@ export function renderPractice(container, params) {
       const matchCategory = q.taskType === selectedCategory;
       const matchDiff = filterDifficulty === 'all' || q.difficulty === filterDifficulty;
       
+      let matchSource = true;
+      if (filterSource === 'standard') {
+        matchSource = !q.isPrediction;
+      } else if (filterSource === 'prediction') {
+        matchSource = !!q.isPrediction;
+      }
+
       let matchStatus = false;
       const isCompleted = progress.completedTasks.includes(q.id);
       const isUncleared = progress.unclearedTasks.includes(q.id);
@@ -437,7 +459,7 @@ export function renderPractice(container, params) {
       
       const matchSearch = q.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           q.id.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchCategory && matchDiff && matchStatus && matchSearch;
+      return matchCategory && matchDiff && matchStatus && matchSearch && matchSource;
     });
 
     const listDeck = document.getElementById('cockpit-questions-deck');
@@ -489,45 +511,188 @@ export function renderPractice(container, params) {
     if (!progress.unclearedTasks) progress.unclearedTasks = [];
 
     if (activeQuestion) {
-      const isUncleared = progress.unclearedTasks.includes(activeQuestion.id);
-
-      colStage.innerHTML = `
-        <div style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid var(--border-color); padding-bottom:10px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <h3 style="font-size:14px; font-weight:700; margin:0; color:var(--text-primary);">${activeQuestion.id}: ${activeQuestion.title}</h3>
-          </div>
-          <div style="display:flex; align-items:center; gap:6px;">
-            <button id="stage-hint-btn" class="btn btn-outline btn-sm" style="padding:4px 8px !important; font-size:11px !important;">💡 Tip</button>
-            <button id="stage-uncleared-btn" class="btn btn-sm ${isUncleared ? 'btn-danger' : 'btn-outline-danger'}" style="padding:4px 8px !important; font-size:11px !important;">
-              ${isUncleared ? 'Marked Uncleared' : 'Mark Uncleared'}
-            </button>
-            <button id="stage-generate-btn" class="btn btn-primary btn-sm shadow-neon" style="padding:4px 8px !important; font-size:11px !important;">
-              Generate AI
-            </button>
-          </div>
-        </div>
-
-        <div class="card-glass" style="padding: 16px; margin-bottom:10px;">
-          <div id="practice-active-interactive-box"></div>
-        </div>
+      if (pearsonModeActive) {
+        // Render Pearson Simulator Skin for Practice
+        const user = Database.getUser();
+        const userName = (user && user.name) ? user.name : "Vivek Ballewar";
         
-        <div id="practice-hint-card" class="card-glass-glow hidden" style="position:fixed; top:20%; left:30%; right:30%; z-index:300; padding:20px;">
-          <div class="card-title-flex" style="margin-bottom: 10px;">
-            <h4 style="color:var(--accent); margin:0;">AI Practice Tips & Templates</h4>
-            <button id="practice-hint-close" class="btn-close-only">&times;</button>
-          </div>
-          <ul style="color:var(--text-secondary); font-size:13px; display:flex; flex-direction:column; gap:8px; padding-left:14px; margin:0;">
-            ${(activeQuestion.tips || ["Focus on grammatical cohesion.", "Maintain pacing details."]).map(tip => `<li>${tip}</li>`).join('')}
-          </ul>
-        </div>
-      `;
+        colStage.innerHTML = `
+          <div class="pearson-portal">
+            <div class="pearson-header">
+              <div class="pearson-header-title">PTE Academic - Practice Lab</div>
+              <div class="pearson-header-candidate">
+                Candidate: <b>${userName}</b>
+                <button id="pearson-mode-exit-btn" style="margin-left: 20px; background:#cc0000; border:none; color:#fff; font-weight:bold; padding:2px 10px; cursor:pointer; border-radius:2px; font-size:11px;">Exit Exam Mode</button>
+              </div>
+            </div>
 
-      document.getElementById('stage-hint-btn').addEventListener('click', () => {
-        document.getElementById('practice-hint-card').classList.toggle('hidden');
-      });
-      document.getElementById('practice-hint-close').addEventListener('click', () => {
-        document.getElementById('practice-hint-card').classList.add('hidden');
-      });
+            <div class="pearson-subheader">
+              <div class="pearson-subheader-left" id="mock-sim-section-title">Section: ${activeQuestion.skill.toUpperCase()} (${activeQuestion.taskType.replace('-', ' ').toUpperCase()})</div>
+              <div class="pearson-subheader-right">
+                <span id="mock-sim-question-idx" style="font-weight: bold; margin-right: 15px;">Practice Task</span>
+                <div class="pearson-timer-box">
+                  Practice Mode
+                </div>
+              </div>
+            </div>
+
+            <div class="pearson-content-area" id="practice-active-interactive-box">
+              <!-- Loaded dynamically -->
+            </div>
+
+            <div class="pearson-footer">
+              <button id="pearson-practice-hint-btn" class="pearson-btn-gray" style="margin-right: 10px;">💡 Tip / Template</button>
+              <button id="pearson-practice-submit-btn" class="pearson-next-btn">Submit Answer &nbsp;▶</button>
+            </div>
+          </div>
+
+          <!-- Hint Popup Modal -->
+          <div id="practice-hint-card" class="pearson-modal-overlay" style="display: none;">
+            <div class="pearson-modal-box">
+              <div class="pearson-modal-title">AI Practice Tips & Templates</div>
+              <div class="pearson-modal-text">
+                <ul style="padding-left: 15px; margin: 0; line-height: 1.6; font-size: 13px; color: #333;">
+                  ${(activeQuestion.tips || ["Focus on grammatical cohesion.", "Maintain pacing details."]).map(tip => `<li>${tip}</li>`).join('')}
+                </ul>
+              </div>
+              <div class="pearson-modal-actions">
+                <button id="practice-hint-close" class="pearson-btn-blue">Close</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById('pearson-mode-exit-btn').addEventListener('click', () => {
+          pearsonModeActive = false;
+          document.body.classList.remove('in-exam-mode');
+          const appWrapper = document.getElementById('app');
+          if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+          updateCockpit();
+        });
+
+        document.getElementById('pearson-practice-hint-btn').addEventListener('click', () => {
+          document.getElementById('practice-hint-card').style.display = 'flex';
+        });
+
+        document.getElementById('practice-hint-close').addEventListener('click', () => {
+          document.getElementById('practice-hint-card').style.display = 'none';
+        });
+
+        const subbox = document.getElementById('practice-active-interactive-box');
+        const type = activeQuestion.taskType;
+
+        if (type === 'read-aloud' || type === 'describe-image' || type === 'repeat-sentence' || type === 'retell-lecture' || type === 'group-discussion' || type === 'short-question' || type === 'respond-situation') {
+          renderSpeakingWorkspace(subbox);
+        } else if (type === 'write-essay' || type === 'summarize-written') {
+          renderWritingWorkspace(subbox);
+        } else if (type === 'fib-dropdown' || type === 'fib-drag-drop' || type === 'fib-drag') {
+          renderReadingWorkspace(subbox);
+        } else if (type === 'reorder-paragraphs') {
+          renderReorderParagraphsWorkspace(subbox);
+        } else if (type === 'summarize-spoken') {
+          renderListeningWorkspace(subbox);
+        } else if (type === 'write-dictation') {
+          renderWriteFromDictationWorkspace(subbox);
+        } else if (type === 'highlight-incorrect') {
+          renderHighlightIncorrectWorkspace(subbox);
+        } else if (type === 'fib-listening') {
+          renderListeningFIBWorkspace(subbox);
+        } else {
+          subbox.innerHTML = `<p>${activeQuestion.text || activeQuestion.prompt}</p>`;
+        }
+
+        // Connect next button to grading submit button
+        document.getElementById('pearson-practice-submit-btn').addEventListener('click', () => {
+          const submitBtn = document.getElementById('prac-speak-submit-btn') || 
+                            document.getElementById('essay-submit-btn') || 
+                            document.getElementById('reading-submit-btn') ||
+                            document.getElementById('reorder-submit-btn') ||
+                            document.getElementById('listening-submit-btn') ||
+                            document.getElementById('write-dictation-submit-btn') ||
+                            document.getElementById('highlight-incorrect-submit-btn') ||
+                            document.getElementById('fib-listening-submit-btn') ||
+                            document.querySelector('.btn-primary');
+          
+          if (submitBtn) {
+            submitBtn.click();
+            pearsonModeActive = false;
+            document.body.classList.remove('in-exam-mode');
+            const appWrapper = document.getElementById('app');
+            if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+          } else {
+            pearsonModeActive = false;
+            document.body.classList.remove('in-exam-mode');
+            const appWrapper = document.getElementById('app');
+            if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+            renderColStage();
+          }
+        });
+
+      } else {
+        const isUncleared = progress.unclearedTasks.includes(activeQuestion.id);
+
+        colStage.innerHTML = `
+          <div style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid var(--border-color); padding-bottom:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <h3 style="font-size:14px; font-weight:700; margin:0; color:var(--text-primary);">${activeQuestion.id}: ${activeQuestion.title}</h3>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <!-- Pearson mode toggle -->
+              <div class="pearson-toggle-container">
+                <span style="color:var(--text-secondary); font-size:11px;">Pearson Exam Mode</span>
+                <label class="pearson-toggle-switch">
+                  <input type="checkbox" id="pearson-mode-toggle">
+                  <span class="pearson-toggle-slider"></span>
+                </label>
+              </div>
+              <button id="stage-hint-btn" class="btn btn-outline btn-sm" style="padding:4px 8px !important; font-size:11px !important;">💡 Tip</button>
+              <button id="stage-uncleared-btn" class="btn btn-sm ${isUncleared ? 'btn-danger' : 'btn-outline-danger'}" style="padding:4px 8px !important; font-size:11px !important;">
+                ${isUncleared ? 'Marked Uncleared' : 'Mark Uncleared'}
+              </button>
+              <button id="stage-generate-btn" class="btn btn-primary btn-sm shadow-neon" style="padding:4px 8px !important; font-size:11px !important;">
+                Generate AI
+              </button>
+            </div>
+          </div>
+
+          <div class="card-glass" style="padding: 16px; margin-bottom:10px;">
+            <div id="practice-active-interactive-box"></div>
+          </div>
+          
+          <div id="practice-hint-card" class="card-glass-glow hidden" style="position:fixed; top:20%; left:30%; right:30%; z-index:300; padding:20px;">
+            <div class="card-title-flex" style="margin-bottom: 10px;">
+              <h4 style="color:var(--accent); margin:0;">AI Practice Tips & Templates</h4>
+              <button id="practice-hint-close" class="btn-close-only">&times;</button>
+            </div>
+            <ul style="color:var(--text-secondary); font-size:13px; display:flex; flex-direction:column; gap:8px; padding-left:14px; margin:0;">
+              ${(activeQuestion.tips || ["Focus on grammatical cohesion.", "Maintain pacing details."]).map(tip => `<li>${tip}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+
+        document.getElementById('stage-hint-btn').addEventListener('click', () => {
+          document.getElementById('practice-hint-card').classList.toggle('hidden');
+        });
+        document.getElementById('practice-hint-close').addEventListener('click', () => {
+          document.getElementById('practice-hint-card').classList.add('hidden');
+        });
+
+        const toggleBtn = document.getElementById('pearson-mode-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('change', function() {
+            pearsonModeActive = this.checked;
+            if (pearsonModeActive) {
+              document.body.classList.add('in-exam-mode');
+              const appWrapper = document.getElementById('app');
+              if (appWrapper) appWrapper.classList.add('in-exam-mode');
+            } else {
+              document.body.classList.remove('in-exam-mode');
+              const appWrapper = document.getElementById('app');
+              if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+            }
+            renderColStage();
+          });
+        }
 
       const unclearedBtn = document.getElementById('stage-uncleared-btn');
       if (unclearedBtn) {
@@ -582,6 +747,7 @@ export function renderPractice(container, params) {
       }
       return;
     }
+  }
 
     let currentCategoryMeta = null;
     Object.keys(CATEGORIES).forEach(skill => {

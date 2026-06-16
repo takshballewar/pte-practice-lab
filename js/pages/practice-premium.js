@@ -147,6 +147,8 @@ export function renderPractice(container, params) {
   let searchQuery = '';
   let filterDifficulty = 'all';
   let filterStatus = 'all';
+  let filterSource = 'all';
+  let pearsonModeActive = false;
   let workspaceKeyDownHandler = null;
 
   let allQuestions = [];
@@ -229,6 +231,25 @@ export function renderPractice(container, params) {
       <!-- Fullscreen Focus Workspace Modal/Overlay -->
       <div class="focus-workspace-overlay hidden" id="focus-workspace-overlay">
         <div class="focus-card" id="focus-card">
+          <!-- Pearson Header Wrapper -->
+          <div class="pearson-header-wrapper" style="display: none;">
+            <div class="pearson-header">
+              <div class="pearson-header-title">PTE Academic - Practice Lab</div>
+              <div class="pearson-header-candidate">
+                Candidate: <span id="pearson-candidate-name">Vivek Ballewar</span>
+                <button id="pearson-mode-exit-btn" style="margin-left: 20px; background:#cc0000; border:none; color:#fff; font-weight:bold; padding:2px 10px; cursor:pointer; border-radius:2px; font-size:11px;">Exit Exam Mode</button>
+              </div>
+            </div>
+
+            <div class="pearson-subheader">
+              <div class="pearson-subheader-left" id="mock-sim-section-title">Section: Speaking (Read Aloud)</div>
+              <div class="pearson-subheader-right">
+                <span style="font-weight: bold; margin-right: 15px;">Practice Task</span>
+                <div class="pearson-timer-box">Practice Mode</div>
+              </div>
+            </div>
+          </div>
+
           <!-- Zen Mode Active Banner Alert -->
           <div class="zen-mode-alert" id="zen-mode-alert">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px; height:14px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
@@ -262,6 +283,117 @@ export function renderPractice(container, params) {
                   <button id="stage-hint-btn" class="btn btn-outline btn-sm">💡 Tip</button>
                   <button id="stage-uncleared-btn" class="btn btn-sm btn-outline-danger">Mark Uncleared</button>
                   <button id="stage-generate-btn" class="btn btn-primary btn-sm">Generate AI</button>
+                  <div class="pearson-toggle-container" style="margin-left: auto; margin-right: 10px; border: 1px solid rgba(0,0,0,0.1); background: rgba(0,0,0,0.03); padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px;">
+                    <span style="color:var(--text-secondary); font-size:11px; font-weight: 600;">Pearson Exam Mode</span>
+                    <label class="pearson-toggle-switch" style="margin-bottom:0; width: 34px; height: 20px; position: relative; display: inline-block;">
+                      <input type="checkbox" id="pearson-mode-toggle">
+                      <span class="pearson-toggle-slider"></span>
+                    </label>
+                  </div>
+                  <button id="focus-sidebar-toggle-btn" class="focus-sidebar-toggle-btn" title="Toggle Insights Sidebar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+                  </button>
+                </div>
+                <div id="practice-active-interactive-box"></div>
+              </div>
+
+              <!-- Collapsible Sidebar -->
+              <div class="focus-glass-sidebar" id="focus-glass-sidebar">
+                <!-- Content injected dynamically by renderFocusWorkspace -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Pearson Footer Wrapper -->
+          <div class="pearson-footer-wrapper" style="display: none;">
+            <div class="pearson-footer">
+              <button id="pearson-practice-hint-btn" class="pearson-btn-gray" style="margin-right: 10px;">💡 Tip / Template</button>
+              <button id="pearson-practice-submit-btn" class="pearson-next-btn">Submit Answer &nbsp;▶</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Hint Card overlay -->
+        <div id="practice-hint-card" class="card-glass-glow hidden">
+          <div class="card-title-flex">
+            <h4>AI Practice Tips & Templates</h4>
+            <button id="practice-hint-close" class="btn-close-only">&times;</button>
+          </div>
+          <ul id="practice-hint-list"></ul>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const hubContent = document.getElementById('hub-main-content');
+  const focusOverlay = document.getElementById('focus-workspace-overlay');
+  let focusCard = document.getElementById('focus-card');
+  let focusCloseBtn = document.getElementById('focus-close-btn');
+  let focusCatBadge = document.getElementById('focus-cat-badge');
+  let focusQTitle = document.getElementById('focus-q-title');
+  let macCloseBtn = document.getElementById('mac-close-btn');
+  let macZenBtn = document.getElementById('mac-zen-toggle-btn');
+  let macExpandBtn = document.getElementById('mac-expand-toggle-btn');
+  let sidebarToggleBtn = document.getElementById('focus-sidebar-toggle-btn');
+  let focusSidebar = document.getElementById('focus-glass-sidebar');
+  let stageZenBtn = document.getElementById('stage-zen-btn');
+
+  const rebindFocusElements = () => {
+    focusCard = document.getElementById('focus-card');
+    focusCloseBtn = document.getElementById('focus-close-btn');
+    focusCatBadge = document.getElementById('focus-cat-badge');
+    focusQTitle = document.getElementById('focus-q-title');
+    macCloseBtn = document.getElementById('mac-close-btn');
+    macZenBtn = document.getElementById('mac-zen-toggle-btn');
+    macExpandBtn = document.getElementById('mac-expand-toggle-btn');
+    sidebarToggleBtn = document.getElementById('focus-sidebar-toggle-btn');
+    focusSidebar = document.getElementById('focus-glass-sidebar');
+    stageZenBtn = document.getElementById('stage-zen-btn');
+  };
+
+  const restoreStandardFocusLayout = () => {
+    focusOverlay.innerHTML = `
+        <div class="focus-card" id="focus-card">
+          <!-- Zen Mode Active Banner Alert -->
+          <div class="zen-mode-alert" id="zen-mode-alert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px; height:14px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <span>Zen Mode Active. Press ESC or click the yellow dot to exit.</span>
+          </div>
+
+          <div class="focus-header">
+            <div style="display:flex; align-items:center;">
+              <!-- macOS Style Controls -->
+              <div class="mac-window-controls">
+                <button class="mac-dot close" id="mac-close-btn" title="Close Workspace"></button>
+                <button class="mac-dot minimize" id="mac-zen-toggle-btn" title="Toggle Zen Mode"></button>
+                <button class="mac-dot maximize" id="mac-expand-toggle-btn" title="Toggle Fullscreen Width"></button>
+              </div>
+              <div class="focus-title-area">
+                <span class="focus-cat-badge" id="focus-cat-badge"></span>
+                <h2 class="focus-q-title" id="focus-q-title"></h2>
+              </div>
+            </div>
+            <button class="btn-focus-close" id="focus-close-btn" aria-label="Close Practice Mode">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px; height:14px; margin-right:4px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>Close Focus</span>
+            </button>
+          </div>
+          <div class="focus-workspace-body">
+            <div class="focus-split-layout">
+              <!-- Workspace Area -->
+              <div class="focus-main-area">
+                <div class="focus-workspace-toolbar">
+                  <button id="stage-zen-btn" class="btn btn-outline btn-sm">🧘 Zen Mode</button>
+                  <button id="stage-hint-btn" class="btn btn-outline btn-sm">💡 Tip</button>
+                  <button id="stage-uncleared-btn" class="btn btn-sm btn-outline-danger">Mark Uncleared</button>
+                  <button id="stage-generate-btn" class="btn btn-primary btn-sm">Generate AI</button>
+                  <div class="pearson-toggle-container" style="margin-left: auto; margin-right: 10px; border: 1px solid rgba(0,0,0,0.1); background: rgba(0,0,0,0.03); padding: 4px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 6px;">
+                    <span style="color:var(--text-secondary); font-size:11px; font-weight: 600;">Pearson Exam Mode</span>
+                    <label class="pearson-toggle-switch" style="margin-bottom:0; width: 34px; height: 20px; position: relative; display: inline-block;">
+                      <input type="checkbox" id="pearson-mode-toggle">
+                      <span class="pearson-toggle-slider"></span>
+                    </label>
+                  </div>
                   <button id="focus-sidebar-toggle-btn" class="focus-sidebar-toggle-btn" title="Toggle Insights Sidebar">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px; height:16px;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="15" y1="3" x2="15" y2="21"></line></svg>
                   </button>
@@ -285,22 +417,9 @@ export function renderPractice(container, params) {
           </div>
           <ul id="practice-hint-list"></ul>
         </div>
-      </div>
-    </div>
-  `;
-
-  const hubContent = document.getElementById('hub-main-content');
-  const focusOverlay = document.getElementById('focus-workspace-overlay');
-  const focusCard = document.getElementById('focus-card');
-  const focusCloseBtn = document.getElementById('focus-close-btn');
-  const focusCatBadge = document.getElementById('focus-cat-badge');
-  const focusQTitle = document.getElementById('focus-q-title');
-  const macCloseBtn = document.getElementById('mac-close-btn');
-  const macZenBtn = document.getElementById('mac-zen-toggle-btn');
-  const macExpandBtn = document.getElementById('mac-expand-toggle-btn');
-  const sidebarToggleBtn = document.getElementById('focus-sidebar-toggle-btn');
-  const focusSidebar = document.getElementById('focus-glass-sidebar');
-  const stageZenBtn = document.getElementById('stage-zen-btn');
+    `;
+    rebindFocusElements();
+  };
 
   // Set default category on initial load (disabled here to load landing grid by default)
   // if (!selectedCategory && CATEGORIES[selectedSkillTab] && CATEGORIES[selectedSkillTab].length > 0) {
@@ -396,6 +515,13 @@ export function renderPractice(container, params) {
       const matchCategory = q.taskType === selectedCategory;
       const matchDiff = filterDifficulty === 'all' || q.difficulty === filterDifficulty;
       
+      let matchSource = true;
+      if (filterSource === 'standard') {
+        matchSource = !q.isPrediction;
+      } else if (filterSource === 'prediction') {
+        matchSource = !!q.isPrediction;
+      }
+
       let matchStatus = false;
       const isCompleted = progress.completedTasks.includes(q.id);
       const isUncleared = progress.unclearedTasks.includes(q.id);
@@ -410,7 +536,7 @@ export function renderPractice(container, params) {
       
       const matchSearch = q.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           q.id.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchCategory && matchDiff && matchStatus && matchSearch;
+      return matchCategory && matchDiff && matchSource && matchStatus && matchSearch;
     });
 
     const questionsHtml = filteredQuestions.map((q, idx) => {
@@ -489,6 +615,11 @@ export function renderPractice(container, params) {
               <option value="all" ${filterStatus === 'all' ? 'selected' : ''}>Status: All</option>
               <option value="completed" ${filterStatus === 'completed' ? 'selected' : ''}>Cleared</option>
               <option value="uncleared" ${filterStatus === 'uncleared' ? 'selected' : ''}>Uncleared</option>
+            </select>
+            <select class="cockpit-filter-select" id="cockpit-filter-source">
+              <option value="all" ${filterSource === 'all' ? 'selected' : ''}>Source: All</option>
+              <option value="standard" ${filterSource === 'standard' ? 'selected' : ''}>Standard</option>
+              <option value="prediction" ${filterSource === 'prediction' ? 'selected' : ''}>Real Exams</option>
             </select>
           </div>
           <div class="cockpit-questions-list">
@@ -574,6 +705,14 @@ export function renderPractice(container, params) {
       });
     }
 
+    const sourceEl = document.getElementById('cockpit-filter-source');
+    if (sourceEl) {
+      sourceEl.addEventListener('change', () => {
+        filterSource = sourceEl.value;
+        renderView();
+      });
+    }
+
     hubContent.querySelectorAll('.cockpit-q-card').forEach(card => {
       card.addEventListener('click', () => {
         const qid = card.getAttribute('data-qid');
@@ -613,6 +752,13 @@ export function renderPractice(container, params) {
       const matchCategory = q.taskType === selectedCategory;
       const matchDiff = filterDifficulty === 'all' || q.difficulty === filterDifficulty;
       
+      let matchSource = true;
+      if (filterSource === 'standard') {
+        matchSource = !q.isPrediction;
+      } else if (filterSource === 'prediction') {
+        matchSource = !!q.isPrediction;
+      }
+
       let matchStatus = false;
       const isCompleted = progress.completedTasks.includes(q.id);
       const isUncleared = progress.unclearedTasks.includes(q.id);
@@ -627,7 +773,7 @@ export function renderPractice(container, params) {
       
       const matchSearch = q.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           q.id.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchCategory && matchDiff && matchStatus && matchSearch;
+      return matchCategory && matchDiff && matchSource && matchStatus && matchSearch;
     });
 
     const listDeck = hubContent.querySelector('.cockpit-questions-list');
@@ -783,6 +929,61 @@ export function renderPractice(container, params) {
       if (match) currentCategoryMeta = match;
     });
 
+    // Configure Pearson mode elements and styles if active
+    const user = Database.getUser();
+    const userName = (user && user.name) ? user.name : "Vivek Ballewar";
+    const headerWrapper = focusOverlay.querySelector('.pearson-header-wrapper');
+    const footerWrapper = focusOverlay.querySelector('.pearson-footer-wrapper');
+
+    if (headerWrapper && footerWrapper) {
+      headerWrapper.style.display = pearsonModeActive ? 'block' : 'none';
+      footerWrapper.style.display = pearsonModeActive ? 'block' : 'none';
+      
+      if (pearsonModeActive) {
+        document.getElementById('pearson-candidate-name').textContent = userName;
+        document.getElementById('mock-sim-section-title').textContent = `Section: ${activeQuestion.skill.toUpperCase()} (${activeQuestion.taskType.replace('-', ' ').toUpperCase()})`;
+        
+        // Bind Pearson Mode exit/hint/submit buttons
+        document.getElementById('pearson-mode-exit-btn').onclick = () => {
+          pearsonModeActive = false;
+          document.body.classList.remove('in-exam-mode');
+          const appWrapper = document.getElementById('app');
+          if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+          renderView();
+        };
+
+        document.getElementById('pearson-practice-hint-btn').onclick = () => {
+          const tipCard = document.getElementById('practice-hint-card');
+          const tipList = document.getElementById('practice-hint-list');
+          if (tipCard && tipList) {
+            tipList.innerHTML = (activeQuestion.tips || ["Focus on grammatical cohesion.", "Maintain pacing details."]).map(tip => `<li>${tip}</li>`).join('');
+            tipCard.classList.remove('hidden');
+          }
+        };
+
+        document.getElementById('pearson-practice-submit-btn').onclick = () => {
+          const submitBtn = document.getElementById('prac-speak-submit-btn') || 
+                            document.getElementById('essay-submit-btn') || 
+                            document.getElementById('reading-submit-btn') ||
+                            document.getElementById('reorder-submit-btn') ||
+                            document.getElementById('listening-submit-btn') ||
+                            document.getElementById('write-dictation-submit-btn') ||
+                            document.getElementById('highlight-incorrect-submit-btn') ||
+                            document.getElementById('fib-listening-submit-btn') ||
+                            document.querySelector('.btn-primary');
+          
+          if (submitBtn) {
+            submitBtn.click();
+          }
+          pearsonModeActive = false;
+          document.body.classList.remove('in-exam-mode');
+          const appWrapper = document.getElementById('app');
+          if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+          renderView();
+        };
+      }
+    }
+
     focusOverlay.className = `focus-workspace-overlay skill-${selectedSkillTab}`;
     focusCatBadge.textContent = currentCategoryMeta ? currentCategoryMeta.title : activeQuestion.taskType;
     focusQTitle.textContent = `${activeQuestion.id}: ${activeQuestion.title}`;
@@ -799,6 +1000,10 @@ export function renderPractice(container, params) {
 
     // Bind Close Button & Red macOS Dot
     const handleCloseFocus = () => {
+      pearsonModeActive = false;
+      document.body.classList.remove('in-exam-mode');
+      const appWrapper = document.getElementById('app');
+      if (appWrapper) appWrapper.classList.remove('in-exam-mode');
       activeQuestion = null;
       cleanupWorkspaceAssets();
       renderView();
@@ -827,6 +1032,25 @@ export function renderPractice(container, params) {
         showToast("Workspace restored to centered layout.", "info");
       }
     };
+
+    // Bind Pearson Mode Toggle Switch
+    const toggleBtn = document.getElementById('pearson-mode-toggle');
+    if (toggleBtn) {
+      toggleBtn.checked = pearsonModeActive;
+      toggleBtn.onchange = function() {
+        pearsonModeActive = this.checked;
+        if (pearsonModeActive) {
+          document.body.classList.add('in-exam-mode');
+          const appWrapper = document.getElementById('app');
+          if (appWrapper) appWrapper.classList.add('in-exam-mode');
+        } else {
+          document.body.classList.remove('in-exam-mode');
+          const appWrapper = document.getElementById('app');
+          if (appWrapper) appWrapper.classList.remove('in-exam-mode');
+        }
+        renderView();
+      };
+    }
 
     // Bind Sidebar Toggle
     sidebarToggleBtn.onclick = () => {

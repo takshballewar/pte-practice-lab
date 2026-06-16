@@ -61,6 +61,13 @@ function renderMockLanding(container) {
 
 function startExamSimulation(container) {
   const questions = Database.getQuestions();
+  const user = Database.getUser();
+  const userName = (user && user.name) ? user.name : "Vivek Ballewar";
+
+  // Enable full screen exam mode classes
+  document.body.classList.add('in-exam-mode');
+  const appWrapper = document.getElementById('app');
+  if (appWrapper) appWrapper.classList.add('in-exam-mode');
   
   // Seed Mock Test tasks
   const examTasks = [
@@ -103,20 +110,19 @@ function startExamSimulation(container) {
     // Clear sub-intervals and audio recording objects
     cleanupStepAssets();
 
-    // Highlight sidebar step
-    document.querySelectorAll('.sim-step-indicator').forEach((indicator, idx) => {
-      if (idx === currentStep) {
-        indicator.classList.add('active');
-        indicator.classList.remove('done');
-      } else if (idx < currentStep) {
-        indicator.classList.remove('active');
-        indicator.classList.add('done');
-      } else {
-        indicator.classList.remove('active', 'done');
-      }
-    });
-
     const task = examTasks[currentStep];
+    
+    // Update subheader details
+    const sectionTitle = document.getElementById('mock-sim-section-title');
+    const questionIdx = document.getElementById('mock-sim-question-idx');
+    if (sectionTitle) {
+      const typeDisplay = task.type.charAt(0).toUpperCase() + task.type.slice(1);
+      const subType = task.data.taskType.replace('-', ' ').toUpperCase();
+      sectionTitle.textContent = `PTE Academic Test - ${typeDisplay} (${subType})`;
+    }
+    if (questionIdx) {
+      questionIdx.textContent = `Question ${currentStep + 1} of ${examTasks.length}`;
+    }
     
     if (task.type === 'speaking') {
       renderSpeakingTask(workspace, task.data);
@@ -128,15 +134,13 @@ function startExamSimulation(container) {
       renderListeningTask(workspace, task.data);
     }
 
-    // Toggle navigation button
+    // Toggle navigation button text
     const nextBtn = document.getElementById('sim-next-btn');
     if (nextBtn) {
       if (currentStep === examTasks.length - 1) {
-        nextBtn.textContent = "Submit Full Mock Exam";
-        nextBtn.className = "btn btn-accent shadow-neon";
+        nextBtn.innerHTML = "Submit Test &nbsp;▶";
       } else {
-        nextBtn.textContent = "Proceed to Next Task";
-        nextBtn.className = "btn btn-primary";
+        nextBtn.innerHTML = "Next &nbsp;▶";
       }
     }
   };
@@ -159,6 +163,11 @@ function startExamSimulation(container) {
   const submitExam = async () => {
     cleanupStepAssets();
     clearInterval(examInterval);
+
+    // Remove full screen exam mode classes
+    document.body.classList.remove('in-exam-mode');
+    const appWrapper = document.getElementById('app');
+    if (appWrapper) appWrapper.classList.remove('in-exam-mode');
 
     // Show beautiful loading overlay
     container.innerHTML = `
@@ -252,6 +261,10 @@ function startExamSimulation(container) {
 
     } catch (err) {
       console.error("Mock grading failed, calling fallback synchronous evaluator.", err);
+      // Remove full screen exam mode classes
+      document.body.classList.remove('in-exam-mode');
+      const appWrapper = document.getElementById('app');
+      if (appWrapper) appWrapper.classList.remove('in-exam-mode');
       // Fallback
       Router.navigate(`scoring?type=mock&score=70&speak=72&write=68&read=70&listen=70`);
     }
@@ -259,45 +272,41 @@ function startExamSimulation(container) {
 
   // Render initial layout shell for Exam Simulator
   container.innerHTML = `
-    <div class="card-glass simulator-card">
-      <div class="simulator-top">
-        <span class="simulator-title">PTE Academic Simulation Workspace</span>
-        <div class="simulator-timer">
-          ⏱ Time Left: <span id="mock-sim-timer">45:00</span>
+    <div class="pearson-portal">
+      <div class="pearson-header">
+        <div class="pearson-header-title">PTE Academic - Simulation Practice Exam</div>
+        <div class="pearson-header-candidate">Candidate: <b>${userName}</b></div>
+      </div>
+
+      <div class="pearson-subheader">
+        <div class="pearson-subheader-left" id="mock-sim-section-title">Section 1: Speaking</div>
+        <div class="pearson-subheader-right">
+          <span id="mock-sim-question-idx" style="font-weight: bold; margin-right: 15px;">Question 1 of 4</span>
+          <div class="pearson-timer-box">
+            Time Remaining: <span id="mock-sim-timer">45:00</span>
+          </div>
         </div>
       </div>
 
-      <div class="simulator-content-box">
-        <!-- Sidebar Tasks checklist navigation -->
-        <div class="simulator-steps-list">
-          <div class="sim-step-indicator" id="nav-step-0">
-            <span class="step-circle">1</span>
-            <span>Speaking (RA)</span>
-          </div>
-          <div class="sim-step-indicator" id="nav-step-1">
-            <span class="step-circle">2</span>
-            <span>Writing (WE)</span>
-          </div>
-          <div class="sim-step-indicator" id="nav-step-2">
-            <span class="step-circle">3</span>
-            <span>Reading (FIB)</span>
-          </div>
-          <div class="sim-step-indicator" id="nav-step-3">
-            <span class="step-circle">4</span>
-            <span>Listening (SST)</span>
-          </div>
-        </div>
+      <div class="pearson-content-area" id="sim-active-workspace">
+        <!-- Loaded step-by-step dynamically -->
+      </div>
 
-        <!-- Workspace main viewport -->
-        <div class="sim-workspace">
-          <div id="sim-active-workspace">
-            <!-- Loaded step-by-step dynamically -->
-          </div>
-          
-          <!-- Next navigation button row -->
-          <div style="display: flex; justify-content: flex-end; margin-top: 12px; border-top: 1px solid var(--border-color); padding-top: 16px;">
-            <button id="sim-next-btn" class="btn btn-primary">Proceed to Next Task</button>
-          </div>
+      <div class="pearson-footer">
+        <button id="sim-next-btn" class="pearson-next-btn">Next &nbsp;▶</button>
+      </div>
+    </div>
+
+    <!-- Confirm Modal Overlay (Hidden by default) -->
+    <div id="pearson-confirm-modal" class="pearson-modal-overlay" style="display: none;">
+      <div class="pearson-modal-box">
+        <div class="pearson-modal-title">Confirm Navigation</div>
+        <div class="pearson-modal-text">
+          You have clicked Next. You cannot return to this question once you leave. Do you want to continue?
+        </div>
+        <div class="pearson-modal-actions">
+          <button id="modal-cancel-btn" class="pearson-btn-gray">No</button>
+          <button id="modal-confirm-btn" class="pearson-btn-blue">Yes</button>
         </div>
       </div>
     </div>
@@ -307,8 +316,20 @@ function startExamSimulation(container) {
   updateGlobalTimer();
   examInterval = setInterval(updateGlobalTimer, 1000);
 
-  // Next step click listener
+  // Next step click listener (Triggers modal first)
   document.getElementById('sim-next-btn').addEventListener('click', () => {
+    document.getElementById('pearson-confirm-modal').style.display = 'flex';
+  });
+
+  // Modal Cancel
+  document.getElementById('modal-cancel-btn').addEventListener('click', () => {
+    document.getElementById('pearson-confirm-modal').style.display = 'none';
+  });
+
+  // Modal Confirm
+  document.getElementById('modal-confirm-btn').addEventListener('click', () => {
+    document.getElementById('pearson-confirm-modal').style.display = 'none';
+
     // Save state before advancing
     saveActiveStepState(examTasks[currentStep], userAnswers);
 
@@ -332,6 +353,7 @@ function saveActiveStepState(task, answers) {
     if (textVal) answers.writing = textVal.value;
   } else if (task.type === 'reading') {
     // Reading blanks are populated directly into answers.reading in the drag-drop drop handler
+    answers.reading = window.simReadingAnswers || {};
   } else if (task.type === 'listening') {
     const textVal = document.getElementById('listening-sim-textarea');
     if (textVal) answers.listening = textVal.value;
@@ -342,30 +364,27 @@ function saveActiveStepState(task, answers) {
    TASK RENDERERS & HELPERS
    ========================================================================== */
 
-// 1. Render Speaking task (Read Aloud)
 function renderSpeakingTask(workspace, data) {
   workspace.innerHTML = `
-    <div class="sim-instructions">
-      <p><b>Read Aloud:</b> Look at the text below. In 40 seconds, you must read this text aloud as naturally and clearly as possible. You have 40 seconds to read.</p>
+    <div class="pearson-instruction-box">
+      <b>Read Aloud:</b> Look at the text below. In 40 seconds, you must read this text aloud as naturally and clearly as possible. You have 40 seconds to read.
     </div>
-    <div class="sim-prompt-box">
-      <p id="speaking-sim-prompt">${data.text}</p>
+    <div class="pearson-prompt-box">
+      <p id="speaking-sim-prompt" style="margin: 0; line-height: 1.6; font-family: Arial, sans-serif; font-size: 16px;">${data.text}</p>
     </div>
     
-    <div class="audio-recorder-deck">
-      <div class="recorder-status-row">
-        <span class="rec-status">
-          <span id="speaking-sim-status-dot" class="rec-status-dot"></span>
-          <span id="speaking-sim-status-txt">Status: Preparing</span>
-        </span>
-        <span id="speaking-sim-prep-timer" style="font-size:13px; font-weight:600; color:var(--accent);">Prep: 40s</span>
+    <div class="pearson-recording-deck">
+      <div class="pearson-deck-title">Recording Status</div>
+      <div id="speaking-sim-status-txt" class="pearson-deck-status">Status: Preparing</div>
+      <div class="pearson-progress-bar-container">
+        <div id="speaking-sim-progress" class="pearson-progress-bar-fill" style="width: 0%;"></div>
       </div>
-
-      <!-- Waveform canvas -->
-      <div class="visualizer-wrapper">
-        <canvas id="speaking-sim-canvas" class="visualizer-canvas" width="600" height="80"></canvas>
-        <div id="speaking-sim-wave-placeholder" class="visualizer-placeholder">Visualizer activates during recording</div>
-      </div>
+      <div id="speaking-sim-prep-timer" style="font-size:12px; font-weight:bold; color:#004b61;">Time Remaining: 40 seconds</div>
+      
+      <!-- Keep elements needed by JS logic hidden -->
+      <span id="speaking-sim-status-dot" style="display:none;"></span>
+      <div id="speaking-sim-wave-placeholder" style="display:none;"></div>
+      <canvas id="speaking-sim-canvas" width="300" height="10" style="display:none;"></canvas>
     </div>
   `;
 
@@ -374,13 +393,14 @@ function renderSpeakingTask(workspace, data) {
   
   const timerBadge = document.getElementById('speaking-sim-prep-timer');
   const statusTxt = document.getElementById('speaking-sim-status-txt');
-  const statusDot = document.getElementById('speaking-sim-status-dot');
-  const placeholder = document.getElementById('speaking-sim-wave-placeholder');
+  const progressBar = document.getElementById('speaking-sim-progress');
 
   const startRecordingFlow = () => {
-    statusTxt.textContent = "Status: Recording... Speak Now";
-    statusDot.className = "rec-status-dot pulse-red";
-    placeholder.classList.add('hidden');
+    statusTxt.textContent = "Status: Recording";
+    if (progressBar) {
+      progressBar.classList.add('recording');
+      progressBar.style.width = '0%';
+    }
     
     // Activate browser Microphone audio Context live draw or simulated draw
     initAudioRecordingVisuals();
@@ -411,15 +431,16 @@ function renderSpeakingTask(workspace, data) {
 
     window.speakingTimerInterval = setInterval(() => {
       recordTimeLeft--;
-      timerBadge.textContent = `Recording: ${recordTimeLeft}s`;
-      timerBadge.style.color = "var(--error)";
+      timerBadge.textContent = `Time Remaining: ${recordTimeLeft} seconds`;
+      if (progressBar) {
+        progressBar.style.width = `${((40 - recordTimeLeft) / 40) * 100}%`;
+      }
 
       if (recordTimeLeft <= 0) {
         clearInterval(window.speakingTimerInterval);
-        statusTxt.textContent = "Status: Recording Finished";
-        statusDot.className = "rec-status-dot";
-        timerBadge.textContent = "Finished";
-        timerBadge.style.color = "var(--success)";
+        statusTxt.textContent = "Status: Completed";
+        if (progressBar) progressBar.style.width = '100%';
+        timerBadge.textContent = "Completed";
         cleanupMicrophone();
       }
     }, 1000);
@@ -428,7 +449,10 @@ function renderSpeakingTask(workspace, data) {
   // Preparation Countdown
   window.speakingTimerInterval = setInterval(() => {
     prepTimeLeft--;
-    timerBadge.textContent = `Prep: ${prepTimeLeft}s`;
+    timerBadge.textContent = `Time Remaining: ${prepTimeLeft} seconds`;
+    if (progressBar) {
+      progressBar.style.width = `${((40 - prepTimeLeft) / 40) * 100}%`;
+    }
     
     if (prepTimeLeft <= 0) {
       clearInterval(window.speakingTimerInterval);
@@ -551,19 +575,19 @@ function initAudioRecordingVisuals() {
 // 2. Render Writing task (Write Essay)
 function renderWritingTask(workspace, data) {
   workspace.innerHTML = `
-    <div class="sim-instructions">
-      <p><b>Write Essay:</b> You will have 20 minutes to write an essay on the topic below. You must write between 200 and 300 words.</p>
+    <div class="pearson-instruction-box">
+      <b>Write Essay:</b> You will have 20 minutes to write an essay on the topic below. You must write between 200 and 300 words.
     </div>
-    <div class="sim-prompt-box">
-      <p><b>Essay Prompt:</b> ${data.prompt}</p>
+    <div class="pearson-prompt-box">
+      <p style="margin:0;"><b>Essay Prompt:</b> ${data.prompt}</p>
     </div>
     
-    <div class="essay-editor-wrapper">
-      <div class="editor-toolbar">
-        <span>Word Count: <span id="essay-sim-wcount" class="word-count-badge invalid">0</span></span>
-        <span style="font-size:11px; color:var(--text-muted);">Limits: 200 - 300 words</span>
+    <div class="essay-editor-wrapper" style="margin-top:20px;">
+      <textarea id="essay-sim-textarea" style="width:100%; height:250px; border:1px solid #ababab; border-radius:2px; padding:12px; font-family:Arial, sans-serif; font-size:14px;" placeholder="Start typing your essay here..."></textarea>
+      <div style="margin-top:10px; display:flex; justify-content:space-between; font-size:13px; color:#555;">
+        <span>Word Count: <b id="essay-sim-wcount">0</b></span>
+        <span>Word Limit: 200 - 300 words</span>
       </div>
-      <textarea id="essay-sim-textarea" placeholder="Start typing your argumentative essay here..."></textarea>
     </div>
   `;
 
@@ -576,13 +600,9 @@ function renderWritingTask(workspace, data) {
     countBadge.textContent = count;
 
     if (count >= 200 && count <= 300) {
-      countBadge.className = "word-count-badge";
-      countBadge.style.color = "var(--success)";
-      countBadge.style.backgroundColor = "var(--success-bg)";
+      countBadge.style.color = "green";
     } else {
-      countBadge.className = "word-count-badge invalid";
-      countBadge.style.color = "var(--error)";
-      countBadge.style.backgroundColor = "var(--error-bg)";
+      countBadge.style.color = "red";
     }
   });
 }
@@ -590,19 +610,19 @@ function renderWritingTask(workspace, data) {
 // 3. Render Reading task (Fill in the Blanks)
 function renderReadingTask(workspace, data) {
   workspace.innerHTML = `
-    <div class="sim-instructions">
-      <p><b>Fill in the Blanks:</b> Drag the words from the bottom pool and drop them into the appropriate blank boxes in the paragraph.</p>
+    <div class="pearson-instruction-box">
+      <b>Fill in the Blanks:</b> Below is a text with some empty boxes. Drag the words from the box at the bottom and place them into the correct blank slots in the text.
     </div>
     
-    <div class="sim-prompt-box drag-text-box">
-      <p id="reading-sim-paragraph-box">
+    <div class="pearson-prompt-box" style="background:#ffffff; border:1px solid #c8c8c8; padding:20px; line-height:1.8; font-size:15px; color:#111; margin-bottom:24px;">
+      <p id="reading-sim-paragraph-box" style="margin:0;">
         ${data.paragraphHTML}
       </p>
     </div>
 
     <!-- Drag-Drop Pool -->
-    <div id="reading-sim-words-pool" class="draggable-words-pool">
-      ${data.wordsPool.map((word, idx) => `<span id="word-item-${idx}" class="word-pill" draggable="true" data-word="${word}">${word}</span>`).join('')}
+    <div id="reading-sim-words-pool" style="display:flex; flex-wrap:wrap; gap:10px; padding:16px; background:#f7f7f7; border:1px solid #c8c8c8; border-radius:2px; min-height:60px;">
+      ${data.wordsPool.map((word, idx) => `<span id="word-item-${idx}" class="word-pill" draggable="true" data-word="${word}" style="display:inline-block; padding:4px 10px; background:#ffffff; border:1px solid #005A70; border-radius:2px; color:#005A70; cursor:grab; font-size:13px; font-weight:bold; user-select:none;">${word}</span>`).join('')}
     </div>
   `;
 
@@ -624,16 +644,16 @@ function renderReadingTask(workspace, data) {
   blankBoxes.forEach(box => {
     box.addEventListener('dragover', (e) => {
       e.preventDefault();
-      box.classList.add('drag-over');
+      box.style.backgroundColor = '#e0f2fe';
     });
 
     box.addEventListener('dragleave', () => {
-      box.classList.remove('drag-over');
+      box.style.backgroundColor = '';
     });
 
     box.addEventListener('drop', (e) => {
       e.preventDefault();
-      box.classList.remove('drag-over');
+      box.style.backgroundColor = '';
       
       const word = e.dataTransfer.getData('text/plain');
       const originId = e.dataTransfer.getData('element/id');
@@ -676,40 +696,28 @@ function renderReadingTask(workspace, data) {
 // 4. Render Listening task (Summarize Spoken Text)
 function renderListeningTask(workspace, data) {
   workspace.innerHTML = `
-    <div class="sim-instructions">
-      <p><b>Summarize Spoken Text:</b> Listen to the short lecture clip, and write a summary of 50-70 words in the editor below. You have 10 minutes to finish.</p>
+    <div class="pearson-instruction-box">
+      <b>Summarize Spoken Text:</b> Listen to the short lecture clip, and write a summary of 50-70 words in the editor below. You have 10 minutes to finish.
     </div>
 
     <!-- Audio Player Deck -->
-    <div class="lecture-player-container">
-      <div class="player-details-row">
-        <div class="player-pulse-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
-        </div>
-        <div>
-          <h4 style="font-size:14px; font-weight:600;">PTE Academic Lecture #LS-401</h4>
-          <p style="font-size:12px; color:var(--text-secondary);">Subject: Agricultural Economics Subsidies</p>
-        </div>
+    <div class="lecture-player-container" style="background:#f7f7f7; border:1px solid #ababab; padding:16px; border-radius:2px; display:flex; align-items:center; gap:20px; margin-bottom:20px;">
+      <button id="lecture-sim-play-btn" style="background:#005A70; color:#fff; border:1px solid #004658; border-radius:2px; padding:6px 16px; font-weight:bold; cursor:pointer; display:flex; align-items:center; gap:6px;">
+        Play Audio
+      </button>
+      <div class="player-timeline-outer" id="lecture-sim-timeline" style="flex:1; height:12px; background:#e0e0e0; border:1px solid #ababab; border-radius:2px; position:relative; overflow:hidden; cursor:pointer;">
+        <div id="lecture-sim-timeline-fill" class="player-timeline-inner" style="height:100%; background:#0088cc; width:0%;"></div>
       </div>
-
-      <div class="player-controls-flex">
-        <button id="lecture-sim-play-btn" class="btn-play-trigger" title="Play Recording">
-          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        </button>
-        <div class="player-timeline-outer" id="lecture-sim-timeline">
-          <div id="lecture-sim-timeline-fill" class="player-timeline-inner"></div>
-        </div>
-        <span id="lecture-sim-time-txt" class="player-time-lbl">0:00 / 0:48</span>
-      </div>
+      <span id="lecture-sim-time-txt" class="player-time-lbl" style="font-size:13px; font-weight:bold; color:#333;">0:00 / 0:00</span>
     </div>
 
     <!-- Text editor box -->
     <div class="essay-editor-wrapper" style="margin-top: 16px;">
-      <div class="editor-toolbar">
-        <span>Word Count: <span id="listening-sim-wcount" class="word-count-badge invalid">0</span></span>
-        <span style="font-size:11px; color:var(--text-muted);">Limits: 50 - 70 words</span>
+      <textarea id="listening-sim-textarea" style="width:100%; height:180px; border:1px solid #ababab; border-radius:2px; padding:12px; font-family:Arial, sans-serif; font-size:14px;" placeholder="Summarize the core concepts of the lecture here..."></textarea>
+      <div style="margin-top:10px; display:flex; justify-content:space-between; font-size:13px; color:#555;">
+        <span>Word Count: <b id="listening-sim-wcount">0</b></span>
+        <span>Word Limit: 50 - 70 words</span>
       </div>
-      <textarea id="listening-sim-textarea" placeholder="Summarize the core concepts of the lecture here..."></textarea>
     </div>
   `;
 
@@ -740,7 +748,7 @@ function renderListeningTask(workspace, data) {
     window.speechSynthesis.cancel();
     audioPlaying = false;
     isPaused = false;
-    playBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
+    playBtn.textContent = 'Play Audio';
     progressFill.style.width = '0%';
     timeTxt.textContent = `0:00 / ${formatTime(audioDuration)}`;
     audioCurrent = 0;
@@ -761,12 +769,12 @@ function renderListeningTask(workspace, data) {
     if (audioPlaying) {
       clearInterval(audioTimer);
       audioPlaying = false;
-      playBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>`;
+      playBtn.textContent = 'Play Audio';
       window.speechSynthesis.pause();
       isPaused = true;
     } else {
       audioPlaying = true;
-      playBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>`;
+      playBtn.textContent = 'Pause Audio';
       
       if (isPaused && utterance) {
         window.speechSynthesis.resume();
@@ -794,13 +802,9 @@ function renderListeningTask(workspace, data) {
     countBadge.textContent = count;
 
     if (count >= 50 && count <= 70) {
-      countBadge.className = "word-count-badge";
-      countBadge.style.color = "var(--success)";
-      countBadge.style.backgroundColor = "var(--success-bg)";
+      countBadge.style.color = "green";
     } else {
-      countBadge.className = "word-count-badge invalid";
-      countBadge.style.color = "var(--error)";
-      countBadge.style.backgroundColor = "var(--error-bg)";
+      countBadge.style.color = "red";
     }
   });
 

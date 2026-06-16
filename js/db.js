@@ -1253,11 +1253,22 @@ export const Database = {
   getQuestions() {
     try {
       const stored = localStorage.getItem("fluentai_questions");
-      if (!stored) return DEFAULT_QUESTIONS;
-      return JSON.parse(stored);
+      let base = DEFAULT_QUESTIONS;
+      if (stored) {
+        try {
+          base = JSON.parse(stored);
+        } catch (e) {
+          console.error("Failed to parse fluentai_questions from localStorage", e);
+        }
+      }
+      return {
+        speaking: [...(base.speaking || []), ...(PREDICTION_QUESTIONS.speaking || [])],
+        writing: [...(base.writing || []), ...(PREDICTION_QUESTIONS.writing || [])],
+        reading: [...(base.reading || []), ...(PREDICTION_QUESTIONS.reading || [])],
+        listening: [...(base.listening || []), ...(PREDICTION_QUESTIONS.listening || [])]
+      };
     } catch (e) {
-      console.error("Failed to parse fluentai_questions from localStorage, resetting to defaults", e);
-      localStorage.removeItem("fluentai_questions");
+      console.error("Failed to merge questions, resetting to defaults", e);
       return DEFAULT_QUESTIONS;
     }
   },
@@ -3020,3 +3031,523 @@ Return ONLY the plain text title, nothing else. No markdown, no quotes, no extra
   }
 };
 
+const PREDICTION_QUESTIONS = {
+  "speaking": [
+    {
+      "id": "SP-PRED-10101",
+      "title": "Read Aloud: Student Visa Documentation",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "The student visa application process requires meticulous preparation of documents. Applicants must demonstrate sufficient financial capacity, submit a valid letter of acceptance from a designated learning institution, and prove their intention to return home after completing their studies.",
+      "modelAnswer": "The student visa application process requires meticulous preparation of documents. Applicants must demonstrate sufficient financial capacity, submit a valid letter of acceptance from a designated learning institution, and prove their intention to return home after completing their studies.",
+      "tips": [
+        "Pay attention to the natural rhythm and word linking.",
+        "Stress key content words (nouns, verbs, adjectives).",
+        "Keep a steady flow and avoid long pauses between sentences."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-10102",
+      "title": "Read Aloud: Academic Culture Adaptation",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Adapting to a new academic environment abroad involves adjusting to different teaching styles, assessment formats, and classroom dynamics. Students who actively participate in campus orientation programs tend to integrate more smoothly into their new communities.",
+      "modelAnswer": "Adapting to a new academic environment abroad involves adjusting to different teaching styles, assessment formats, and classroom dynamics. Students who actively participate in campus orientation programs tend to integrate more smoothly into their new communities.",
+      "tips": [
+        "Pay attention to the natural rhythm and word linking.",
+        "Stress key content words (nouns, verbs, adjectives).",
+        "Keep a steady flow and avoid long pauses between sentences."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-10103",
+      "title": "Read Aloud: English Proficiency Exams",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Standardized English proficiency tests, such as PTE Academic and IELTS, assess a candidate's communicative capabilities under exam conditions. Scoring well is critical for obtaining admissions into top-tier global universities and securing migration pathway points.",
+      "modelAnswer": "Standardized English proficiency tests, such as PTE Academic and IELTS, assess a candidate's communicative capabilities under exam conditions. Scoring well is critical for obtaining admissions into top-tier global universities and securing migration pathway points.",
+      "tips": [
+        "Pay attention to the natural rhythm and word linking.",
+        "Stress key content words (nouns, verbs, adjectives).",
+        "Keep a steady flow and avoid long pauses between sentences."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-10104",
+      "title": "Read Aloud: Consulting Immigration Advisors",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Consulting with professional immigration advisors helps candidates avoid common errors in visa applications. Experienced consultants provide updated guidelines on point allocation systems, language requirements, and regional nomination programs.",
+      "modelAnswer": "Consulting with professional immigration advisors helps candidates avoid common errors in visa applications. Experienced consultants provide updated guidelines on point allocation systems, language requirements, and regional nomination programs.",
+      "tips": [
+        "Pay attention to the natural rhythm and word linking.",
+        "Stress key content words (nouns, verbs, adjectives).",
+        "Keep a steady flow and avoid long pauses between sentences."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-10105",
+      "title": "Read Aloud: Study Abroad Destinations",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "Choosing the correct study destination is a major decision that influences a student's long-term career prospects. Factors like post-study work rights, immigration pathways, and industry connection links play a decisive role in their final selection.",
+      "modelAnswer": "Choosing the correct study destination is a major decision that influences a student's long-term career prospects. Factors like post-study work rights, immigration pathways, and industry connection links play a decisive role in their final selection.",
+      "tips": [
+        "Pay attention to the natural rhythm and word linking.",
+        "Stress key content words (nouns, verbs, adjectives).",
+        "Keep a steady flow and avoid long pauses between sentences."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    },
+    {
+      "id": "SP-PRED-10106",
+      "title": "Read Aloud: Vibrancy of Campus Diversity",
+      "difficulty": "medium",
+      "prepTime": 40,
+      "readTime": 40,
+      "text": "International students contribute significantly to the cultural diversity and intellectual vibrancy of university campuses. Engaging in academic research and cultural exchanges helps foster global collaboration and community integration.",
+      "modelAnswer": "International students contribute significantly to the cultural diversity and intellectual vibrancy of university campuses. Engaging in academic research and cultural exchanges helps foster global collaboration and community integration.",
+      "tips": [
+        "Pay attention to the natural rhythm and word linking.",
+        "Stress key content words (nouns, verbs, adjectives).",
+        "Keep a steady flow and avoid long pauses between sentences."
+      ],
+      "taskType": "read-aloud",
+      "isPrediction": true
+    }
+  ],
+  "writing": [
+    {
+      "id": "WR-PRED-20101",
+      "title": "Write Essay: Studying Abroad vs Local",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Many students choose to pursue higher education abroad, despite the high tuition fees and challenges of living far from home. In your opinion, do the professional and personal advantages of studying in another country outweigh the financial burdens? Support your view with examples.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "In recent years, a growing number of individuals have chosen to pursue higher education at foreign universities, despite the significant financial commitments and cultural adjustments required. In my opinion, the personal and professional benefits of studying abroad far outweigh the associated financial burdens.\n\nFrom a professional perspective, earning a degree from a top-tier international institution provides students with superior career opportunities. Global employers highly value graduates who possess international experience, as it demonstrates adaptability and cross-cultural communication skills. For instance, a student studying in Canada or the United Kingdom is exposed to diverse viewpoints and advanced research facilities, which significantly enhances their employability. Furthermore, students can build a global network of peers and professionals that can assist them throughout their careers.\n\nOn a personal level, living independently in a foreign country fosters self-reliance and maturity. Students must manage their own budgets, cook, and navigate complex local systems without immediate family support. This immersive experience helps individuals develop problem-solving skills and a broader worldview.\n\nIn conclusion, while the financial cost of studying abroad is indeed high, the long-term rewards in terms of career advancement, networking, and personal growth make it a highly worthwhile investment.",
+      "tips": [
+        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
+        "Keep your word count strictly between 200 and 300 words.",
+        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-20102",
+      "title": "Write Essay: Skilled Immigration Impacts",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Skilled immigration programs are designed to address labor shortages and promote economic growth in host nations. However, some argue that high immigration rates put pressure on local infrastructure and housing. Discuss both sides and give your opinion.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "Skilled immigration programs have become a cornerstone of economic development in many developed nations. While some argue that high rates of immigration put excessive pressure on local infrastructure and housing markets, I believe the economic benefits and cultural contributions of skilled workers outweigh these challenges.\n\nOn the one hand, skilled immigrants fill critical labor shortages in high-growth industries such as technology, healthcare, and engineering. By bringing advanced skills and entrepreneurial spirit, they stimulate innovation and create jobs, thereby boosting the national economy. For instance, many successful technology startups in Silicon Valley were founded by immigrants, showing their positive impact. Additionally, they contribute to the tax base, which helps fund public services.\n\nOn the other hand, critics point out that rapid population growth can strain local services like public transit, schools, and healthcare. Furthermore, it can drive up housing demand, leading to higher rents and property prices. However, these issues are often due to government planning deficits rather than immigration itself.\n\nIn conclusion, skilled immigration is highly beneficial for addressing demographic and labor challenges. With proper urban planning and infrastructure investment, governments can maximize these benefits while mitigating local strain.",
+      "tips": [
+        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
+        "Keep your word count strictly between 200 and 300 words.",
+        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-20103",
+      "title": "Write Essay: Online Classrooms Value",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "With the rise of digital technology, virtual classrooms allow students to earn degrees from foreign universities without traveling. Does virtual learning offer the same value as the physical experience of studying and living in a foreign country?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "The rapid advancement of digital technology has enabled universities to offer degrees online, allowing students to study from anywhere in the world. While virtual classrooms offer flexibility and cost savings, I believe they do not provide the same value as the physical experience of studying and living abroad.\n\nUndoubtedly, online learning is highly convenient. It allows students to balance education with work and avoids the high expenses of international travel, housing, and visas. However, online programs lack the rich cultural immersion that comes from living in a foreign society. A student learning from home misses the opportunity to practice a new language daily, navigate a new city, and interact directly with a diverse student body.\n\nMoreover, physical campuses offer valuable networking opportunities and face-to-face collaborations that are difficult to replicate digitally. Participating in campus clubs, attending seminars, and building personal relationships with professors are essential aspects of university life that enhance personal growth and career prospects.\n\nIn conclusion, while virtual classrooms are a useful tool for accessible education, they cannot replace the transformative personal development and cultural integration gained from physically studying in a foreign country.",
+      "tips": [
+        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
+        "Keep your word count strictly between 200 and 300 words.",
+        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-20104",
+      "title": "Write Essay: Mandatory Integration Courses",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Some host countries require immigrants to undergo mandatory cultural integration courses as a condition for permanent residency. Critics argue this violates individual rights, while supporters claim it fosters social cohesion. What is your opinion?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "Some host countries have introduced mandatory cultural integration courses as a requirement for permanent residency. In my opinion, while critics argue that these courses violate individual rights, I believe they are highly beneficial for fostering social cohesion and helping immigrants adapt to their new environments.\n\nOn the one hand, integration courses provide immigrants with vital knowledge about the host country's laws, societal values, history, and language. Understanding these elements helps newcomers navigate daily life, secure employment, and avoid legal misunderstandings. For example, learning about local civic responsibilities enables active participation in community life. Consequently, this prevents social isolation and helps immigrants build connections with local residents.\n\nOn the other hand, opponents claim that forcing immigrants to undergo cultural training is paternalistic and infringes on personal freedoms. They argue that integration should occur naturally. However, integration courses do not force immigrants to abandon their heritage; rather, they equip them with the tools to succeed alongside their cultural customs.\n\nIn conclusion, mandatory integration courses are a positive measure. They facilitate a smoother transition for immigrants and build a harmonious, united society by establishing shared values and mutual understanding.",
+      "tips": [
+        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
+        "Keep your word count strictly between 200 and 300 words.",
+        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-20105",
+      "title": "Write Essay: Working Hours for Students",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Some argue that international students should be allowed to work unlimited hours while studying to cover living costs. Others believe this distracts from academic performance and displaces local workers. Discuss the merits and drawbacks of this proposal.",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "The debate over whether international students should be permitted to work unlimited hours is highly significant. While some advocate for this policy to help students cover high tuition and living costs, I believe that retaining a sensible cap on working hours is crucial for maintaining academic standards and protecting student welfare.\n\nSupporters of unlimited working hours argue that international education is expensive, and students often face severe financial stress. Allowing them to work more would help them support themselves without relying on external funding. However, working long hours can severely detract from academic performance. University education requires dedication, and students who work full-time jobs are likely to experience fatigue, miss classes, and perform poorly in exams.\n\nFurthermore, unlimited work rights could lead to exploitation by employers seeking cheap labor, and it might displace local workers in entry-level positions. The primary purpose of a student visa is education, not immigration or employment.\n\nIn conclusion, while students need financial support, allowing unlimited working hours is counterproductive. Maintaining a balanced limit ensures that students focus on their studies while still gaining valuable work experience.",
+      "tips": [
+        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
+        "Keep your word count strictly between 200 and 300 words.",
+        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    },
+    {
+      "id": "WR-PRED-20106",
+      "title": "Write Essay: Immigration & Aging Populations",
+      "difficulty": "medium",
+      "timeLimit": 1200,
+      "prompt": "Many developed countries are experiencing aging populations and declining birth rates. To what extent can increased immigration of young families resolve the demographic and economic challenges faced by these nations?",
+      "minWords": 200,
+      "maxWords": 300,
+      "modelAnswer": "Many developed nations are currently facing severe demographic challenges characterized by declining birth rates and aging populations. I believe that increasing the immigration of young families is a highly effective strategy to resolve the economic and social issues associated with this shift.\n\nAn aging population places a significant burden on a nation's economy and social welfare systems. As the ratio of retirees to active workers increases, pension funds face deficits and healthcare costs soar. By welcoming young immigrant families, host countries can instantly expand their active workforce. These new residents contribute to income taxes, sustaining public services and pension programs.\n\nMoreover, young families bring children who will become the future workforce, helping to stabilize population demographics over the long term. Immigrant children also enrich local schools and contribute to cultural diversity. While integrating new families requires investment in language classes and housing, the long-term economic returns are substantial.\n\nIn conclusion, welcoming young immigrant families provides a vital source of labor and tax revenue. It is an indispensable solution for developed nations striving to maintain economic growth and social stability.",
+      "tips": [
+        "Structure your essay clearly with an Introduction, two Body paragraphs, and a Conclusion.",
+        "Keep your word count strictly between 200 and 300 words.",
+        "Use academic vocabulary and transition words like 'Furthermore', 'Consequently', 'On the other hand'."
+      ],
+      "taskType": "write-essay",
+      "isPrediction": true
+    }
+  ],
+  "reading": [
+    {
+      "id": "RD-PRED-30101",
+      "title": "Fill in the Blanks (Drag & Drop): Applying for Student Visa",
+      "difficulty": "medium",
+      "paragraphHTML": "International students seeking to study abroad must obtain a valid student visa before entering the host country. This process involves submitting academic <span class='blank-box' data-index='0'></span>, proving financial sustainability, and undergoing medical clearances. Failure to provide complete <span class='blank-box' data-index='1'></span> can lead to processing delays or visa <span class='blank-box' data-index='2'></span>.",
+      "correctAnswers": [
+        "transcripts",
+        "documentation",
+        "refusal"
+      ],
+      "wordsPool": [
+        "transcripts",
+        "documentation",
+        "refusal",
+        "suspensions",
+        "scholarships",
+        "admissions"
+      ],
+      "explanations": {
+        "0": "'academic transcripts' are official records of student grades, required for visa and university evaluation.",
+        "1": "'complete documentation' represents the full set of paper credentials needed to verify application claims.",
+        "2": "'visa refusal' represents the rejection of a visa request due to failure to meet legal entry conditions."
+      },
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-30102",
+      "title": "Fill in the Blanks (Drag & Drop): Express Entry Ranking Systems",
+      "difficulty": "medium",
+      "paragraphHTML": "Skilled migration selection systems rank candidates based on points scored for key human capital criteria. Points are <span class='blank-box' data-index='0'></span> for age, education levels, language proficiency, and work experience. Candidates with high scores receive an <span class='blank-box' data-index='1'></span> to apply for permanent residency, facilitating a smoother transition into their new <span class='blank-box' data-index='2'></span>.",
+      "correctAnswers": [
+        "allocated",
+        "invitation",
+        "society"
+      ],
+      "wordsPool": [
+        "allocated",
+        "invitation",
+        "society",
+        "subtracted",
+        "rejection",
+        "profession"
+      ],
+      "explanations": {
+        "0": "'points are allocated' is a passive verb structure meaning points are distributed or awarded for qualification criteria.",
+        "1": "'invitation' refers to the official 'Invitation to Apply' (ITA) issued to selected candidates in immigration pools.",
+        "2": "Integrating into a 'new society' signifies adapting to the cultural, social, and economic systems of the host nation."
+      },
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-30103",
+      "title": "Fill in the Blanks (Drag & Drop): Selecting Foreign Universities",
+      "difficulty": "medium",
+      "paragraphHTML": "Selecting the right foreign university is a critical decision that shapes a student's future career path. Factors to <span class='blank-box' data-index='0'></span> include program curriculum, institution ranking, campus location, and tuition costs. Consulting with experienced advisors helps students <span class='blank-box' data-index='1'></span> the complex application steps and secure university <span class='blank-box' data-index='2'></span>.",
+      "correctAnswers": [
+        "consider",
+        "navigate",
+        "admission"
+      ],
+      "wordsPool": [
+        "consider",
+        "navigate",
+        "admission",
+        "ignore",
+        "complicate",
+        "rejection"
+      ],
+      "explanations": {
+        "0": "'factors to consider' is a standard grammatical construct denoting variables to evaluate before deciding.",
+        "1": "To 'navigate complex steps' is a metaphorical collocation meaning to guide through or understand complicated bureaucratic processes.",
+        "2": "'secure university admission' represents obtaining a confirmed offer of study at a learning institution."
+      },
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-30104",
+      "title": "Fill in the Blanks (Drag & Drop): Cross-Cultural Competencies",
+      "difficulty": "medium",
+      "paragraphHTML": "Studying abroad offers a valuable opportunity to develop cross-cultural competency. Living in an unfamiliar culture helps students expand their <span class='blank-box' data-index='0'></span>, build international friendship groups, and master a foreign tongue. These skills are highly <span class='blank-box' data-index='1'></span> by global employers looking for flexible workers who can succeed in diverse <span class='blank-box' data-index='2'></span>.",
+      "correctAnswers": [
+        "perspectives",
+        "valued",
+        "environments"
+      ],
+      "wordsPool": [
+        "perspectives",
+        "valued",
+        "environments",
+        "limits",
+        "ignored",
+        "isolation"
+      ],
+      "explanations": {
+        "0": "'expand their perspectives' means to broaden one's viewpoints or outlooks on life and cultures.",
+        "1": "Skills 'highly valued' by employers are qualities that companies hold in high esteem and seek during recruitment.",
+        "2": "'diverse environments' represents workspace setups containing multi-ethnic or globally spread teams."
+      },
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-30105",
+      "title": "Fill in the Blanks (Drag & Drop): Language Requirements (IELTS/PTE)",
+      "difficulty": "medium",
+      "paragraphHTML": "To qualify for permanent residency in Australia or Canada, applicants must pass official language exams. High scores in IELTS or PTE can add <span class='blank-box' data-index='0'></span> points to the immigration score card. Advisors recommend rigorous prep courses to ensure candidates meet the minimum <span class='blank-box' data-index='1'></span> score required to exit the migration pool and obtain an ITA for active visa <span class='blank-box' data-index='2'></span>.",
+      "correctAnswers": [
+        "substantial",
+        "threshold",
+        "lodgement"
+      ],
+      "wordsPool": [
+        "substantial",
+        "threshold",
+        "lodgement",
+        "trivial",
+        "peak",
+        "cancellation"
+      ],
+      "explanations": {
+        "0": "'substantial points' signifies a large or critical amount of points that can significantly shift applicant standing.",
+        "1": "'threshold score' is the minimum boundary limit score required to qualify.",
+        "2": "'visa lodgement' is the official term for submitting a completed visa application to immigration authorities."
+      },
+      "taskType": "fib-drag",
+      "isPrediction": true
+    },
+    {
+      "id": "RD-PRED-30106",
+      "title": "Fill in the Blanks (Drag & Drop): Cultural Adjustment Stages",
+      "difficulty": "medium",
+      "paragraphHTML": "Cultural adjustment follows a recognizable pattern of stages. Initially, students experience the 'honeymoon stage', fascinated by new sights. This is often followed by 'culture shock', where difference causes <span class='blank-box' data-index='0'></span>. Over time, through active participation and support, students achieve the 'adaptation stage', where they feel comfortable in both their native and <span class='blank-box' data-index='1'></span> cultural <span class='blank-box' data-index='2'></span>.",
+      "correctAnswers": [
+        "anxiety",
+        "adopted",
+        "settings"
+      ],
+      "wordsPool": [
+        "anxiety",
+        "adopted",
+        "settings",
+        "elation",
+        "rejected",
+        "isolation"
+      ],
+      "explanations": {
+        "0": "'culture shock causes anxiety' is a psychological fact representing the stress of navigating unfamiliar cues.",
+        "1": "An 'adopted culture' is the new cultural framework that a migrant integrates into their daily lifestyle.",
+        "2": "'cultural settings' denotes the environments or circumstances characterized by specific cultural customs."
+      },
+      "taskType": "fib-drag",
+      "isPrediction": true
+    }
+  ],
+  "listening": [
+    {
+      "id": "LS-PRED-40101",
+      "title": "Summarize Spoken Text: Language Proficiency Success",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+      "lectureText": "In English proficiency speaking tests, test-takers are evaluated on fluency, pronunciation, and vocabulary. A common mistake is speaking too quickly, which leads to slurring and poor pronunciation. Instead, keep a steady pace, speak clearly into the microphone, and use natural pauses at punctuation marks. Maintaining confidence and avoiding long hesitations will significantly improve your fluency score.",
+      "keywords": [
+        "proficiency",
+        "fluency",
+        "pronunciation",
+        "vocabulary",
+        "microphone",
+        "pauses"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "To achieve high success in English proficiency tests, candidates must focus on oral fluency and pronunciation rather than speed. Speaking too quickly leads to mistakes. Instead, maintain a steady pace, speak clearly into the microphone, use natural pauses, and expand your vocabulary. Avoiding long hesitations will significantly improve your overall scores.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Summarize the main points and make sure to include key nouns from the lecture.",
+        "Ensure grammatical correctness and proper sentence structure."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-40102",
+      "title": "Summarize Spoken Text: Express Entry System Overview",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+      "lectureText": "The Express Entry system is a fast-track pathway for skilled workers seeking permanent residency in Canada. It manages three federal programs: the Federal Skilled Worker Program, the Federal Skilled Trades Program, and the Canadian Experience Class. Candidates are ranked using a Comprehensive Ranking System, which awards points for age, education, and language skills. Frequent invitation rounds select high-scoring candidates.",
+      "keywords": [
+        "pathway",
+        "residency",
+        "programs",
+        "comprehensive",
+        "ranking",
+        "points"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "The Canadian Express Entry system is a fast-track pathway for skilled workers seeking permanent residency. It manages three key federal programs, ranking candidates using the Comprehensive Ranking System. This system awards points based on criteria like age, education, and language skills. Frequent invitation rounds are held to select high-scoring applicants from the pool.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Summarize the main points and make sure to include key nouns from the lecture.",
+        "Ensure grammatical correctness and proper sentence structure."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-40103",
+      "title": "Summarize Spoken Text: Cultural Adaptation Readiness",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3",
+      "lectureText": "Preparing to study abroad requires more than just academic readiness; cultural and mental preparation are equally vital. Students should research the local customs, weather conditions, and transport systems of their destination city. Developing basic cooking and budgeting skills helps manage independent living. Creating a strong peer network early on prevents homesickness and eases social integration.",
+      "keywords": [
+        "readiness",
+        "preparation",
+        "customs",
+        "budgeting",
+        "network",
+        "integration"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "Preparing to study abroad requires academic readiness and vital cultural preparation. Students should research local customs, weather conditions, and transport systems of their destination. Additionally, developing budgeting skills is essential for independent living. Creating a strong peer network early on is also crucial for preventing homesickness and easing social integration.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Summarize the main points and make sure to include key nouns from the lecture.",
+        "Ensure grammatical correctness and proper sentence structure."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-40104",
+      "title": "Summarize Spoken Text: Post-Study Work Permits",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3",
+      "lectureText": "Post-study work permits are designed to retain global talent by allowing international graduates to gain local work experience. In Canada, the Post-Graduation Work Permit program offers permits matching the duration of study, up to three years. This work experience is highly valuable, as it helps graduates accumulate points toward permanent residency pathways, facilitating a transition from student status to skilled immigrant.",
+      "keywords": [
+        "permits",
+        "graduates",
+        "duration",
+        "pathways",
+        "residency",
+        "transition"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "Post-study work permits help retain global talent by allowing international graduates to gain local experience. The program offers permits with a duration matching their studies, up to three years. This experience is highly valuable, helping graduates accumulate points toward permanent residency pathways and facilitating a smooth transition into skilled immigration status.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Summarize the main points and make sure to include key nouns from the lecture.",
+        "Ensure grammatical correctness and proper sentence structure."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-40105",
+      "title": "Summarize Spoken Text: Student Accommodation Selection",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+      "lectureText": "Securing appropriate accommodation is one of the most pressing challenges for international students. Options include university halls of residence, homestays, and private shared rentals. While university halls offer convenience and social links, they tend to be expensive. Shared rentals are cost-effective but require careful lease signing. Students must evaluate proximity to campus, safety ratings, and utility costs before booking.",
+      "keywords": [
+        "accommodation",
+        "homestays",
+        "rentals",
+        "convenience",
+        "lease",
+        "proximity"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "Securing appropriate student accommodation is a major challenge, with choices ranging from homestays to shared rentals. University halls offer social convenience but are expensive. Shared rentals are cost-effective but require careful lease signing. Students must evaluate factors like proximity to campus, safety ratings, and utility bills before booking their stay.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Summarize the main points and make sure to include key nouns from the lecture.",
+        "Ensure grammatical correctness and proper sentence structure."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    },
+    {
+      "id": "LS-PRED-40106",
+      "title": "Summarize Spoken Text: Financial Evidence Requirements",
+      "difficulty": "medium",
+      "timeLimit": 600,
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3",
+      "lectureText": "Immigration departments enforce strict proof of funds requirements to ensure international students can support themselves without local employment. Financial evidence must show cover for tuition fees and basic living expenses for at least the first year. Acceptable documents include bank certificates, education loans, or proof of government scholarships. Insufficient or unverified financial evidence is the leading cause of student visa rejections.",
+      "keywords": [
+        "funds",
+        "evidence",
+        "expenses",
+        "bank",
+        "loans",
+        "rejections"
+      ],
+      "minWords": 50,
+      "maxWords": 70,
+      "modelAnswer": "Immigration departments require strict proof of funds to ensure international students can cover tuition fees and living expenses. Acceptable financial evidence includes bank certificates, education loans, or scholarship letters. Providing insufficient or unverified financial proof is the leading cause of visa rejections, making careful documentation essential for success.",
+      "tips": [
+        "Write between 50 and 70 words.",
+        "Summarize the main points and make sure to include key nouns from the lecture.",
+        "Ensure grammatical correctness and proper sentence structure."
+      ],
+      "taskType": "summarize-spoken",
+      "isPrediction": true
+    }
+  ]
+};
