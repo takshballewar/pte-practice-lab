@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /database.db
+
+Sitemap: https://aspirepte.online/sitemap.xml
