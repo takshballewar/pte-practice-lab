@@ -1,19 +1,19 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=19';
-import { Router } from './router.js?v=19';
-import { Tutor } from './components/tutor.js?v=19';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=19';
+import { Database } from './db.js?v=20';
+import { Router } from './router.js?v=20';
+import { Tutor } from './components/tutor.js?v=20';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=20';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=19';
-import { renderDashboard } from './pages/dashboard.js?v=19';
-import { renderPractice } from './pages/practice-premium.js?v=19';
-import { renderMockTest } from './pages/mocktest.js?v=19';
-import { renderScoring } from './pages/scoring.js?v=19';
-import { renderProfile } from './pages/profile.js?v=19';
-import { renderPricing } from './pages/pricing.js?v=19';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=19';
+import { renderLanding } from './pages/landing.js?v=20';
+import { renderDashboard } from './pages/dashboard.js?v=20';
+import { renderPractice } from './pages/practice-premium.js?v=20';
+import { renderMockTest } from './pages/mocktest.js?v=20';
+import { renderScoring } from './pages/scoring.js?v=20';
+import { renderProfile } from './pages/profile.js?v=20';
+import { renderPricing } from './pages/pricing.js?v=20';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=20';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {

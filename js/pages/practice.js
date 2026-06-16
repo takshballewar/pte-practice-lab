@@ -5,6 +5,13 @@ import { Router } from '../router.js';
 
 // Global showToast is loaded from window scope
 
+// Helper to estimate audio duration from text length (130-150 words per minute)
+function getAudioDuration(text) {
+  if (!text) return 5;
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(3, Math.ceil(words / 2.2));
+}
+
 // All 22 official PTE question categories with their respective score weightings and skill associations
 const CATEGORIES = {
   speaking: [

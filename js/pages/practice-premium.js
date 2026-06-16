@@ -1,9 +1,16 @@
 /* FluentAI Practice Laboratory View & Interactive Workspace & Flashcards */
 
-import { Database } from '../db.js?v=19';
-import { Router } from '../router.js?v=19';
+import { Database } from '../db.js?v=20';
+import { Router } from '../router.js?v=20';
 
 // Global showToast is loaded from window scope
+
+// Helper to estimate audio duration from text length (130-150 words per minute)
+function getAudioDuration(text) {
+  if (!text) return 5;
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(3, Math.ceil(words / 2.2));
+}
 
 // All 22 official PTE question categories with their respective score weightings and skill associations
 const CATEGORIES = {
