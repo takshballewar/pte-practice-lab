@@ -2373,10 +2373,14 @@ Return ONLY the JSON string. Do not include markdown code block tags (\`\`\`json
     return this.gradeShortAnswer(questionId, transcriptText);
   },
 
-  /* Helpers */
   recordScore(skill, score) {
     const progress = this.getProgress();
-    const lastHistory = progress.scoreHistory[progress.scoreHistory.length - 1];
+    const lastHistory = progress.scoreHistory[progress.scoreHistory.length - 1] || {
+      speaking: 0,
+      writing: 0,
+      reading: 0,
+      listening: 0
+    };
     
     // Update daily overall average
     const newHistory = [...progress.scoreHistory];
