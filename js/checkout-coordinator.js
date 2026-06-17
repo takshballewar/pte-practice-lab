@@ -8,7 +8,7 @@
  *  - Demo Mode (Fully simulated payment overlay)
  */
 
-import { Database } from './db.js?v=35';
+import { Database } from './db.js?v=36';
 
 const PLAN_PRICES = {
   pro_monthly: 999,
@@ -37,10 +37,10 @@ const CheckoutCoordinator = {
     console.log(`[Checkout] Active Payment Gateway: ${gateway.toUpperCase()}`);
 
     if (gateway === 'stripe') {
-      const { StripeCheckout } = await import('./stripe-checkout.js?v=35');
+      const { StripeCheckout } = await import('./stripe-checkout.js?v=36');
       await StripeCheckout.init();
     } else if (gateway === 'razorpay') {
-      const { RazorpayCheckout } = await import('./razorpay-checkout.js?v=35');
+      const { RazorpayCheckout } = await import('./razorpay-checkout.js?v=36');
       await RazorpayCheckout.init();
     }
   },
@@ -67,7 +67,7 @@ const CheckoutCoordinator = {
     switch (gateway) {
       case 'stripe':
         try {
-          const { StripeCheckout } = await import('./stripe-checkout.js?v=35');
+          const { StripeCheckout } = await import('./stripe-checkout.js?v=36');
           await StripeCheckout.checkout(planId, billingCycle);
         } catch (err) {
           console.error('[Checkout] Failed to load Stripe Checkout module:', err);
@@ -77,7 +77,7 @@ const CheckoutCoordinator = {
 
       case 'razorpay':
         try {
-          const { RazorpayCheckout } = await import('./razorpay-checkout.js?v=35');
+          const { RazorpayCheckout } = await import('./razorpay-checkout.js?v=36');
           await RazorpayCheckout.checkout(planId, billingCycle);
         } catch (err) {
           console.error('[Checkout] Failed to load Razorpay Checkout module:', err);

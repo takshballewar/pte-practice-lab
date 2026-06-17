@@ -1,20 +1,20 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=35';
-import { Router } from './router.js?v=35';
-import { Tutor } from './components/tutor.js?v=35';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=35';
+import { Database } from './db.js?v=36';
+import { Router } from './router.js?v=36';
+import { Tutor } from './components/tutor.js?v=36';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=36';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=35';
-import { renderDashboard } from './pages/dashboard.js?v=35';
-import { renderFaculty } from './pages/faculty.js?v=35';
-import { renderPractice } from './pages/practice-premium.js?v=35';
-import { renderMockTest } from './pages/mocktest.js?v=35';
-import { renderScoring } from './pages/scoring.js?v=35';
-import { renderProfile } from './pages/profile.js?v=35';
-import { renderPricing } from './pages/pricing.js?v=35';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=35';
+import { renderLanding } from './pages/landing.js?v=36';
+import { renderDashboard } from './pages/dashboard.js?v=36';
+import { renderFaculty } from './pages/faculty.js?v=36';
+import { renderPractice } from './pages/practice-premium.js?v=36';
+import { renderMockTest } from './pages/mocktest.js?v=36';
+import { renderScoring } from './pages/scoring.js?v=36';
+import { renderProfile } from './pages/profile.js?v=36';
+import { renderPricing } from './pages/pricing.js?v=36';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=36';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -468,24 +468,47 @@ function initAuthUI() {
   window.showOnboardingModal = showOnboardingModal;
 
   const showModal = (modalToShow) => {
-    overlay.classList.remove('hidden');
-    const onboardingModal = document.getElementById('onboarding-modal');
-    if (onboardingModal) onboardingModal.classList.add('hidden');
-    if (modalToShow === 'login') {
-      loginModal.classList.remove('hidden');
-      registerModal.classList.add('hidden');
-    } else {
-      registerModal.classList.remove('hidden');
-      loginModal.classList.add('hidden');
+    try {
+      console.log("showModal called with:", modalToShow);
+      console.log("overlay:", overlay);
+      console.log("loginModal:", loginModal);
+      console.log("registerModal:", registerModal);
       
-      // Reset registration modal to Step 1 (Role Selection) on open
-      if (registerRoleStep) registerRoleStep.classList.remove('hidden');
-      if (registerFormStep) registerFormStep.classList.add('hidden');
-      if (registerModalTitle) registerModalTitle.textContent = "Join Aspire PTE";
-      if (registerModalSubtitle) registerModalSubtitle.textContent = "Choose your account type to get started";
+      if (overlay) overlay.classList.remove('hidden');
+      const onboardingModal = document.getElementById('onboarding-modal');
+      if (onboardingModal) onboardingModal.classList.add('hidden');
+      
+      if (modalToShow === 'login') {
+        if (loginModal) {
+          loginModal.classList.remove('hidden');
+        } else {
+          console.error("loginModal is null!");
+        }
+        if (registerModal) {
+          registerModal.classList.add('hidden');
+        }
+      } else {
+        if (registerModal) {
+          registerModal.classList.remove('hidden');
+        } else {
+          console.error("registerModal is null!");
+        }
+        if (loginModal) {
+          loginModal.classList.add('hidden');
+        }
+        
+        // Reset registration modal to Step 1 (Role Selection) on open
+        if (registerRoleStep) registerRoleStep.classList.remove('hidden');
+        if (registerFormStep) registerFormStep.classList.add('hidden');
+        if (registerModalTitle) registerModalTitle.textContent = "Join Aspire PTE";
+        if (registerModalSubtitle) registerModalSubtitle.textContent = "Choose your account type to get started";
+      }
+      // Refresh Google Sign-In button state when modal is displayed
+      renderOfficialGoogleButtons();
+    } catch (err) {
+      console.error("Exception in showModal:", err);
+      alert("Error opening modal: " + err.message + "\n" + err.stack);
     }
-    // Refresh Google Sign-In button state when modal is displayed
-    renderOfficialGoogleButtons();
   };
 
   const hideModal = () => {
