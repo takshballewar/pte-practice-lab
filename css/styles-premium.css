@@ -7265,13 +7265,42 @@ body.in-exam-mode #practice-hint-card .btn-close-only {
    STUDENT & FACULTY INTEGRATION
    ========================================================================== */
 
+.role-selector-tabs {
+  display: flex !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  padding: 4px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--border-color) !important;
+  width: 100% !important;
+  margin-bottom: 12px !important;
+  gap: 0px !important;
+}
+
 .role-selector-tabs button {
-  transition: all var(--transition-fast) ease;
+  flex: 1 !important;
+  border: none !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  padding: 10px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin: 0 !important;
 }
 
 .role-selector-tabs button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(139,92,246,0.15);
+  color: #ffffff !important;
+}
+
+.role-selector-tabs button.active {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 198, 255, 0.25) !important;
 }
 
 .faculty-code-panel {
@@ -7347,7 +7376,7 @@ body.in-exam-mode #practice-hint-card .btn-close-only {
 }
 
 .faculty-coaching-card {
-  background: linear-gradient(135deg, rgba(139,92,246,0.03), rgba(0,198,255,0.01)) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.04) !important;
 }
 
@@ -7363,3 +7392,84 @@ body.in-exam-mode #practice-hint-card .btn-close-only {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 2px;
 }
+
+/* Registration Role Cards styling */
+.registration-role-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  .registration-role-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.role-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 16px !important;
+  padding: 24px 16px !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 250px !important;
+  box-sizing: border-box !important;
+}
+
+.role-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  background: rgba(0, 198, 255, 0.03) !important;
+  box-shadow: 0 8px 24px rgba(0, 198, 255, 0.1) !important;
+}
+
+.role-card-icon {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50px !important;
+  background: rgba(0, 198, 255, 0.08) !important;
+  color: var(--accent) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.role-card:hover .role-card-icon {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.4) !important;
+}
+
+.role-card h3 {
+  font-family: 'Outfit', var(--font-primary), sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin-bottom: 8px !important;
+}
+
+.role-card p {
+  font-size: 12.5px !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.5 !important;
+  margin-bottom: 20px !important;
+  flex-grow: 1 !important;
+}
+
+.role-card button {
+  pointer-events: none !important; /* Let the card click handle it */
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  margin-top: 0 !important;
+}
+

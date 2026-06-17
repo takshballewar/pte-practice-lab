@@ -1,20 +1,20 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=34';
-import { Router } from './router.js?v=34';
-import { Tutor } from './components/tutor.js?v=34';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=34';
+import { Database } from './db.js?v=35';
+import { Router } from './router.js?v=35';
+import { Tutor } from './components/tutor.js?v=35';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=35';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=34';
-import { renderDashboard } from './pages/dashboard.js?v=34';
-import { renderFaculty } from './pages/faculty.js?v=34';
-import { renderPractice } from './pages/practice-premium.js?v=34';
-import { renderMockTest } from './pages/mocktest.js?v=34';
-import { renderScoring } from './pages/scoring.js?v=34';
-import { renderProfile } from './pages/profile.js?v=34';
-import { renderPricing } from './pages/pricing.js?v=34';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=34';
+import { renderLanding } from './pages/landing.js?v=35';
+import { renderDashboard } from './pages/dashboard.js?v=35';
+import { renderFaculty } from './pages/faculty.js?v=35';
+import { renderPractice } from './pages/practice-premium.js?v=35';
+import { renderMockTest } from './pages/mocktest.js?v=35';
+import { renderScoring } from './pages/scoring.js?v=35';
+import { renderProfile } from './pages/profile.js?v=35';
+import { renderPricing } from './pages/pricing.js?v=35';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=35';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -327,25 +327,11 @@ function initAuthUI() {
     const setLoginRole = (role) => {
       loginRoleInput.value = role;
       if (role === 'student') {
-        loginRoleStudentBtn.style.borderColor = 'var(--accent)';
-        loginRoleStudentBtn.style.color = '#ffffff';
-        loginRoleStudentBtn.style.background = 'var(--accent)';
-        loginRoleStudentBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
-        
-        loginRoleFacultyBtn.style.borderColor = 'var(--border-color)';
-        loginRoleFacultyBtn.style.color = 'var(--text-secondary)';
-        loginRoleFacultyBtn.style.background = 'transparent';
-        loginRoleFacultyBtn.style.boxShadow = 'none';
+        loginRoleStudentBtn.classList.add('active');
+        loginRoleFacultyBtn.classList.remove('active');
       } else {
-        loginRoleFacultyBtn.style.borderColor = 'var(--accent)';
-        loginRoleFacultyBtn.style.color = '#ffffff';
-        loginRoleFacultyBtn.style.background = 'var(--accent)';
-        loginRoleFacultyBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
-        
-        loginRoleStudentBtn.style.borderColor = 'var(--border-color)';
-        loginRoleStudentBtn.style.color = 'var(--text-secondary)';
-        loginRoleStudentBtn.style.background = 'transparent';
-        loginRoleStudentBtn.style.boxShadow = 'none';
+        loginRoleFacultyBtn.classList.add('active');
+        loginRoleStudentBtn.classList.remove('active');
       }
     };
     
@@ -353,47 +339,58 @@ function initAuthUI() {
     loginRoleFacultyBtn.addEventListener('click', () => setLoginRole('faculty'));
   }
 
-  // Register form role toggles
-  const roleStudentBtn = document.getElementById('role-student-btn');
-  const roleFacultyBtn = document.getElementById('role-faculty-btn');
+  // Registration Multi-Step Logic
+  const chooseStudentRoleCard = document.getElementById('choose-student-role-card');
+  const chooseFacultyRoleCard = document.getElementById('choose-faculty-role-card');
+  const registerRoleStep = document.getElementById('register-role-step');
+  const registerFormStep = document.getElementById('register-form-step');
   const registerRoleInput = document.getElementById('register-role');
-  const registerTargetGroup = document.getElementById('register-target-group');
-  const registerFacultyIdGroup = document.getElementById('register-faculty-id-group');
+  const registerStudentFields = document.getElementById('register-student-fields');
+  const registerModalTitle = document.getElementById('register-modal-title');
+  const registerModalSubtitle = document.getElementById('register-modal-subtitle');
+  const registerBackToRoles = document.getElementById('register-back-to-roles');
 
-  if (roleStudentBtn && roleFacultyBtn && registerRoleInput) {
-    const setRole = (role) => {
-      registerRoleInput.value = role;
-      if (role === 'student') {
-        roleStudentBtn.style.borderColor = 'var(--accent)';
-        roleStudentBtn.style.color = '#ffffff';
-        roleStudentBtn.style.background = 'var(--accent)';
-        roleStudentBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
-        
-        roleFacultyBtn.style.borderColor = 'var(--border-color)';
-        roleFacultyBtn.style.color = 'var(--text-secondary)';
-        roleFacultyBtn.style.background = 'transparent';
-        roleFacultyBtn.style.boxShadow = 'none';
-        
-        if (registerTargetGroup) registerTargetGroup.style.display = 'block';
-        if (registerFacultyIdGroup) registerFacultyIdGroup.style.display = 'block';
-      } else {
-        roleFacultyBtn.style.borderColor = 'var(--accent)';
-        roleFacultyBtn.style.color = '#ffffff';
-        roleFacultyBtn.style.background = 'var(--accent)';
-        roleFacultyBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
-        
-        roleStudentBtn.style.borderColor = 'var(--border-color)';
-        roleStudentBtn.style.color = 'var(--text-secondary)';
-        roleStudentBtn.style.background = 'transparent';
-        roleStudentBtn.style.boxShadow = 'none';
-        
-        if (registerTargetGroup) registerTargetGroup.style.display = 'none';
-        if (registerFacultyIdGroup) registerFacultyIdGroup.style.display = 'none';
-      }
-    };
+  const transitionToRegisterForm = (role) => {
+    if (registerRoleInput) registerRoleInput.value = role;
     
-    roleStudentBtn.addEventListener('click', () => setRole('student'));
-    roleFacultyBtn.addEventListener('click', () => setRole('faculty'));
+    // Hide Step 1, Show Step 2
+    if (registerRoleStep) registerRoleStep.classList.add('hidden');
+    if (registerFormStep) registerFormStep.classList.remove('hidden');
+    
+    if (role === 'student') {
+      if (registerStudentFields) registerStudentFields.classList.remove('hidden');
+      if (registerModalTitle) registerModalTitle.textContent = "Create Student Account";
+      if (registerModalSubtitle) registerModalSubtitle.textContent = "Unlock AI grades and progress metrics";
+      // Update form required attributes for student fields
+      const targetSelect = document.getElementById('register-target');
+      if (targetSelect) targetSelect.required = true;
+    } else {
+      if (registerStudentFields) registerStudentFields.classList.add('hidden');
+      if (registerModalTitle) registerModalTitle.textContent = "Create Faculty Account";
+      if (registerModalSubtitle) registerModalSubtitle.textContent = "Configure your teaching credentials and details";
+      // Update form required attributes
+      const targetSelect = document.getElementById('register-target');
+      if (targetSelect) targetSelect.required = false;
+    }
+    
+    // Refresh Google button state
+    renderOfficialGoogleButtons();
+  };
+
+  if (chooseStudentRoleCard) {
+    chooseStudentRoleCard.addEventListener('click', () => transitionToRegisterForm('student'));
+  }
+  if (chooseFacultyRoleCard) {
+    chooseFacultyRoleCard.addEventListener('click', () => transitionToRegisterForm('faculty'));
+  }
+  if (registerBackToRoles) {
+    registerBackToRoles.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (registerRoleStep) registerRoleStep.classList.remove('hidden');
+      if (registerFormStep) registerFormStep.classList.add('hidden');
+      if (registerModalTitle) registerModalTitle.textContent = "Join Aspire PTE";
+      if (registerModalSubtitle) registerModalSubtitle.textContent = "Choose your account type to get started";
+    });
   }
 
   // Onboarding role selectors
@@ -408,34 +405,14 @@ function initAuthUI() {
     if (!onboardingRoleInput) return;
     onboardingRoleInput.value = role;
     if (role === 'student') {
-      if (onboardingRoleStudentBtn) {
-        onboardingRoleStudentBtn.style.borderColor = 'var(--accent)';
-        onboardingRoleStudentBtn.style.color = '#ffffff';
-        onboardingRoleStudentBtn.style.background = 'var(--accent)';
-        onboardingRoleStudentBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
-      }
-      if (onboardingRoleFacultyBtn) {
-        onboardingRoleFacultyBtn.style.borderColor = 'var(--border-color)';
-        onboardingRoleFacultyBtn.style.color = 'var(--text-secondary)';
-        onboardingRoleFacultyBtn.style.background = 'transparent';
-        onboardingRoleFacultyBtn.style.boxShadow = 'none';
-      }
+      if (onboardingRoleStudentBtn) onboardingRoleStudentBtn.classList.add('active');
+      if (onboardingRoleFacultyBtn) onboardingRoleFacultyBtn.classList.remove('active');
       if (onboardingTargetGroup) onboardingTargetGroup.style.display = 'block';
       if (onboardingMonthGroup) onboardingMonthGroup.style.display = 'block';
       if (onboardingFacultyIdGroup) onboardingFacultyIdGroup.style.display = 'block';
     } else {
-      if (onboardingRoleFacultyBtn) {
-        onboardingRoleFacultyBtn.style.borderColor = 'var(--accent)';
-        onboardingRoleFacultyBtn.style.color = '#ffffff';
-        onboardingRoleFacultyBtn.style.background = 'var(--accent)';
-        onboardingRoleFacultyBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
-      }
-      if (onboardingRoleStudentBtn) {
-        onboardingRoleStudentBtn.style.borderColor = 'var(--border-color)';
-        onboardingRoleStudentBtn.style.color = 'var(--text-secondary)';
-        onboardingRoleStudentBtn.style.background = 'transparent';
-        onboardingRoleStudentBtn.style.boxShadow = 'none';
-      }
+      if (onboardingRoleFacultyBtn) onboardingRoleFacultyBtn.classList.add('active');
+      if (onboardingRoleStudentBtn) onboardingRoleStudentBtn.classList.remove('active');
       if (onboardingTargetGroup) onboardingTargetGroup.style.display = 'none';
       if (onboardingMonthGroup) onboardingMonthGroup.style.display = 'none';
       if (onboardingFacultyIdGroup) onboardingFacultyIdGroup.style.display = 'none';
@@ -500,6 +477,12 @@ function initAuthUI() {
     } else {
       registerModal.classList.remove('hidden');
       loginModal.classList.add('hidden');
+      
+      // Reset registration modal to Step 1 (Role Selection) on open
+      if (registerRoleStep) registerRoleStep.classList.remove('hidden');
+      if (registerFormStep) registerFormStep.classList.add('hidden');
+      if (registerModalTitle) registerModalTitle.textContent = "Join Aspire PTE";
+      if (registerModalSubtitle) registerModalSubtitle.textContent = "Choose your account type to get started";
     }
     // Refresh Google Sign-In button state when modal is displayed
     renderOfficialGoogleButtons();
@@ -520,8 +503,15 @@ function initAuthUI() {
     if (e.target === overlay) hideModal();
   });
 
+  const toLoginLinks = document.querySelectorAll('.to-login-btn-link');
+  toLoginLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showModal('login');
+    });
+  });
   if (toRegisterLink) toRegisterLink.addEventListener('click', (e) => { e.preventDefault(); showModal('register'); });
-  if (toLoginLink) toLoginLink.addEventListener('click', (e) => { e.preventDefault(); showModal('login'); });
+
 
   // Password Strength Real-time Feedback
   const registerPasswordInput = document.getElementById('register-password');
@@ -590,6 +580,56 @@ function initAuthUI() {
     
     if (account) {
       if (account.password === password) {
+        // Self-healing: if the user account role in database does not match the active role selected in the UI
+        const activeRole = loginRoleInput ? loginRoleInput.value : 'student';
+        if (account.role !== activeRole) {
+          account.role = activeRole;
+          if (activeRole === 'faculty') {
+            if (!account.faculty_code) {
+              account.faculty_code = 'FAC-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+            }
+            account.linked_faculty_id = null;
+            if (!account.progress || !account.progress.tutorHistory) {
+              account.progress = {
+                streak: 0,
+                points: 0,
+                targetScore: 90,
+                targetSpeaking: 90,
+                targetWriting: 90,
+                targetReading: 90,
+                targetListening: 90,
+                examDate: '',
+                scoreHistory: [],
+                completedTasks: [],
+                unclearedTasks: [],
+                tutorHistory: [ { sender: "tutor", text: `Welcome to Aspire Faculty Room! Here you can monitor your students' practice telemetry and mistake patterns.`, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) } ]
+              };
+            } else {
+              account.progress.examDate = '';
+              account.progress.targetScore = 90;
+            }
+          } else {
+            account.faculty_code = null;
+            if (!account.progress) {
+              account.progress = {
+                streak: 0,
+                points: 0,
+                targetScore: 79,
+                targetSpeaking: 79,
+                targetWriting: 79,
+                targetReading: 79,
+                targetListening: 79,
+                examDate: '',
+                scoreHistory: [],
+                completedTasks: [],
+                unclearedTasks: [],
+                tutorHistory: []
+              };
+            }
+          }
+          Database.saveAccount(account);
+        }
+
         Database.updateUser({
           name: account.name,
           email: account.email,
@@ -615,14 +655,15 @@ function initAuthUI() {
     }
   });
 
+
   registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('register-name').value.trim();
     const email = document.getElementById('register-email').value.trim().toLowerCase();
     const password = document.getElementById('register-password').value;
-    const target = parseInt(document.getElementById('register-target').value);
     const role = document.getElementById('register-role') ? document.getElementById('register-role').value : 'student';
-    const facultyId = document.getElementById('register-faculty-id') ? document.getElementById('register-faculty-id').value.trim().toUpperCase() : '';
+    const target = role === 'faculty' ? 90 : (document.getElementById('register-target') ? parseInt(document.getElementById('register-target').value) : 79);
+    const facultyId = role === 'student' && document.getElementById('register-faculty-id') ? document.getElementById('register-faculty-id').value.trim().toUpperCase() : '';
 
     let accounts = Database.getAccounts();
     try {
@@ -727,7 +768,61 @@ function initAuthUI() {
         }
       }
       
+      // Google Login role check: determine active role based on visible step/tab
+      const activeRole = !loginModal.classList.contains('hidden')
+        ? (loginRoleInput ? loginRoleInput.value : 'student')
+        : (document.getElementById('register-role') ? document.getElementById('register-role').value : 'student');
+
       if (account) {
+        // Self-healing: if the user account role in database does not match the active role selected in the UI
+        if (account.role !== activeRole) {
+          account.role = activeRole;
+          if (activeRole === 'faculty') {
+            if (!account.faculty_code) {
+              account.faculty_code = 'FAC-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+            }
+            account.linked_faculty_id = null;
+            if (!account.progress || !account.progress.tutorHistory) {
+              account.progress = {
+                streak: 0,
+                points: 0,
+                targetScore: 90,
+                targetSpeaking: 90,
+                targetWriting: 90,
+                targetReading: 90,
+                targetListening: 90,
+                examDate: '',
+                scoreHistory: [],
+                completedTasks: [],
+                unclearedTasks: [],
+                tutorHistory: [ { sender: "tutor", text: `Welcome to Aspire Faculty Room! Here you can monitor your students' practice telemetry and mistake patterns.`, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) } ]
+              };
+            } else {
+              account.progress.examDate = '';
+              account.progress.targetScore = 90;
+            }
+          } else {
+            account.faculty_code = null;
+            if (!account.progress) {
+              account.progress = {
+                streak: 0,
+                points: 0,
+                targetScore: 79,
+                targetSpeaking: 79,
+                targetWriting: 79,
+                targetReading: 79,
+                targetListening: 79,
+                examDate: '',
+                scoreHistory: [],
+                completedTasks: [],
+                unclearedTasks: [],
+                tutorHistory: []
+              };
+            }
+          }
+          Database.saveAccount(account);
+        }
+
         // Existing user logs in
         Database.updateUser({
           name: account.name,
@@ -755,7 +850,7 @@ function initAuthUI() {
           email: payload.email,
           avatar: payload.picture,
           provider: 'google',
-          role: 'student' // default onboarding role
+          role: activeRole // Use the active role from the UI selection!
         };
         
         // Pre-fill name and surname
@@ -771,7 +866,7 @@ function initAuthUI() {
         // Hide standard modals and open onboarding modal
         showOnboardingModal();
         if (window.setOnboardingRole) {
-          window.setOnboardingRole('student');
+          window.setOnboardingRole(activeRole); // Onboard with the active role!
         }
         
         window.showToast("Google account authenticated. Please configure your target settings.", "info");
