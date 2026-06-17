@@ -1,7 +1,7 @@
 /* FluentAI post-exam AI Evaluation & Detailed Feedback Page */
 
-import { Database } from '../db.js?v=28';
-import { Router } from '../router.js?v=28';
+import { Database } from '../db.js?v=29';
+import { Router } from '../router.js?v=29';
 
 export function renderScoring(container, params) {
   // Read params

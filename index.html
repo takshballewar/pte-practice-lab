@@ -66,7 +66,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=28">
+  <link rel="stylesheet" href="css/styles-premium.css?v=29">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -325,8 +325,8 @@
         <div class="input-group">
           <label>Sign in as</label>
           <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
-            <button type="button" id="login-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: var(--accent); background: rgba(139,92,246,0.1); font-weight: 600;">Student</button>
-            <button type="button" id="login-role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; font-weight: 600;">Faculty</button>
+            <button type="button" id="login-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: #ffffff; background: var(--accent); box-shadow: 0 0 10px rgba(0, 198, 255, 0.3); font-weight: 600;">Student</button>
+            <button type="button" id="login-role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--border-color); color: var(--text-secondary); background: transparent; font-weight: 600;">Faculty</button>
           </div>
           <input type="hidden" id="login-role" value="student">
         </div>
@@ -392,8 +392,8 @@
         <div class="input-group">
           <label>I want to join as</label>
           <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
-            <button type="button" id="role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: var(--accent); background: rgba(139,92,246,0.1); font-weight: 600;">Student</button>
-            <button type="button" id="role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; font-weight: 600;">Faculty</button>
+            <button type="button" id="role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: #ffffff; background: var(--accent); box-shadow: 0 0 10px rgba(0, 198, 255, 0.3); font-weight: 600;">Student</button>
+            <button type="button" id="role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--border-color); color: var(--text-secondary); background: transparent; font-weight: 600;">Faculty</button>
           </div>
           <input type="hidden" id="register-role" value="student">
         </div>
@@ -446,8 +446,8 @@
         <div class="input-group">
           <label>I want to join as</label>
           <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
-            <button type="button" id="onboarding-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: var(--accent); background: rgba(139,92,246,0.1); font-weight: 600;">Student</button>
-            <button type="button" id="onboarding-role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; font-weight: 600;">Faculty</button>
+            <button type="button" id="onboarding-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: #ffffff; background: var(--accent); box-shadow: 0 0 10px rgba(0, 198, 255, 0.3); font-weight: 600;">Student</button>
+            <button type="button" id="onboarding-role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--border-color); color: var(--text-secondary); background: transparent; font-weight: 600;">Faculty</button>
           </div>
           <input type="hidden" id="onboarding-role" value="student">
         </div>
@@ -475,6 +475,6 @@
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=28"></script>
+  <script type="module" src="js/app-premium.js?v=29"></script>
 </body>
 </html>

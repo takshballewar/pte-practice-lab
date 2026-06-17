@@ -1,20 +1,20 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=28';
-import { Router } from './router.js?v=28';
-import { Tutor } from './components/tutor.js?v=28';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=28';
+import { Database } from './db.js?v=29';
+import { Router } from './router.js?v=29';
+import { Tutor } from './components/tutor.js?v=29';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=29';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=28';
-import { renderDashboard } from './pages/dashboard.js?v=28';
-import { renderFaculty } from './pages/faculty.js?v=28';
-import { renderPractice } from './pages/practice-premium.js?v=28';
-import { renderMockTest } from './pages/mocktest.js?v=28';
-import { renderScoring } from './pages/scoring.js?v=28';
-import { renderProfile } from './pages/profile.js?v=28';
-import { renderPricing } from './pages/pricing.js?v=28';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=28';
+import { renderLanding } from './pages/landing.js?v=29';
+import { renderDashboard } from './pages/dashboard.js?v=29';
+import { renderFaculty } from './pages/faculty.js?v=29';
+import { renderPractice } from './pages/practice-premium.js?v=29';
+import { renderMockTest } from './pages/mocktest.js?v=29';
+import { renderScoring } from './pages/scoring.js?v=29';
+import { renderProfile } from './pages/profile.js?v=29';
+import { renderPricing } from './pages/pricing.js?v=29';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=29';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -253,20 +253,24 @@ function initAuthUI() {
       loginRoleInput.value = role;
       if (role === 'student') {
         loginRoleStudentBtn.style.borderColor = 'var(--accent)';
-        loginRoleStudentBtn.style.color = 'var(--accent)';
-        loginRoleStudentBtn.style.background = 'rgba(139,92,246,0.1)';
+        loginRoleStudentBtn.style.color = '#ffffff';
+        loginRoleStudentBtn.style.background = 'var(--accent)';
+        loginRoleStudentBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
         
         loginRoleFacultyBtn.style.borderColor = 'var(--border-color)';
         loginRoleFacultyBtn.style.color = 'var(--text-secondary)';
         loginRoleFacultyBtn.style.background = 'transparent';
+        loginRoleFacultyBtn.style.boxShadow = 'none';
       } else {
         loginRoleFacultyBtn.style.borderColor = 'var(--accent)';
-        loginRoleFacultyBtn.style.color = 'var(--accent)';
-        loginRoleFacultyBtn.style.background = 'rgba(139,92,246,0.1)';
+        loginRoleFacultyBtn.style.color = '#ffffff';
+        loginRoleFacultyBtn.style.background = 'var(--accent)';
+        loginRoleFacultyBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
         
         loginRoleStudentBtn.style.borderColor = 'var(--border-color)';
         loginRoleStudentBtn.style.color = 'var(--text-secondary)';
         loginRoleStudentBtn.style.background = 'transparent';
+        loginRoleStudentBtn.style.boxShadow = 'none';
       }
     };
     
@@ -286,23 +290,27 @@ function initAuthUI() {
       registerRoleInput.value = role;
       if (role === 'student') {
         roleStudentBtn.style.borderColor = 'var(--accent)';
-        roleStudentBtn.style.color = 'var(--accent)';
-        roleStudentBtn.style.background = 'rgba(139,92,246,0.1)';
+        roleStudentBtn.style.color = '#ffffff';
+        roleStudentBtn.style.background = 'var(--accent)';
+        roleStudentBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
         
         roleFacultyBtn.style.borderColor = 'var(--border-color)';
         roleFacultyBtn.style.color = 'var(--text-secondary)';
         roleFacultyBtn.style.background = 'transparent';
+        roleFacultyBtn.style.boxShadow = 'none';
         
         if (registerTargetGroup) registerTargetGroup.style.display = 'block';
         if (registerFacultyIdGroup) registerFacultyIdGroup.style.display = 'block';
       } else {
         roleFacultyBtn.style.borderColor = 'var(--accent)';
-        roleFacultyBtn.style.color = 'var(--accent)';
-        roleFacultyBtn.style.background = 'rgba(139,92,246,0.1)';
+        roleFacultyBtn.style.color = '#ffffff';
+        roleFacultyBtn.style.background = 'var(--accent)';
+        roleFacultyBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
         
         roleStudentBtn.style.borderColor = 'var(--border-color)';
         roleStudentBtn.style.color = 'var(--text-secondary)';
         roleStudentBtn.style.background = 'transparent';
+        roleStudentBtn.style.boxShadow = 'none';
         
         if (registerTargetGroup) registerTargetGroup.style.display = 'none';
         if (registerFacultyIdGroup) registerFacultyIdGroup.style.display = 'none';
@@ -327,13 +335,15 @@ function initAuthUI() {
     if (role === 'student') {
       if (onboardingRoleStudentBtn) {
         onboardingRoleStudentBtn.style.borderColor = 'var(--accent)';
-        onboardingRoleStudentBtn.style.color = 'var(--accent)';
-        onboardingRoleStudentBtn.style.background = 'rgba(139,92,246,0.1)';
+        onboardingRoleStudentBtn.style.color = '#ffffff';
+        onboardingRoleStudentBtn.style.background = 'var(--accent)';
+        onboardingRoleStudentBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
       }
       if (onboardingRoleFacultyBtn) {
         onboardingRoleFacultyBtn.style.borderColor = 'var(--border-color)';
         onboardingRoleFacultyBtn.style.color = 'var(--text-secondary)';
         onboardingRoleFacultyBtn.style.background = 'transparent';
+        onboardingRoleFacultyBtn.style.boxShadow = 'none';
       }
       if (onboardingTargetGroup) onboardingTargetGroup.style.display = 'block';
       if (onboardingMonthGroup) onboardingMonthGroup.style.display = 'block';
@@ -341,13 +351,15 @@ function initAuthUI() {
     } else {
       if (onboardingRoleFacultyBtn) {
         onboardingRoleFacultyBtn.style.borderColor = 'var(--accent)';
-        onboardingRoleFacultyBtn.style.color = 'var(--accent)';
-        onboardingRoleFacultyBtn.style.background = 'rgba(139,92,246,0.1)';
+        onboardingRoleFacultyBtn.style.color = '#ffffff';
+        onboardingRoleFacultyBtn.style.background = 'var(--accent)';
+        onboardingRoleFacultyBtn.style.boxShadow = '0 0 10px rgba(0, 198, 255, 0.3)';
       }
       if (onboardingRoleStudentBtn) {
         onboardingRoleStudentBtn.style.borderColor = 'var(--border-color)';
         onboardingRoleStudentBtn.style.color = 'var(--text-secondary)';
         onboardingRoleStudentBtn.style.background = 'transparent';
+        onboardingRoleStudentBtn.style.boxShadow = 'none';
       }
       if (onboardingTargetGroup) onboardingTargetGroup.style.display = 'none';
       if (onboardingMonthGroup) onboardingMonthGroup.style.display = 'none';
