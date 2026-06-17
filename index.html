@@ -66,7 +66,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=31">
+  <link rel="stylesheet" href="css/styles-premium.css?v=33">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -428,8 +428,8 @@
     <!-- Onboarding / Target Setup Modal -->
     <div id="onboarding-modal" class="modal-card hidden" style="max-width: 500px;">
       <div class="modal-header">
-        <h2>Complete Profile Setup</h2>
-        <p>Configure your target scores and test timeline</p>
+        <h2 id="onboarding-modal-title">Complete Profile Setup</h2>
+        <p id="onboarding-modal-subtitle">Configure your target scores and test timeline</p>
       </div>
       <form id="onboarding-form" class="modal-form">
         <div class="grid-cols-2" style="gap: 16px; margin-bottom: 12px;">
@@ -443,7 +443,7 @@
           </div>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" id="onboarding-role-group">
           <label>I want to join as</label>
           <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
             <button type="button" id="onboarding-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: #ffffff; background: var(--accent); box-shadow: 0 0 10px rgba(0, 198, 255, 0.3); font-weight: 600;">Student</button>
@@ -475,6 +475,6 @@
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=31"></script>
+  <script type="module" src="js/app-premium.js?v=33"></script>
 </body>
 </html>

@@ -1,20 +1,20 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=31';
-import { Router } from './router.js?v=31';
-import { Tutor } from './components/tutor.js?v=31';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=31';
+import { Database } from './db.js?v=33';
+import { Router } from './router.js?v=33';
+import { Tutor } from './components/tutor.js?v=33';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=33';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=31';
-import { renderDashboard } from './pages/dashboard.js?v=31';
-import { renderFaculty } from './pages/faculty.js?v=31';
-import { renderPractice } from './pages/practice-premium.js?v=31';
-import { renderMockTest } from './pages/mocktest.js?v=31';
-import { renderScoring } from './pages/scoring.js?v=31';
-import { renderProfile } from './pages/profile.js?v=31';
-import { renderPricing } from './pages/pricing.js?v=31';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=31';
+import { renderLanding } from './pages/landing.js?v=33';
+import { renderDashboard } from './pages/dashboard.js?v=33';
+import { renderFaculty } from './pages/faculty.js?v=33';
+import { renderPractice } from './pages/practice-premium.js?v=33';
+import { renderMockTest } from './pages/mocktest.js?v=33';
+import { renderScoring } from './pages/scoring.js?v=33';
+import { renderProfile } from './pages/profile.js?v=33';
+import { renderPricing } from './pages/pricing.js?v=33';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=33';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -449,8 +449,51 @@ function initAuthUI() {
   
   window.setOnboardingRole = setOnboardingRole;
 
+  const showOnboardingModal = () => {
+    const temp = window.tempRegistrationDetails || {};
+    const user = Database.getUser() || {};
+    const role = temp.role || user.role || 'student';
+
+    const onboardingModal = document.getElementById('onboarding-modal');
+    overlay.classList.remove('hidden');
+    if (onboardingModal) onboardingModal.classList.remove('hidden');
+    loginModal.classList.add('hidden');
+    registerModal.classList.add('hidden');
+
+    const roleInput = document.getElementById('onboarding-role');
+    if (roleInput) roleInput.value = role;
+
+    const roleGroup = document.getElementById('onboarding-role-group');
+    if (roleGroup) roleGroup.style.display = 'none';
+
+    const title = document.getElementById('onboarding-modal-title');
+    const subtitle = document.getElementById('onboarding-modal-subtitle');
+    const targetGroup = document.getElementById('onboarding-target-group');
+    const monthGroup = document.getElementById('onboarding-month-group');
+    const facultyIdGroup = document.getElementById('onboarding-faculty-id-group');
+
+    if (role === 'faculty') {
+      if (title) title.textContent = "Complete Faculty Profile Setup";
+      if (subtitle) subtitle.textContent = "Configure your teaching credentials and details";
+      if (targetGroup) targetGroup.style.display = 'none';
+      if (monthGroup) monthGroup.style.display = 'none';
+      if (facultyIdGroup) facultyIdGroup.style.display = 'none';
+    } else {
+      if (title) title.textContent = "Complete Student Profile Setup";
+      if (subtitle) subtitle.textContent = "Configure your target scores and test timeline";
+      if (targetGroup) targetGroup.style.display = 'block';
+      if (monthGroup) monthGroup.style.display = 'block';
+      if (facultyIdGroup) facultyIdGroup.style.display = 'block';
+    }
+
+    populateOnboardingMonths();
+  };
+  window.showOnboardingModal = showOnboardingModal;
+
   const showModal = (modalToShow) => {
     overlay.classList.remove('hidden');
+    const onboardingModal = document.getElementById('onboarding-modal');
+    if (onboardingModal) onboardingModal.classList.add('hidden');
     if (modalToShow === 'login') {
       loginModal.classList.remove('hidden');
       registerModal.classList.add('hidden');
@@ -466,6 +509,8 @@ function initAuthUI() {
     overlay.classList.add('hidden');
     loginModal.classList.add('hidden');
     registerModal.classList.add('hidden');
+    const onboardingModal = document.getElementById('onboarding-modal');
+    if (onboardingModal) onboardingModal.classList.add('hidden');
   };
 
   if (openLoginBtn) openLoginBtn.addEventListener('click', () => showModal('login'));
@@ -642,12 +687,7 @@ function initAuthUI() {
     if (onboardingFacultyIdInput) onboardingFacultyIdInput.value = facultyId;
 
     // Hide register modal and open onboarding modal
-    const onboardingModal = document.getElementById('onboarding-modal');
-    registerModal.classList.add('hidden');
-    if (onboardingModal) {
-      onboardingModal.classList.remove('hidden');
-      populateOnboardingMonths();
-    }
+    showOnboardingModal();
   });
 
   // Google JWT Credential Decoder helper
@@ -729,17 +769,9 @@ function initAuthUI() {
         if (surnameInput) surnameInput.value = surname;
         
         // Hide standard modals and open onboarding modal
-        const onboardingModal = document.getElementById('onboarding-modal');
-        loginModal.classList.add('hidden');
-        registerModal.classList.add('hidden');
-        
-        if (onboardingModal) {
-          onboardingModal.classList.remove('hidden');
-          populateOnboardingMonths();
-          // Initialise onboarding role toggle
-          if (window.setOnboardingRole) {
-            window.setOnboardingRole('student');
-          }
+        showOnboardingModal();
+        if (window.setOnboardingRole) {
+          window.setOnboardingRole('student');
         }
         
         window.showToast("Google account authenticated. Please configure your target settings.", "info");
@@ -1021,18 +1053,8 @@ function checkOnboarding() {
     }
     const progress = Database.getProgress();
     if (!progress.examDate) {
-      const overlay = document.getElementById('auth-modal-overlay');
-      const onboardingModal = document.getElementById('onboarding-modal');
-      const loginModal = document.getElementById('login-modal');
-      const registerModal = document.getElementById('register-modal');
-      
-      if (overlay && onboardingModal) {
-        overlay.classList.remove('hidden');
-        onboardingModal.classList.remove('hidden');
-        if (loginModal) loginModal.classList.add('hidden');
-        if (registerModal) registerModal.classList.add('hidden');
-        
-        populateOnboardingMonths();
+      if (window.showOnboardingModal) {
+        window.showOnboardingModal();
       }
     }
   }
