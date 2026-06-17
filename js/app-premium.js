@@ -1,20 +1,20 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=29';
-import { Router } from './router.js?v=29';
-import { Tutor } from './components/tutor.js?v=29';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=29';
+import { Database } from './db.js?v=30';
+import { Router } from './router.js?v=30';
+import { Tutor } from './components/tutor.js?v=30';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=30';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=29';
-import { renderDashboard } from './pages/dashboard.js?v=29';
-import { renderFaculty } from './pages/faculty.js?v=29';
-import { renderPractice } from './pages/practice-premium.js?v=29';
-import { renderMockTest } from './pages/mocktest.js?v=29';
-import { renderScoring } from './pages/scoring.js?v=29';
-import { renderProfile } from './pages/profile.js?v=29';
-import { renderPricing } from './pages/pricing.js?v=29';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=29';
+import { renderLanding } from './pages/landing.js?v=30';
+import { renderDashboard } from './pages/dashboard.js?v=30';
+import { renderFaculty } from './pages/faculty.js?v=30';
+import { renderPractice } from './pages/practice-premium.js?v=30';
+import { renderMockTest } from './pages/mocktest.js?v=30';
+import { renderScoring } from './pages/scoring.js?v=30';
+import { renderProfile } from './pages/profile.js?v=30';
+import { renderPricing } from './pages/pricing.js?v=30';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=30';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -928,6 +928,9 @@ function populateNotifications() {
 function checkOnboarding() {
   const user = Database.getUser();
   if (user && user.authenticated) {
+    if (user.role === 'faculty') {
+      return; // Faculty accounts do not need student exam target onboarding
+    }
     const progress = Database.getProgress();
     if (!progress.examDate) {
       const overlay = document.getElementById('auth-modal-overlay');

@@ -2433,6 +2433,41 @@ Return ONLY the JSON string. Do not include markdown code block tags (\`\`\`json
     const progress = this.getProgress();
     const targetScore = progress.targetScore || 65;
 
+    // Link practiced question to faculty homework assignments if applicable
+    const questions = this.getQuestions();
+    let qCategory = null;
+    let qType = null;
+    for (const cat of ['speaking', 'writing', 'reading', 'listening']) {
+      const q = questions[cat].find(x => x.id === questionId);
+      if (q) {
+        qCategory = cat;
+        qType = q.taskType;
+        break;
+      }
+    }
+
+    if (progress.assignments && progress.assignments.length > 0) {
+      progress.assignments.forEach(asm => {
+        if (asm.status === 'pending') {
+          const matchesCategory = qCategory && (asm.taskType === qCategory);
+          const matchesType = qType && (asm.taskType === qType);
+          const matchesAny = asm.taskType === 'any';
+          
+          if (matchesCategory || matchesType || matchesAny) {
+            if (!asm.completedTasks) asm.completedTasks = [];
+            if (!asm.completedTasks.includes(questionId)) {
+              asm.completedTasks.push(questionId);
+              asm.completedCount = asm.completedTasks.length;
+              if (asm.completedCount >= asm.targetCount) {
+                asm.status = 'completed';
+                asm.completedDate = new Date().toLocaleDateString([], { month: 'short', day: '2-digit', year: 'numeric' });
+              }
+            }
+          }
+        }
+      });
+    }
+
     // If score is provided, check if score >= targetScore
     const isCleared = (score !== null) ? (score >= targetScore) : true;
 

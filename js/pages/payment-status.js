@@ -9,8 +9,8 @@
  * animations, clean up on re-render, and persist subscription state.
  */
 
-import { Database } from '../db.js?v=29';
-import { Router } from '../router.js?v=29';
+import { Database } from '../db.js?v=30';
+import { Router } from '../router.js?v=30';
 
 // ─── Plan / Cycle display labels ─────────────────────────────────────────────
 const PLAN_LABELS = {

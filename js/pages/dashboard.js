@@ -1,10 +1,11 @@
 /* FluentAI Progress Dashboard & SVG Custom Graphs */
 
-import { Database } from '../db.js?v=29';
-import { Router } from '../router.js?v=29';
+import { Database } from '../db.js?v=30';
+import { Router } from '../router.js?v=30';
 
 export function renderDashboard(container) {
   const progress = Database.getProgress();
+  const user = Database.getUser() || {};
   
   // Calculate average score for circular chart
   const lastScore = progress.scoreHistory[progress.scoreHistory.length - 1] || {
@@ -160,6 +161,65 @@ export function renderDashboard(container) {
 
       <!-- RIGHT HAND CONTENT: AI ADVISOR, RADAR & COUNTDOWNS -->
       <div class="dashboard-right-deck">
+        <!-- FACULTY COACHING BOARD -->
+        ${progress.linked_faculty_id || user.linked_faculty_id ? `
+        <div class="card-glass-glow faculty-coaching-card" style="margin-bottom: 24px; border-color: rgba(139, 92, 246, 0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:16px;">👨‍🏫</span>
+              <h4 style="font-size:12.5px; color:var(--text-primary); margin:0;">Coach's Training Desk</h4>
+            </div>
+            <span style="font-size:9.5px; font-family:monospace; background:rgba(255,255,255,0.05); padding:2px 6px; border-radius:3px; color:var(--text-muted);">
+              ID: ${progress.linked_faculty_id || user.linked_faculty_id}
+            </span>
+          </div>
+
+          <!-- Coach Feedback -->
+          ${progress.advisorFeedback ? `
+          <div style="background: rgba(139, 92, 246, 0.05); padding: 10px; border-left: 2px solid var(--accent); border-radius: 0 4px 4px 0; margin-bottom: 12px; font-size: 11px;">
+            <div style="font-size: 9px; color: var(--text-muted); margin-bottom: 2px; font-weight:700;">LATEST COACH FEEDBACK</div>
+            <div style="color:var(--text-primary); line-height: 1.4;">"${progress.advisorFeedback}"</div>
+          </div>
+          ` : ''}
+
+          <!-- Assigned Drills -->
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <span style="font-size:10px; font-weight:700; text-transform:uppercase; color:var(--text-muted); letter-spacing:0.5px;">Active Drills Assigned</span>
+            ${(!progress.assignments || progress.assignments.filter(a => a.status === 'pending').length === 0) ? `
+              <div style="font-size:10.5px; color:var(--text-muted); text-align:center; padding: 10px; border: 1px dashed var(--border-color); border-radius:4px; background:rgba(255,255,255,0.01);">
+                No pending drills assigned by your coach.
+              </div>
+            ` : progress.assignments.filter(a => a.status === 'pending').map(asm => {
+                const pct = Math.round((asm.completedCount / asm.targetCount) * 100);
+                return `
+                <div style="padding: 8px; background: rgba(0,0,0,0.15); border: 1px solid var(--border-color); border-radius: 4px; font-size:11px;">
+                  <div style="display:flex; justify-content:space-between; margin-bottom: 2px;">
+                    <span style="font-weight:600; color:var(--text-primary);">${asm.title}</span>
+                    <span style="color:var(--accent); font-weight:700;">${asm.completedCount}/${asm.targetCount}</span>
+                  </div>
+                  <div style="background: rgba(255,255,255,0.05); height: 3px; border-radius: 1.5px; overflow:hidden; margin-top:4px; margin-bottom:4px;">
+                    <div style="background: var(--accent); width: ${pct}%; height: 100%;"></div>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; font-size:9.5px; color:var(--text-muted); margin-top:2px;">
+                    <span>Due: ${asm.dueDate}</span>
+                    <a href="#practice" style="color:var(--accent); text-decoration:none; font-weight:600;">Practice Now &rarr;</a>
+                  </div>
+                </div>
+                `;
+            }).join('')}
+          </div>
+        </div>
+        ` : `
+        <!-- Unlinked advisor callout -->
+        <div class="card-glass" style="margin-bottom: 24px; padding: 16px; font-size: 11.5px; line-height: 1.4; border-color: rgba(255,255,255,0.02);">
+          <h4 style="margin: 0 0 6px 0; color: var(--text-secondary); display:flex; align-items:center; gap:6px;">
+            <span>👨‍🏫 Link Coach Profile</span>
+          </h4>
+          <p style="color: var(--text-muted); margin: 0 0 10px 0;">Enter your Coach's Faculty ID in profile settings to sync mistake telemetry and receive training assignments.</p>
+          <a href="#profile" class="btn btn-outline btn-xs" style="margin-top:0; text-align:center; display:block; font-size:10px; font-weight:600; text-transform:none; border-color:var(--accent); color:var(--accent);">Open Profile Settings</a>
+        </div>
+        `}
+
         <!-- AI RECOMMENDATION CARD -->
         <div class="card-glass-glow ai-recommendation-card" style="margin-bottom: 24px;">
           <div class="ai-recommend-header">

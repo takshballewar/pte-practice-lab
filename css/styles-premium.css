@@ -7327,3 +7327,39 @@ body.in-exam-mode #practice-hint-card .btn-close-only {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Premium Faculty Attention deck & timeline feedback styles */
+.attention-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: rgba(255, 255, 255, 0.01) !important;
+}
+
+.attention-card:hover {
+  transform: translateY(-2px);
+}
+
+.attention-card.warning-glow:hover {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.1) !important;
+}
+
+.attention-card.success-glow:hover {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.1) !important;
+}
+
+.faculty-coaching-card {
+  background: linear-gradient(135deg, rgba(139,92,246,0.03), rgba(0,198,255,0.01)) !important;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.04) !important;
+}
+
+#telemetry-notes-feed::-webkit-scrollbar,
+#telemetry-assignments-list::-webkit-scrollbar,
+#telemetry-mistakes-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+#telemetry-notes-feed::-webkit-scrollbar-thumb,
+#telemetry-assignments-list::-webkit-scrollbar-thumb,
+#telemetry-mistakes-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+}
