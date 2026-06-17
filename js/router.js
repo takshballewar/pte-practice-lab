@@ -1,6 +1,6 @@
 /* FluentAI SPA Hash Router and Page Views Lifecycle Coordinator */
 
-import { Database } from './db.js?v=30';
+import { Database } from './db.js?v=31';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
@@ -230,6 +230,11 @@ export const Router = {
         // Restore opacity
         viewport.style.opacity = 1;
         viewport.style.transition = 'opacity 0.25s ease';
+
+        // Trigger background session sync
+        if (window.syncServerSession) {
+          window.syncServerSession();
+        }
       }, 150);
     } else {
       console.error(`Route hash not recognized: ${hash}`);

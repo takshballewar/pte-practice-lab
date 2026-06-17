@@ -1,20 +1,20 @@
 /* FluentAI Main Application Coordinator & Entrypoint */
 
-import { Database } from './db.js?v=30';
-import { Router } from './router.js?v=30';
-import { Tutor } from './components/tutor.js?v=30';
-import { RazorpayCheckout } from './razorpay-checkout.js?v=30';
+import { Database } from './db.js?v=31';
+import { Router } from './router.js?v=31';
+import { Tutor } from './components/tutor.js?v=31';
+import { RazorpayCheckout } from './razorpay-checkout.js?v=31';
 
 // Page Views
-import { renderLanding } from './pages/landing.js?v=30';
-import { renderDashboard } from './pages/dashboard.js?v=30';
-import { renderFaculty } from './pages/faculty.js?v=30';
-import { renderPractice } from './pages/practice-premium.js?v=30';
-import { renderMockTest } from './pages/mocktest.js?v=30';
-import { renderScoring } from './pages/scoring.js?v=30';
-import { renderProfile } from './pages/profile.js?v=30';
-import { renderPricing } from './pages/pricing.js?v=30';
-import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=30';
+import { renderLanding } from './pages/landing.js?v=31';
+import { renderDashboard } from './pages/dashboard.js?v=31';
+import { renderFaculty } from './pages/faculty.js?v=31';
+import { renderPractice } from './pages/practice-premium.js?v=31';
+import { renderMockTest } from './pages/mocktest.js?v=31';
+import { renderScoring } from './pages/scoring.js?v=31';
+import { renderProfile } from './pages/profile.js?v=31';
+import { renderPricing } from './pages/pricing.js?v=31';
+import { renderPaymentSuccess, renderPaymentCancel } from './pages/payment-status.js?v=31';
 
 // Global custom Toast utility
 window.showToast = function(message, type = 'info') {
@@ -60,7 +60,67 @@ window.showToast = function(message, type = 'info') {
   setTimeout(dismiss, 3500);
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+let lastSyncTime = 0;
+async function syncServerSession(force = false) {
+  const now = Date.now();
+  if (!force && now - lastSyncTime < 10000) {
+    return;
+  }
+  lastSyncTime = now;
+
+  const user = Database.getUser();
+  if (!user || !user.authenticated) return;
+  
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 3000); // 3-second timeout for quick page load
+  
+  try {
+    const res = await fetch('/api/accounts', { signal: controller.signal });
+    clearTimeout(timeoutId);
+    if (res.ok) {
+      const serverAccounts = await res.json();
+      if (Array.isArray(serverAccounts)) {
+        localStorage.setItem("fluentai_accounts", JSON.stringify(serverAccounts));
+        const email = user.email.toLowerCase().trim();
+        const match = serverAccounts.find(a => a.email.toLowerCase() === email);
+        if (match) {
+          const updatedUser = {
+            name: match.name,
+            email: match.email,
+            avatar: match.avatar || user.avatar || null,
+            authenticated: true,
+            role: match.role || 'student',
+            faculty_code: match.faculty_code || null,
+            linked_faculty_id: match.linked_faculty_id || null
+          };
+          
+          const oldProgressStr = localStorage.getItem(`fluentai_progress_${email}`);
+          const oldUserStr = localStorage.getItem("fluentai_user");
+          const newProgressStr = JSON.stringify(match.progress);
+          const newUserStr = JSON.stringify(updatedUser);
+          
+          if (oldProgressStr !== newProgressStr || oldUserStr !== newUserStr) {
+            localStorage.setItem("fluentai_user", newUserStr);
+            if (match.progress) {
+              localStorage.setItem(`fluentai_progress_${email}`, newProgressStr);
+              localStorage.setItem("fluentai_progress", newProgressStr);
+            }
+            
+            if (Router.currentRoute === 'dashboard' || Router.currentRoute === 'faculty') {
+              Router.handleRouting();
+            }
+          }
+        }
+      }
+    }
+  } catch (err) {
+    clearTimeout(timeoutId);
+    console.warn("Failed to sync server session (offline or timeout)", err);
+  }
+}
+window.syncServerSession = syncServerSession;
+
+document.addEventListener('DOMContentLoaded', async () => {
   // Always force light theme permanently for brand alignment
   localStorage.setItem('aspire_theme', 'light');
   document.body.className = 'light-theme';
@@ -74,6 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Initialize local mock database
   Database.init();
+
+  // Sync server session before routing so that pages load with the latest data
+  await syncServerSession();
 
   // 2. Initialize Routing configuration
   Router.init({
@@ -111,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 9. Onboarding Setup Form Handler
   const onboardingForm = document.getElementById('onboarding-form');
   if (onboardingForm) {
-    onboardingForm.addEventListener('submit', (e) => {
+    onboardingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const firstName = document.getElementById('onboarding-firstname').value.trim();
@@ -128,7 +191,19 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Validate faculty ID in onboarding if student links one
       if (role === 'student' && facultyId) {
-        const accounts = Database.getAccounts();
+        let accounts = Database.getAccounts();
+        try {
+          const res = await fetch('/api/accounts');
+          if (res.ok) {
+            const serverAccounts = await res.json();
+            if (Array.isArray(serverAccounts)) {
+              localStorage.setItem("fluentai_accounts", JSON.stringify(serverAccounts));
+              accounts = serverAccounts;
+            }
+          }
+        } catch (err) {
+          console.error("Failed to sync accounts during onboarding validation", err);
+        }
         const facultyExists = accounts.some(a => a.role === 'faculty' && a.faculty_code === facultyId);
         if (!facultyExists) {
           window.showToast("Faculty ID not found. Please verify the code or clear it.", "error");
@@ -495,7 +570,7 @@ function initAuthUI() {
     }
   });
 
-  registerForm.addEventListener('submit', (e) => {
+  registerForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('register-name').value.trim();
     const email = document.getElementById('register-email').value.trim().toLowerCase();
@@ -504,7 +579,20 @@ function initAuthUI() {
     const role = document.getElementById('register-role') ? document.getElementById('register-role').value : 'student';
     const facultyId = document.getElementById('register-faculty-id') ? document.getElementById('register-faculty-id').value.trim().toUpperCase() : '';
 
-    const accounts = Database.getAccounts();
+    let accounts = Database.getAccounts();
+    try {
+      const res = await fetch('/api/accounts');
+      if (res.ok) {
+        const serverAccounts = await res.json();
+        if (Array.isArray(serverAccounts)) {
+          localStorage.setItem("fluentai_accounts", JSON.stringify(serverAccounts));
+          accounts = serverAccounts;
+        }
+      }
+    } catch (err) {
+      console.error("Failed to sync accounts during registration validation", err);
+    }
+
     const existing = accounts.find(a => a.email.toLowerCase() === email.toLowerCase());
     if (existing) {
       window.showToast("Email address already registered. Please login instead.", "warning");

@@ -1,6 +1,6 @@
 /* Faculty Advisor Dashboard Page Component */
 
-import { Database } from '../db.js?v=30';
+import { Database } from '../db.js?v=31';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'ST';

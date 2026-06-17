@@ -1,6 +1,6 @@
 /* FluentAI Profile & AI Study Plan Generator Component */
 
-import { Database } from '../db.js?v=30';
+import { Database } from '../db.js?v=31';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
@@ -204,7 +204,7 @@ export function renderProfile(container) {
     }
 
     // Hook config form submits
-    document.getElementById('profile-config-form').addEventListener('submit', (e) => {
+    document.getElementById('profile-config-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const newName = document.getElementById('prof-name').value;
@@ -230,7 +230,19 @@ export function renderProfile(container) {
 
         // Validate linked faculty ID if entered
         if (newFacultyId) {
-          const accounts = Database.getAccounts();
+          let accounts = Database.getAccounts();
+          try {
+            const res = await fetch('/api/accounts');
+            if (res.ok) {
+              const serverAccounts = await res.json();
+              if (Array.isArray(serverAccounts)) {
+                localStorage.setItem("fluentai_accounts", JSON.stringify(serverAccounts));
+                accounts = serverAccounts;
+              }
+            }
+          } catch (err) {
+            console.error("Failed to sync accounts during profile validation", err);
+          }
           const facultyExists = accounts.some(a => a.role === 'faculty' && a.faculty_code === newFacultyId);
           if (!facultyExists) {
             window.showToast("Faculty ID not found. Please verify the code or check if it's correct.", "error");
