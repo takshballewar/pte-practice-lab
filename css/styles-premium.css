@@ -7260,3 +7260,70 @@ body.in-exam-mode #practice-hint-card .btn-close-only {
   color: #004b61 !important;
   cursor: pointer !important;
 }
+
+/* ==========================================================================
+   STUDENT & FACULTY INTEGRATION
+   ========================================================================== */
+
+.role-selector-tabs button {
+  transition: all var(--transition-fast) ease;
+}
+
+.role-selector-tabs button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139,92,246,0.15);
+}
+
+.faculty-code-panel {
+  border: 1px solid rgba(139,92,246,0.2) !important;
+  box-shadow: 0 0 15px rgba(139,92,246,0.05) !important;
+  background: linear-gradient(135deg, rgba(139,92,246,0.02), rgba(19,150,226,0.02)) !important;
+}
+
+.classroom-stats-deck .stat-cell {
+  padding: 10px;
+}
+
+.classroom-stats-deck .stat-num {
+  font-family: 'Outfit', var(--font-primary), sans-serif;
+  text-shadow: 0 0 10px rgba(255,255,255,0.02);
+}
+
+.roster-table th {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.roster-table td {
+  border-top: 1px solid var(--border-color);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.roster-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+.btn-telemetry {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background: transparent !important;
+}
+
+.btn-telemetry:hover {
+  background: var(--accent) !important;
+  color: #FFF !important;
+  box-shadow: 0 0 10px rgba(0, 198, 255, 0.25) !important;
+}
+
+#telemetry-skills-matrix div {
+  margin-bottom: 4px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

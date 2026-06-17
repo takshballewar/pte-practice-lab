@@ -1,6 +1,6 @@
 /* FluentAI Profile & AI Study Plan Generator Component */
 
-import { Database } from '../db.js?v=26';
+import { Database } from '../db.js?v=28';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
@@ -20,20 +20,13 @@ function generateInitialsSvg(name) {
 export function renderProfile(container) {
   const user = Database.getUser();
   const progress = Database.getProgress();
+  const isFaculty = user && user.role === 'faculty';
 
   const renderView = () => {
     const avatarUrl = user && user.avatar ? user.avatar : generateInitialsSvg(user ? user.name : 'Vivek Ballewar');
-    container.innerHTML = `
-      <div class="profile-grid">
-        <!-- LEFT COLUMN: AVATAR CARD & TARGET STATS -->
-        <aside class="profile-sidebar-card card-glass">
-          <div class="profile-large-avatar">
-            <img src="${avatarUrl}" alt="User Avatar Large">
-          </div>
-          <h3 style="font-size: 18px; margin-bottom: 4px;">${user ? user.name : 'Vivek Ballewar'}</h3>
-          <span style="font-size:12px; color:var(--accent); font-weight:600; text-transform:uppercase;">Premium Scholar</span>
-          
-          <div style="width:100%; border-top:1px solid var(--border-color); margin-top:20px; padding-top:20px; text-align:left; display:flex; flex-direction:column; gap:12px;">
+    
+    let roleBadgeText = "Premium Scholar";
+    let sidebarDetailsHtml = `
             <div style="display:flex; justify-content:space-between; font-size:13.5px;">
               <span style="color:var(--text-secondary);">Target Score:</span>
               <span style="font-weight:700; color:var(--text-primary);">PTE ${progress.targetScore}</span>
@@ -46,6 +39,34 @@ export function renderProfile(container) {
               <span style="color:var(--text-secondary);">Tasks completed:</span>
               <span style="font-weight:700; color:var(--success);">${progress.completedTasks.length} tasks</span>
             </div>
+    `;
+    
+    if (isFaculty) {
+      roleBadgeText = "Authorized Coach";
+      sidebarDetailsHtml = `
+            <div style="display:flex; justify-content:space-between; font-size:13.5px;">
+              <span style="color:var(--text-secondary);">Role:</span>
+              <span style="font-weight:700; color:var(--accent);">Faculty Advisor</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:13.5px;">
+              <span style="color:var(--text-secondary);">Faculty Code:</span>
+              <span style="font-weight:700; color:var(--text-primary); font-family: monospace;">${user.faculty_code}</span>
+            </div>
+      `;
+    }
+
+    container.innerHTML = `
+      <div class="profile-grid">
+        <!-- LEFT COLUMN: AVATAR CARD & TARGET STATS -->
+        <aside class="profile-sidebar-card card-glass">
+          <div class="profile-large-avatar">
+            <img src="${avatarUrl}" alt="User Avatar Large">
+          </div>
+          <h3 style="font-size: 18px; margin-bottom: 4px;">${user ? user.name : 'Vivek Ballewar'}</h3>
+          <span style="font-size:12px; color:var(--accent); font-weight:600; text-transform:uppercase;">${roleBadgeText}</span>
+          
+          <div style="width:100%; border-top:1px solid var(--border-color); margin-top:20px; padding-top:20px; text-align:left; display:flex; flex-direction:column; gap:12px;">
+            ${sidebarDetailsHtml}
           </div>
         </aside>
 
@@ -54,7 +75,7 @@ export function renderProfile(container) {
           
           <!-- SETTINGS CONFIG CARD -->
           <div class="card-glass">
-            <h3 style="margin-bottom: 20px;">Diagnostic Target Settings</h3>
+            <h3 style="margin-bottom: 20px;">Diagnostic Profile Settings</h3>
             
             <form id="profile-config-form" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
               <div class="input-group">
@@ -65,6 +86,16 @@ export function renderProfile(container) {
                 <label for="prof-email">Email Address</label>
                 <input type="email" id="prof-email" value="${user ? user.email : ''}" required>
               </div>
+              
+              ${isFaculty ? `
+              <div class="input-group" style="grid-column: 1 / -1;">
+                <label for="prof-faculty-code">Your Unique Faculty Code (Students enter this to share progress)</label>
+                <div style="display:flex; gap:10px; width:100%;">
+                  <input type="text" id="prof-faculty-code" value="${user.faculty_code || ''}" readonly style="background: rgba(255,255,255,0.05); cursor: not-allowed; font-weight: bold; color: var(--accent); font-family: monospace; letter-spacing: 1px; flex: 1;">
+                  <button type="button" id="prof-copy-code-btn" class="btn btn-outline" style="margin-top: 0; padding: 0 15px; display:flex; align-items:center; justify-content:center; border-color:var(--accent); color:var(--accent); font-weight: 600;">Copy Code</button>
+                </div>
+              </div>
+              ` : `
               <div class="input-group">
                 <label for="prof-target">Target Score Scale</label>
                 <select id="prof-target">
@@ -75,7 +106,7 @@ export function renderProfile(container) {
               </div>
               <div class="input-group">
                 <label for="prof-exam-date">Target Examination Date</label>
-                <input type="date" id="prof-exam-date" value="${progress.examDate}">
+                <input type="date" id="prof-exam-date" value="${progress.examDate || ''}">
               </div>
               
               <div class="input-group">
@@ -115,12 +146,19 @@ export function renderProfile(container) {
                 </select>
               </div>
               
+              <div class="input-group" style="grid-column: 1 / -1;">
+                <label for="prof-faculty-id">Linked Faculty ID (Optional)</label>
+                <input type="text" id="prof-faculty-id" value="${user.linked_faculty_id || ''}" placeholder="e.g. FAC-T6B8W">
+              </div>
+              `}
+              
               <div style="grid-column:1/-1; display:flex; justify-content:flex-end;">
                 <button type="submit" class="btn btn-primary btn-sm shadow-neon">Save profile updates</button>
               </div>
             </form>
           </div>
 
+          ${isFaculty ? '' : `
           <!-- AI WEEKLY STUDY PLANNER -->
           <div class="card-glass-glow plan-generator-wrapper">
             <div class="card-title-flex">
@@ -135,6 +173,7 @@ export function renderProfile(container) {
               <!-- Planner schedule rendered programmatically -->
             </div>
           </div>
+          `}
 
         </main>
       </div>
@@ -143,44 +182,80 @@ export function renderProfile(container) {
       </footer>
     `;
 
+    // Hook copy code button if faculty
+    if (isFaculty) {
+      const copyBtn = document.getElementById('prof-copy-code-btn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          const codeInput = document.getElementById('prof-faculty-code');
+          if (codeInput) {
+            navigator.clipboard.writeText(codeInput.value);
+            copyBtn.textContent = "Copied!";
+            copyBtn.style.background = "var(--success)";
+            copyBtn.style.color = "white";
+            setTimeout(() => {
+              copyBtn.textContent = "Copy Code";
+              copyBtn.style.background = "transparent";
+              copyBtn.style.color = "var(--accent)";
+            }, 1500);
+          }
+        });
+      }
+    }
+
     // Hook config form submits
     document.getElementById('profile-config-form').addEventListener('submit', (e) => {
       e.preventDefault();
       
       const newName = document.getElementById('prof-name').value;
       const newEmail = document.getElementById('prof-email').value;
-      const newTarget = parseInt(document.getElementById('prof-target').value);
-      const newExamDate = document.getElementById('prof-exam-date').value;
-      const newSpeaking = parseInt(document.getElementById('prof-target-speaking').value);
-      const newWriting = parseInt(document.getElementById('prof-target-writing').value);
-      const newReading = parseInt(document.getElementById('prof-target-reading').value);
-      const newListening = parseInt(document.getElementById('prof-target-listening').value);
 
-      // Update User details
-      const oldUser = Database.getUser();
-      const updatedUser = {
-        ...oldUser,
+      let updatedUser = {
+        ...user,
         name: newName,
         email: newEmail,
         authenticated: true
       };
-      Database.updateUser(updatedUser);
 
-      // Update progress
-      const currentProg = Database.getProgress();
-      currentProg.targetScore = newTarget;
-      currentProg.targetSpeaking = newSpeaking;
-      currentProg.targetWriting = newWriting;
-      currentProg.targetReading = newReading;
-      currentProg.targetListening = newListening;
-      currentProg.examDate = newExamDate;
-      Database.updateProgress(currentProg);
+      let updatedProgress = { ...progress };
+
+      if (!isFaculty) {
+        const newTarget = parseInt(document.getElementById('prof-target').value);
+        const newExamDate = document.getElementById('prof-exam-date').value;
+        const newSpeaking = parseInt(document.getElementById('prof-target-speaking').value);
+        const newWriting = parseInt(document.getElementById('prof-target-writing').value);
+        const newReading = parseInt(document.getElementById('prof-target-reading').value);
+        const newListening = parseInt(document.getElementById('prof-target-listening').value);
+        const newFacultyId = document.getElementById('prof-faculty-id') ? document.getElementById('prof-faculty-id').value.trim().toUpperCase() : '';
+
+        // Validate linked faculty ID if entered
+        if (newFacultyId) {
+          const accounts = Database.getAccounts();
+          const facultyExists = accounts.some(a => a.role === 'faculty' && a.faculty_code === newFacultyId);
+          if (!facultyExists) {
+            window.showToast("Faculty ID not found. Please verify the code or check if it's correct.", "error");
+            return;
+          }
+        }
+
+        updatedUser.linked_faculty_id = newFacultyId;
+        
+        updatedProgress.targetScore = newTarget;
+        updatedProgress.targetSpeaking = newSpeaking;
+        updatedProgress.targetWriting = newWriting;
+        updatedProgress.targetReading = newReading;
+        updatedProgress.targetListening = newListening;
+        updatedProgress.examDate = newExamDate;
+      }
+
+      // Save User details
+      Database.updateUser(updatedUser);
+      Database.updateProgress(updatedProgress);
 
       // Save to accounts list
       Database.saveAccount({
-        name: newName,
-        email: newEmail,
-        progress: currentProg
+        ...updatedUser,
+        progress: updatedProgress
       });
 
       // Flash feedback and reload
@@ -193,20 +268,20 @@ export function renderProfile(container) {
       }, 1000);
     });
 
-    // Hook Planner generator
-    document.getElementById('btn-generate-planner').addEventListener('click', () => {
-      generateWeeklySchedule();
-    });
-
-    // Populate schedule table initially
-    generateWeeklySchedule(true);
+    if (!isFaculty) {
+      // Hook Planner generator
+      document.getElementById('btn-generate-planner').addEventListener('click', () => {
+        generateWeeklySchedule();
+      });
+      // Populate schedule table initially
+      generateWeeklySchedule(true);
+    }
   };
 
   const generateWeeklySchedule = (isInitial = false) => {
     const tableBox = document.getElementById('study-planner-table-container');
     if (!tableBox) return;
 
-    // Loading skeleton first if triggered manually
     if (!isInitial) {
       tableBox.innerHTML = `
         <div class="loading-skeleton-container" style="margin-top:16px;">
@@ -217,12 +292,10 @@ export function renderProfile(container) {
     }
 
     setTimeout(() => {
-      const currentTarget = parseInt(document.getElementById('prof-target').value) || progress.targetScore;
+      const currentTarget = parseInt(document.getElementById('prof-target') ? document.getElementById('prof-target').value : progress.targetScore) || progress.targetScore;
       
-      // Dynamic planning schedules based on target level
       let schedule = [];
       if (currentTarget >= 90) {
-        // High Intensity
         schedule = [
           { day: "Monday", skill: "Speaking (RA)", task: "3 Read Aloud passages", time: "30 mins" },
           { day: "Tuesday", skill: "Writing (WE)", task: "1 Essay (Advanced Lexicon)", time: "40 mins" },
@@ -233,7 +306,6 @@ export function renderProfile(container) {
           { day: "Sunday", skill: "Rest / Diagnostics", task: "Review AI error highlights", time: "10 mins" }
         ];
       } else if (currentTarget >= 79) {
-        // Medium Intensity
         schedule = [
           { day: "Monday", skill: "Speaking (RA)", task: "2 Read Aloud passages", time: "20 mins" },
           { day: "Tuesday", skill: "Writing (WE)", task: "1 Argumentative Essay", time: "30 mins" },
@@ -244,7 +316,6 @@ export function renderProfile(container) {
           { day: "Sunday", skill: "Rest", task: "Review daily streak goals", time: "5 mins" }
         ];
       } else {
-        // Core Focus
         schedule = [
           { day: "Monday", skill: "Speaking (RA)", task: "1 Read Aloud passage", time: "15 mins" },
           { day: "Tuesday", skill: "Writing (WE)", task: "Review Essay outline structures", time: "15 mins" },
@@ -278,9 +349,8 @@ export function renderProfile(container) {
           </tbody>
         </table>
       `;
-    }, isInitial ? 0 : 500); // simulation delay for AI generator
+    }, isInitial ? 0 : 500);
   };
 
-  // Run initial render
   renderView();
 }

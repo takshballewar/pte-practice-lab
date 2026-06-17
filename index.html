@@ -66,7 +66,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles-premium.css?v=26">
+  <link rel="stylesheet" href="css/styles-premium.css?v=28">
   <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
   <script>
     // Robust local storage polyfill for privacy mode / disabled storage
@@ -323,6 +323,14 @@
       </div>
       <form id="login-form" class="modal-form">
         <div class="input-group">
+          <label>Sign in as</label>
+          <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
+            <button type="button" id="login-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: var(--accent); background: rgba(139,92,246,0.1); font-weight: 600;">Student</button>
+            <button type="button" id="login-role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; font-weight: 600;">Faculty</button>
+          </div>
+          <input type="hidden" id="login-role" value="student">
+        </div>
+        <div class="input-group">
           <label for="login-email">Email Address</label>
           <input type="email" id="login-email" required placeholder="name@domain.com">
         </div>
@@ -382,12 +390,24 @@
           </div>
         </div>
         <div class="input-group">
+          <label>I want to join as</label>
+          <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
+            <button type="button" id="role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: var(--accent); background: rgba(139,92,246,0.1); font-weight: 600;">Student</button>
+            <button type="button" id="role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; font-weight: 600;">Faculty</button>
+          </div>
+          <input type="hidden" id="register-role" value="student">
+        </div>
+        <div class="input-group" id="register-target-group">
           <label for="register-target">Target PTE Score</label>
           <select id="register-target">
             <option value="65">PTE 65 (Competent English)</option>
             <option value="79" selected>PTE 79 (Superior English)</option>
             <option value="90">PTE 90 (Perfect Score)</option>
           </select>
+        </div>
+        <div class="input-group" id="register-faculty-id-group">
+          <label for="register-faculty-id">Faculty ID (Optional)</label>
+          <input type="text" id="register-faculty-id" placeholder="e.g. FAC-T6B8W">
         </div>
         <button type="submit" class="btn btn-primary btn-block shadow-neon">Generate Account</button>
       </form>
@@ -423,7 +443,15 @@
           </div>
         </div>
 
-        <div class="input-group" style="margin-bottom: 16px;">
+        <div class="input-group">
+          <label>I want to join as</label>
+          <div class="role-selector-tabs" style="display: flex; gap: 10px; margin-bottom: 12px; width: 100%;">
+            <button type="button" id="onboarding-role-student-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; border-color: var(--accent); color: var(--accent); background: rgba(139,92,246,0.1); font-weight: 600;">Student</button>
+            <button type="button" id="onboarding-role-faculty-btn" class="btn btn-outline" style="margin-top: 0; flex: 1; font-weight: 600;">Faculty</button>
+          </div>
+          <input type="hidden" id="onboarding-role" value="student">
+        </div>
+        <div class="input-group" id="onboarding-target-group" style="margin-bottom: 16px;">
           <label for="onboarding-target">Target Overall PTE Score</label>
           <select id="onboarding-target" required>
             <option value="65">PTE 65 (Competent English)</option>
@@ -431,14 +459,15 @@
             <option value="90">PTE 90 (Perfect Score)</option>
           </select>
         </div>
-
-
-
-        <div class="input-group" style="margin-bottom: 16px;">
+        <div class="input-group" id="onboarding-month-group" style="margin-bottom: 16px;">
           <label for="onboarding-month">Target Exam Month</label>
           <select id="onboarding-month" required>
             <!-- Populated dynamically via JS -->
           </select>
+        </div>
+        <div class="input-group" id="onboarding-faculty-id-group" style="margin-bottom: 16px;">
+          <label for="onboarding-faculty-id">Faculty ID (Optional)</label>
+          <input type="text" id="onboarding-faculty-id" placeholder="e.g. FAC-T6B8W">
         </div>
         <button type="submit" class="btn btn-primary btn-block shadow-neon" style="margin-top: 16px;">Create Profile & Start</button>
       </form>
@@ -446,6 +475,6 @@
   </div>
 
   <!-- Main ES6 Modules application entrypoint -->
-  <script type="module" src="js/app-premium.js?v=26"></script>
+  <script type="module" src="js/app-premium.js?v=28"></script>
 </body>
 </html>

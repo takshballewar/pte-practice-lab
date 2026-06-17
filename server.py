@@ -58,6 +58,18 @@ def init_db():
             progress TEXT
         )
     ''')
+    if IS_POSTGRES:
+        cursor.execute("SELECT column_name FROM information_schema.columns WHERE table_name = 'accounts'")
+        columns = [row[0] for row in cursor.fetchall()]
+    else:
+        cursor.execute("PRAGMA table_info(accounts)")
+        columns = [row[1] for row in cursor.fetchall()]
+    if 'role' not in columns:
+        cursor.execute("ALTER TABLE accounts ADD COLUMN role TEXT DEFAULT 'student'")
+    if 'faculty_code' not in columns:
+        cursor.execute("ALTER TABLE accounts ADD COLUMN faculty_code TEXT")
+    if 'linked_faculty_id' not in columns:
+        cursor.execute("ALTER TABLE accounts ADD COLUMN linked_faculty_id TEXT")
     # Seed default user if not present
     execute_query(cursor, "SELECT 1 FROM accounts WHERE email = ?", ('vivek@example.com',))
     if not cursor.fetchone():
@@ -351,7 +363,7 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         try:
             conn = get_db_connection()
             cursor = conn.cursor()
-            execute_query(cursor, "SELECT email, name, password, avatar, progress FROM accounts")
+            execute_query(cursor, "SELECT email, name, password, avatar, progress, role, faculty_code, linked_faculty_id FROM accounts")
             rows = cursor.fetchall()
             accounts = []
             for row in rows:
@@ -366,7 +378,10 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
                     "name": row[1],
                     "password": row[2],
                     "avatar": row[3],
-                    "progress": progress_val
+                    "progress": progress_val,
+                    "role": row[5] if len(row) > 5 and row[5] else 'student',
+                    "faculty_code": row[6] if len(row) > 6 else None,
+                    "linked_faculty_id": row[7] if len(row) > 7 else None
                 })
             conn.close()
             self.send_json_response(200, accounts)
@@ -387,6 +402,9 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             password = account.get('password')
             avatar = account.get('avatar')
             progress = account.get('progress')
+            role = account.get('role', 'student')
+            faculty_code = account.get('faculty_code')
+            linked_faculty_id = account.get('linked_faculty_id')
             
             if not email:
                 self.send_json_response(400, {"error": "Missing email"})
@@ -402,14 +420,14 @@ class NoCacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             if cursor.fetchone():
                 execute_query(cursor, '''
                     UPDATE accounts
-                    SET name = ?, password = ?, avatar = ?, progress = ?
+                    SET name = ?, password = ?, avatar = ?, progress = ?, role = ?, faculty_code = ?, linked_faculty_id = ?
                     WHERE email = ?
-                ''', (name, password, avatar, progress_str, email))
+                ''', (name, password, avatar, progress_str, role, faculty_code, linked_faculty_id, email))
             else:
                 execute_query(cursor, '''
-                    INSERT INTO accounts (email, name, password, avatar, progress)
-                    VALUES (?, ?, ?, ?, ?)
-                ''', (email, name, password, avatar, progress_str))
+                    INSERT INTO accounts (email, name, password, avatar, progress, role, faculty_code, linked_faculty_id)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                ''', (email, name, password, avatar, progress_str, role, faculty_code, linked_faculty_id))
             
             conn.commit()
             conn.close()

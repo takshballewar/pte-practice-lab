@@ -1,6 +1,6 @@
 /* FluentAI SPA Hash Router and Page Views Lifecycle Coordinator */
 
-import { Database } from './db.js?v=26';
+import { Database } from './db.js?v=28';
 
 function generateInitialsSvg(name) {
   const initialsText = name ? name.split(' ').filter(Boolean).map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'TS';
@@ -40,7 +40,7 @@ export const Router = {
     
     if (!hash || hash === 'landing') {
       if (isAuthenticated) {
-        window.location.hash = '#dashboard';
+        window.location.hash = user.role === 'faculty' ? '#faculty' : '#dashboard';
         return;
       } else {
         hash = 'landing';
@@ -57,6 +57,15 @@ export const Router = {
       for (const [key, value] of urlSearchParams.entries()) {
         params[key] = value;
       }
+    }
+
+    if (hash === 'dashboard' && isAuthenticated && user.role === 'faculty') {
+      window.location.hash = '#faculty';
+      return;
+    }
+    if (hash === 'faculty' && (!isAuthenticated || user.role !== 'faculty')) {
+      window.location.hash = '#dashboard';
+      return;
     }
 
     // Resolve route function
@@ -111,16 +120,52 @@ export const Router = {
       sidebar.classList.remove('hidden');
       authButtons.classList.add('hidden');
       userMenu.classList.remove('hidden');
+      
+      const isFaculty = user && user.role === 'faculty';
+      
       if (viewTitle) viewTitle.classList.remove('hidden');
-      if (streakWidget) streakWidget.classList.remove('hidden');
-      if (pointsWidget) pointsWidget.classList.remove('hidden');
+      if (streakWidget) {
+        if (isFaculty) streakWidget.classList.add('hidden');
+        else streakWidget.classList.remove('hidden');
+      }
+      if (pointsWidget) {
+        if (isFaculty) pointsWidget.classList.add('hidden');
+        else pointsWidget.classList.remove('hidden');
+      }
+      
       if (logoArea) logoArea.style.display = 'flex';
       if (menuToggle) menuToggle.style.display = 'flex';
+
+      // Hide or show links depending on Faculty status
+      const practiceLink = document.querySelector('.sidebar-nav [data-route="practice"]');
+      const mocktestLink = document.querySelector('.sidebar-nav [data-route="mocktest"]');
+      const upgradeLink = document.querySelector('.sidebar-nav .nav-link-upgrade');
+      const dashboardLink = document.querySelector('.sidebar-nav [data-route="dashboard"]') || document.querySelector('.sidebar-nav [data-route="faculty"]');
+      
+      if (isFaculty) {
+        if (practiceLink) practiceLink.style.display = 'none';
+        if (mocktestLink) mocktestLink.style.display = 'none';
+        if (upgradeLink) upgradeLink.style.display = 'none';
+        if (dashboardLink) {
+          dashboardLink.querySelector('span').textContent = 'Faculty Dashboard';
+          dashboardLink.setAttribute('href', '#faculty');
+          dashboardLink.setAttribute('data-route', 'faculty');
+        }
+      } else {
+        if (practiceLink) practiceLink.style.display = 'flex';
+        if (mocktestLink) mocktestLink.style.display = 'flex';
+        if (upgradeLink) upgradeLink.style.display = 'flex';
+        if (dashboardLink) {
+          dashboardLink.querySelector('span').textContent = 'Dashboard';
+          dashboardLink.setAttribute('href', '#dashboard');
+          dashboardLink.setAttribute('data-route', 'dashboard');
+        }
+      }
 
       // Update sidebar nav active styling
       document.querySelectorAll('.sidebar-nav .nav-link, .sidebar-nav .nav-link-cockpit-glass').forEach(link => {
         const routeAttr = link.getAttribute('data-route');
-        if (routeAttr === hash || (hash === 'practice' && routeAttr === 'practice') || (hash === 'scoring' && routeAttr === 'practice')) {
+        if (routeAttr === hash || (hash === 'practice' && routeAttr === 'practice') || (hash === 'scoring' && routeAttr === 'practice') || (hash === 'faculty' && routeAttr === 'faculty')) {
           link.classList.add('active');
         } else {
           link.classList.remove('active');
@@ -155,6 +200,7 @@ export const Router = {
     if (viewTitle) {
       const titles = {
         dashboard: "Progress Dashboard",
+        faculty: "Faculty Cockpit Telemetry",
         practice: "PTE Practice Lab",
         mocktest: "Mock Examination Arena",
         profile: "AI Study Cockpit",
