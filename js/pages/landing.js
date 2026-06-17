@@ -8,7 +8,7 @@ export function renderLanding(container) {
     <section class="landing-hero">
       <div class="hero-text">
         <div class="hero-logo-box" style="margin-bottom: 24px;">
-          <img src="assets/logo.png" alt="Aspire Logo" style="height: 70px; max-height: 12vw; min-height: 50px; width: auto; display: block; object-fit: contain;">
+          <img src="assets/logo-full.jpg" alt="Aspire Logo" style="height: 85px; max-height: 15vw; min-height: 60px; width: auto; display: block; object-fit: contain;">
         </div>
         <h1 class="hero-title">Your AI-powered <span>PTE coach</span> — practice smarter, score higher</h1>
         <p class="hero-subtitle">Step into a sleek, data-rich language cockpit. Experience instant, exam-accurate grading, live pronunciation waveforms, and a floating personal tutor.</p>
