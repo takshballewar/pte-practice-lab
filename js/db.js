@@ -1362,6 +1362,7 @@ export const Database = {
 
   clearUserData() {
     localStorage.removeItem("fluentai_user");
+    localStorage.removeItem("aspire_subscription");
     localStorage.setItem("fluentai_progress", JSON.stringify(DEFAULT_PROGRESS));
   },
 
@@ -2472,23 +2473,6 @@ Return ONLY the JSON string. Do not include markdown code block tags (\`\`\`json
     const isCleared = (score !== null) ? (score >= targetScore) : true;
 
     if (isCleared) {
-      // Clear it from the database forever!
-      const questions = this.getQuestions();
-      let deleted = false;
-      for (const cat of ['speaking', 'writing', 'reading', 'listening']) {
-        const index = questions[cat].findIndex(q => q.id === questionId);
-        if (index !== -1) {
-          questions[cat].splice(index, 1);
-          deleted = true;
-          break;
-        }
-      }
-      if (deleted) {
-        this.safeSaveQuestions(questions);
-        document.dispatchEvent(new CustomEvent('questions-updated'));
-        console.log(`Question ${questionId} cleared and deleted forever (score ${score} >= target ${targetScore})`);
-      }
-
       // Add to completed, remove from uncleared
       if (!progress.completedTasks.includes(questionId)) {
         progress.completedTasks.push(questionId);
@@ -2496,6 +2480,7 @@ Return ONLY the JSON string. Do not include markdown code block tags (\`\`\`json
       if (progress.unclearedTasks) {
         progress.unclearedTasks = progress.unclearedTasks.filter(id => id !== questionId);
       }
+      console.log(`Question ${questionId} cleared (score ${score} >= target ${targetScore})`);
     } else {
       // If it is not cleared (has mistakes), save it to Uncleared!
       if (!progress.unclearedTasks) {
@@ -2861,22 +2846,7 @@ Return ONLY a valid JSON object matching the schema. Do not include markdown cod
     } else {
       progress.unclearedTasks = progress.unclearedTasks.filter(id => id !== questionId);
       this.updateProgress(progress);
-
-      // Delete forever from database!
-      const questions = this.getQuestions();
-      let deleted = false;
-      for (const cat of ['speaking', 'writing', 'reading', 'listening']) {
-        const index = questions[cat].findIndex(q => q.id === questionId);
-        if (index !== -1) {
-          questions[cat].splice(index, 1);
-          deleted = true;
-          break;
-        }
-      }
-      if (deleted) {
-        this.safeSaveQuestions(questions);
-        console.log(`Question ${questionId} manually cleared and deleted forever!`);
-      }
+      console.log(`Question ${questionId} manually cleared!`);
       document.dispatchEvent(new CustomEvent('questions-updated'));
     }
   },
@@ -2994,10 +2964,13 @@ Return ONLY the plain text title, nothing else. No markdown, no quotes, no extra
   // Get current user subscription
   getSubscription() {
     try {
+      const progress = this.getProgress();
+      if (progress && progress.subscription) {
+        return progress.subscription;
+      }
       const sub = localStorage.getItem('aspire_subscription');
       if (sub) {
         const parsed = JSON.parse(sub);
-        // Check if subscription is still valid (not expired)
         if (parsed.status === 'active') {
           return parsed;
         }
@@ -3016,11 +2989,13 @@ Return ONLY the plain text title, nothing else. No markdown, no quotes, no extra
       billingCycle: billingCycle,
       startDate: new Date().toISOString(),
       status: 'active',
-      // Calculate next billing date
       nextBillingDate: billingCycle === 'yearly' 
         ? new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
         : new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
     };
+    const progress = this.getProgress();
+    progress.subscription = subscription;
+    this.updateProgress(progress);
     localStorage.setItem('aspire_subscription', JSON.stringify(subscription));
     document.dispatchEvent(new CustomEvent('subscription-changed', { detail: subscription }));
     return subscription;
@@ -3034,6 +3009,9 @@ Return ONLY the plain text title, nothing else. No markdown, no quotes, no extra
       status: 'active',
       startDate: null
     };
+    const progress = this.getProgress();
+    progress.subscription = subscription;
+    this.updateProgress(progress);
     localStorage.setItem('aspire_subscription', JSON.stringify(subscription));
     document.dispatchEvent(new CustomEvent('subscription-changed', { detail: subscription }));
     return subscription;
